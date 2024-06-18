@@ -1,9 +1,14 @@
 <script>
-export default {};
+import Main from '@/components/partials/Main.vue';
+export default {
+  components: {
+    Main
+  }
+};
 </script>
 
 <template>
-  <div>Home</div>
+  <Main/>
 </template>
 
 <style lang="scss" scoped></style>
