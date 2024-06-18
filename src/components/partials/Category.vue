@@ -1,14 +1,3 @@
-<script>
-import { register } from "swiper/element/bundle";
-register();
-
-export default {
-  setup() {
-    return {};
-  },
-};
-</script>
-
 <template>
   <div class="swiper-bg">
     <swiper-container
@@ -28,31 +17,58 @@ export default {
       <swiper-slide><a href="#">Vegano</a></swiper-slide>
       <swiper-slide><a href="#">Pizza</a></swiper-slide>
       <swiper-slide><a href="#">Coreano</a></swiper-slide>
-      <swiper-slide><a href="#">Greco</a></swiper-slide>
       <swiper-slide><a href="#">Spagnolo</a></swiper-slide>
-      <swiper-slide><a href="#">Peruviano</a></swiper-slide>
+      <swiper-slide><a href="#">Greco</a></swiper-slide>
+      <swiper-slide><a href="#">Vegetariano</a></swiper-slide>
     </swiper-container>
   </div>
 </template>
 
-<style lang="scss" scoped>
-swiper-container {
-  width: 100%;
-  height: 100vh;
+<script>
+import { register } from "swiper/element/bundle";
+register();
 
-  .swiper-slide {
+export default {
+  setup() {
+    return {};
+  },
+};
+</script>
+
+<style scoped>
+
+.swiper-bg{
+  background-color: #26a69a;
+  height: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10% 10%;
+  border-radius: 50px;
+}
+
+swiper-container {
+  height: 90%;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  swiper-slide {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-
+    align-items: center;
+    background-color: #f9a825; 
+    color: white;
+    font-size: 20px;
+    border-radius: 20px;
+    padding: 10% !important;
     a {
-      font-size: 25px;
       color: white;
+      text-decoration: none;
+      font-size: 40px;
     }
   }
 }
-.swiper-bg {
-  background-color: blue;
-  height: 100%;
-}
+
 </style>
