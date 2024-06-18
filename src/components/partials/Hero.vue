@@ -1,6 +1,5 @@
 <script>
-export default {
-  
+export default { 
 }
 </script>
 <template>
@@ -10,4 +9,13 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20%;
+  img {
+    width: 100%;
+  }
+}
 </style>
