@@ -1,22 +1,22 @@
 <script>
-import Hero from './Hero.vue';
-import Swiper from './Swiper.vue';
+import Hero from "./Hero.vue";
+import Swiper from "./Swiper.vue";
+import CategoryCard from "./CategoryCard.vue";
 export default {
-components: {
-Hero,
-Swiper,
-}
+  components: {
+    Hero,
+    Swiper,
+    CategoryCard,
+  },
 };
 </script>
 
 <template>
   <main>
-    <Hero/>
-    <Swiper/>
-    <h1>Main</h1>
+    <Hero />
+    <Swiper />
+    <CategoryCard />
   </main>
 </template>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
