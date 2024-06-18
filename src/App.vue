@@ -16,6 +16,9 @@ export default {
       <Header />
     </div>
     <div class="container">
+      <router-view></router-view>
+    </div>
+    <div class="container">
       <Footer />
     </div>
   </div>

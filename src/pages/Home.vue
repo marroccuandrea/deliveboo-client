@@ -1,11 +1,9 @@
-<template>
-  <div>
-    <h1>Main</h1>
-  </div>
-</template>
-
 <script>
 export default {};
 </script>
+
+<template>
+  <div>Home</div>
+</template>
 
 <style lang="scss" scoped></style>

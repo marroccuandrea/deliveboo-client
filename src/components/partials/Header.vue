@@ -1,5 +1,9 @@
 <script>
-export default {};
+export default {
+  setup() {
+    return {};
+  },
+};
 </script>
 
 <template>
@@ -8,7 +12,7 @@ export default {};
       <div class="sx d-flex align-items-center">
         <ul>
           <li>
-            <a href="#">Home</a>
+            <router-link :to="{ name: 'home' }">Home</router-link>
           </li>
           <li>
             <a href="#">Accedi</a>
@@ -64,7 +68,7 @@ header {
           color: orange;
         }
         &.active {
-          color: yellow;
+          color: orange;
         }
       }
     }
