@@ -47,6 +47,7 @@ mounted(){
 
 <template>
   <div v-if="!loading">
+    <img src="../../../public/Swipe.png" alt="" class="desk-img">
     <div class="swiper-bg desktop">
       <swiper-container
         :loop="true"
@@ -56,10 +57,11 @@ mounted(){
         :space-between="10"
         class="swiper-desktop">
         <swiper-slide v-for="item in store.types" :key="`t-${item.id}`">
-          <a href="#">{{ item.name }}</a>
+          <label><input class="hidden" type="checkbox"/>{{ item.name }}</label>
         </swiper-slide>
       </swiper-container>
     </div>
+    <img src="../../../public/Swipe.png" alt="" class="tab-img">
     <div class="swiper-bg-2 tablet">
       <swiper-container
         :loop="true"
@@ -70,7 +72,7 @@ mounted(){
         class="swiper-tablet"
       >
       <swiper-slide v-for="item in store.types" :key="`t-${item.id}`">
-          <a href="#">{{ item.name }}</a>
+        <label><input type="checkbox"/>{{ item.name }}</label>
         </swiper-slide>
       </swiper-container>
     </div>
@@ -78,6 +80,9 @@ mounted(){
   <Loader v-else />
 </template>
 <style scoped>
+.desk-img{
+  margin-bottom: -170px;
+}
 .swiper-bg {
   background-color: #26a69a;
   height: 1000px;
@@ -114,10 +119,14 @@ mounted(){
   font-size: 20px;
   border-radius: 20px;
   padding: 10% !important;
-  a {
-  color: white;
-  text-decoration: none;
-  font-size: 40px;
+    label {
+      color: white;
+      text-decoration: none;
+      font-size: 40px;
+      cursor: pointer;
+      .hidden {
+        
+      }
 }
 }
 }
@@ -137,10 +146,14 @@ mounted(){
   font-size: 20px;
   border-radius: 20px;
   padding: 10% !important;
-  a {
-  color: white;
-  text-decoration: none;
-  font-size: 30px;
+  label {
+      color: white;
+      text-decoration: none;
+      font-size: 40px;
+      cursor: pointer;
+      .hidden {
+        display: none;
+      }
 }
 }
 }
@@ -149,10 +162,16 @@ mounted(){
   .tablet {
     display: none;
   }
+  .tab-img{
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
   .desktop {
+    display: none;
+  }
+  .desk-img{
     display: none;
   }
 }
