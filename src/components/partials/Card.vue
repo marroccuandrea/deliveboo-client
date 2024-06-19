@@ -7,7 +7,7 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container ristoranti">
     <div class="row row-cols-3">
       <div class="col">
         <div class="card">
@@ -95,6 +95,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.ristoranti {
+  overflow-y: auto;
+  overflow-y: hidden;
+}
 .card {
   margin-bottom: 20px;
   height: 20rem;
@@ -105,6 +109,7 @@ export default {
   padding: 5%;
   border-radius: 15px;
   border: none;
+  flex-shrink: 0;
   img {
     width: 80%;
   }
