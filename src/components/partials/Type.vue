@@ -1,12 +1,16 @@
 <script>
 import { register } from "swiper/element/bundle";
 import { store} from "../../data/store";
+import Loader from "../partials/Loader.vue";
 import axios from 'axios';
 import { types } from "sass";
 register();
 
 
 export default {
+  components: {
+    Loader,
+  },
 props:{
   type:{
     name: String,
@@ -16,18 +20,22 @@ data() {
   return {
     store,
     types: [],
+    loading:true,
   }
 },
 methods:{
   getApi(){
+    this.loading=true;
     axios.get(this.store.typeUrl,{
     params:store.queryParams
   })
   .then(result=>{
     this.store.types=result.data.types;
     console.log(this.store.types);
+    this.loading=false;
   })
   .catch(error=>{
+    this.loading =false;
     console.log(error);
   })
 }
@@ -38,7 +46,7 @@ mounted(){
 </script>
 
 <template>
-  <div>
+  <div v-if="!loading">
     <div class="swiper-bg desktop">
       <swiper-container
         :loop="true"
@@ -67,6 +75,7 @@ mounted(){
       </swiper-container>
     </div>
   </div>
+  <Loader v-else />
 </template>
 <style scoped>
 .swiper-bg {
