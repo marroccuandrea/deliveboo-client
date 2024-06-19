@@ -56,7 +56,7 @@ mounted(){
         :space-between="10"
         class="swiper-desktop">
         <swiper-slide v-for="item in store.types" :key="`t-${item.id}`">
-          <a href="#">{{ item.name }}</a>
+          <label><input class="hidden" type="checkbox"/>{{ item.name }}</label>
         </swiper-slide>
       </swiper-container>
     </div>
@@ -70,7 +70,7 @@ mounted(){
         class="swiper-tablet"
       >
       <swiper-slide v-for="item in store.types" :key="`t-${item.id}`">
-          <a href="#">{{ item.name }}</a>
+        <label><input type="checkbox"/>{{ item.name }}</label>
         </swiper-slide>
       </swiper-container>
     </div>
@@ -114,10 +114,14 @@ mounted(){
   font-size: 20px;
   border-radius: 20px;
   padding: 10% !important;
-  a {
-  color: white;
-  text-decoration: none;
-  font-size: 40px;
+    label {
+      color: white;
+      text-decoration: none;
+      font-size: 40px;
+      cursor: pointer;
+      .hidden {
+        
+      }
 }
 }
 }
@@ -137,10 +141,14 @@ mounted(){
   font-size: 20px;
   border-radius: 20px;
   padding: 10% !important;
-  a {
-  color: white;
-  text-decoration: none;
-  font-size: 30px;
+  label {
+      color: white;
+      text-decoration: none;
+      font-size: 40px;
+      cursor: pointer;
+      .hidden {
+        display: none;
+      }
 }
 }
 }
