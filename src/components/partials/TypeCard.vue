@@ -26,6 +26,7 @@ export default {
 
 <style lang="scss" scoped>
 .type-wrapper {
+  height: 500px;
   margin-bottom: 50px;
 }
 
