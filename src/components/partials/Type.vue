@@ -1,3 +1,44 @@
+<script>
+import { register } from "swiper/element/bundle";
+import { store} from "../../data/store";
+import axios from 'axios';
+import { types } from "sass";
+register();
+export default {
+props:{
+  type:{
+    name: String,
+  }
+},
+data() {
+  return {
+    store,
+    types: [],
+  }
+},
+methods:{
+  getApi(){axios.get(this.store.typeUrl,{
+    params:store.queryParam
+  })
+  .then(result=>{
+    this.store.types=result.data;
+    console.log(this.store.types);
+  })
+  .catch(error=>{
+    console.log(error);
+  })
+}
+},
+mounted(){
+  this.getApi();
+}
+
+}
+
+
+
+</script>
+
 <template>
   <div>
     <div class="swiper-bg desktop">
@@ -48,18 +89,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import { register } from "swiper/element/bundle";
-register();
-
-export default {
-  setup() {
-    return {};
-  },
-};
-</script>
-
 <style scoped>
 .swiper-bg {
   background-color: #26a69a;
