@@ -1,12 +1,12 @@
 <script>
 import Hero from "./Hero.vue";
 import Swiper from "./Swiper.vue";
-import CategoryCard from "./CategoryCard.vue";
+import TypeCard from "./TypeCard.vue";
 export default {
   components: {
     Hero,
     Swiper,
-    CategoryCard,
+    TypeCard,
   },
 };
 </script>
@@ -15,7 +15,7 @@ export default {
   <main>
     <Hero />
     <Swiper />
-    <CategoryCard />
+    <TypeCard />
   </main>
 </template>
 

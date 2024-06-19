@@ -1,10 +1,10 @@
 <script>
-import Category from "./Category.vue";
+import Type from "./Type.vue";
 import Card from "./Card.vue";
 
 export default {
   components: {
-    Category,
+    Type,
     Card,
   },
   setup() {
@@ -15,8 +15,8 @@ export default {
 
 <template>
   <div class="d-flex">
-    <div class="category-wrapper">
-      <Category />
+    <div class="type-wrapper">
+      <Type />
     </div>
     <div class="card-wrapper">
       <Card />
@@ -25,7 +25,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.category-wrapper {
+.type-wrapper {
   margin-bottom: 50px;
 }
 </style>
