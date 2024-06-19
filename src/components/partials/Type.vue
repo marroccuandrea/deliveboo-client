@@ -47,6 +47,7 @@ mounted(){
 
 <template>
   <div v-if="!loading">
+    <img src="../../../public/Swipe.png" alt="" class="desk-img">
     <div class="swiper-bg desktop">
       <swiper-container
         :loop="true"
@@ -60,6 +61,7 @@ mounted(){
         </swiper-slide>
       </swiper-container>
     </div>
+    <img src="../../../public/Swipe.png" alt="" class="tab-img">
     <div class="swiper-bg-2 tablet">
       <swiper-container
         :loop="true"
@@ -78,6 +80,9 @@ mounted(){
   <Loader v-else />
 </template>
 <style scoped>
+.desk-img{
+  margin-bottom: -170px;
+}
 .swiper-bg {
   background-color: #26a69a;
   height: 1000px;
@@ -157,10 +162,16 @@ mounted(){
   .tablet {
     display: none;
   }
+  .tab-img{
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
   .desktop {
+    display: none;
+  }
+  .desk-img{
     display: none;
   }
 }
