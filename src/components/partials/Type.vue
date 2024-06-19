@@ -19,6 +19,7 @@ export default {
       store,
       types: [],
       loading: true,
+      selectedTypes: [], // Aggiunta di una proprietà per tracciare gli elementi selezionati
     }
   },
   methods: {
@@ -43,13 +44,21 @@ export default {
       if (event.target.checked && index === -1) {
         // If the checkbox is checked and the type is not in the array, add it
         this.store.filterTypes.push(selectedType);
+        this.selectedTypes.push(selectedType);
       } else if (!event.target.checked && index !== -1) {
         // If the checkbox is unchecked and the type is in the array, remove it
         this.store.filterTypes.splice(index, 1);
+        const selectedIndex = this.selectedTypes.indexOf(selectedType);
+        if (selectedIndex !== -1) {
+          this.selectedTypes.splice(selectedIndex, 1);
+        }
       }
       this.$emit('update-filter', this.store.filterTypes);
       console.log(this.store.filterTypes);
     },
+    isSelected(type) {
+      return this.selectedTypes.includes(type);
+    }
   },
   mounted() {
     this.getApi();
@@ -68,7 +77,7 @@ export default {
         :slides-per-view="7"
         :space-between="10"
         class="swiper-desktop">
-        <swiper-slide v-for="item in store.types" :key="`t-${item.id}`">
+        <swiper-slide v-for="item in store.types" :key="`t-${item.id}`" :class="{ 'red-bg': isSelected(item.name) }">
           <label>
             <input 
               class="hidden" 
@@ -91,7 +100,7 @@ export default {
         :space-between="10"
         class="swiper-tablet"
       >
-        <swiper-slide v-for="item in store.types" :key="`t-${item.id}`">
+        <swiper-slide v-for="item in store.types" :key="`t-${item.id}`" :class="{ 'red-bg': isSelected(item.name) }">
           <label>
             <input 
               type="checkbox" 
@@ -138,25 +147,24 @@ export default {
   justify-content: center;
   align-items: center;
   swiper-slide {
-  display: flex;
-
-  justify-content: center;
-  align-items: center;
-  background-color: #f9a825; 
-  color: white;
-  font-size: 20px;
-  border-radius: 20px;
-  padding: 10% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9a825; 
+    color: white;
+    font-size: 20px;
+    border-radius: 20px;
+    padding: 10% !important;
     label {
       color: white;
       text-decoration: none;
       font-size: 40px;
       cursor: pointer;
       .hidden {
-        
+        display: none;
       }
-}
-}
+    }
+  }
 }
 
 .swiper-tablet {
@@ -166,15 +174,15 @@ export default {
   justify-content: center;
   align-items: center;
   swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f9a825; 
-  color: white;
-  font-size: 20px;
-  border-radius: 20px;
-  padding: 10% !important;
-  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9a825; 
+    color: white;
+    font-size: 20px;
+    border-radius: 20px;
+    padding: 10% !important;
+    label {
       color: white;
       text-decoration: none;
       font-size: 40px;
@@ -182,8 +190,12 @@ export default {
       .hidden {
         display: none;
       }
+    }
+  }
 }
-}
+
+.red-bg {
+  background-color: rgb(219, 110, 9) !important;
 }
 
 @media (min-width: 769px) {
