@@ -48,12 +48,7 @@ mounted(){
         :space-between="10"
         class="swiper-desktop">
         <swiper-slide v-for="item in store.types" :key="`t-${item.id}`">
-          <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-  <label class="form-check-label" for="flexCheckDefault">
-    {{item.name}}
-  </label>
-</div>
+          <a href="#">{{ item.name }}</a>
         </swiper-slide>
       </swiper-container>
     </div>
@@ -102,6 +97,7 @@ mounted(){
   align-items: center;
   swiper-slide {
   display: flex;
+
   justify-content: center;
   align-items: center;
   background-color: #f9a825; 

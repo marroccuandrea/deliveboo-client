@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 import { register } from "swiper/element/bundle";
 import { store} from "../../data/store";
 import axios from 'axios';
@@ -151,4 +151,4 @@ mounted(){
     display: none;
   }
 }
-</style>
+</style> -->
