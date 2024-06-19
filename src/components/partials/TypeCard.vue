@@ -14,7 +14,7 @@ export default {
 </script>
 
 <template>
-  <div class="d-flex">
+  <div class="container main-wrapper">
     <div class="type-wrapper">
       <Type />
     </div>
@@ -27,5 +27,12 @@ export default {
 <style lang="scss" scoped>
 .type-wrapper {
   margin-bottom: 50px;
+}
+
+@media (min-width: 769px) {
+  .main-wrapper {
+    display: flex;
+    justify-content: center;
+  }
 }
 </style>
