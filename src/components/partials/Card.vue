@@ -10,6 +10,7 @@ export default {
 props:{
   type:{
     business_name: String,
+    image: String,
   }
 },
 data() {
@@ -41,12 +42,12 @@ mounted(){
 <template>
   <div class="container ristoranti">
     <div class="row row-cols-3">
-      <div class="col">
-        <div class="card" v-for="item in store.restaurants" :key="`r-${item.id}`">
-          <img src="../../../public/test.png" class="card-img-top" alt="..." />
+      <div class="col" v-for="item in store.restaurants" :key="`r-${item.id}`">
+        <div class="card">
+          <img v-if="item.image" :src="item.image" class="card-img-top"/>
+          <img v-else src="/placeholder.webp" class="card-img-top"/>
           <div class="card-body">
             <h5 class="card-title">{{item.business_name}}</h5>
-            <a href="#" class="btn px-4">Scopri</a>
           </div>
         </div>
       </div>
