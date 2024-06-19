@@ -1,3 +1,42 @@
+<script>
+import { register } from "swiper/element/bundle";
+import { store} from "../../data/store";
+import axios from 'axios';
+import { types } from "sass";
+register();
+
+
+export default {
+props:{
+  type:{
+    name: String,
+  }
+},
+data() {
+  return {
+    store,
+    types: [],
+  }
+},
+methods:{
+  getApi(){
+    axios.get(this.store.typeUrl,{
+    params:store.queryParams
+  })
+  .then(result=>{
+    this.store.types=result.data.types;
+    console.log(this.store.types);
+  })
+  .catch(error=>{
+    console.log(error);
+  })
+}
+},
+mounted(){
+  this.getApi();
+}}
+</script>
+
 <template>
   <div>
     <div class="swiper-bg desktop">
@@ -7,20 +46,10 @@
         direction="vertical"
         :slides-per-view="7"
         :space-between="10"
-        class="swiper-desktop"
-      >
-        <swiper-slide><a href="#">Italiano</a></swiper-slide>
-        <swiper-slide><a href="#">Cinese</a></swiper-slide>
-        <swiper-slide><a href="#">Giapponese</a></swiper-slide>
-        <swiper-slide><a href="#">Messicano</a></swiper-slide>
-        <swiper-slide><a href="#">Vietnamita</a></swiper-slide>
-        <swiper-slide><a href="#">Indiano</a></swiper-slide>
-        <swiper-slide><a href="#">Vegano</a></swiper-slide>
-        <swiper-slide><a href="#">Pizza</a></swiper-slide>
-        <swiper-slide><a href="#">Coreano</a></swiper-slide>
-        <swiper-slide><a href="#">Spagnolo</a></swiper-slide>
-        <swiper-slide><a href="#">Greco</a></swiper-slide>
-        <swiper-slide><a href="#">Vegetariano</a></swiper-slide>
+        class="swiper-desktop">
+        <swiper-slide v-for="item in store.types" :key="`t-${item.id}`">
+          <a href="#">{{ item.name }}</a>
+        </swiper-slide>
       </swiper-container>
     </div>
     <div class="swiper-bg-2 tablet">
@@ -32,34 +61,13 @@
         :space-between="10"
         class="swiper-tablet"
       >
-        <swiper-slide><a href="#">Italiano</a></swiper-slide>
-        <swiper-slide><a href="#">Cinese</a></swiper-slide>
-        <swiper-slide><a href="#">Giapponese</a></swiper-slide>
-        <swiper-slide><a href="#">Messicano</a></swiper-slide>
-        <swiper-slide><a href="#">Vietnamita</a></swiper-slide>
-        <swiper-slide><a href="#">Indiano</a></swiper-slide>
-        <swiper-slide><a href="#">Vegano</a></swiper-slide>
-        <swiper-slide><a href="#">Pizza</a></swiper-slide>
-        <swiper-slide><a href="#">Coreano</a></swiper-slide>
-        <swiper-slide><a href="#">Spagnolo</a></swiper-slide>
-        <swiper-slide><a href="#">Greco</a></swiper-slide>
-        <swiper-slide><a href="#">Vegetariano</a></swiper-slide>
+      <swiper-slide v-for="item in store.types" :key="`t-${item.id}`">
+          <a href="#">{{ item.name }}</a>
+        </swiper-slide>
       </swiper-container>
     </div>
   </div>
 </template>
-
-<script>
-import { register } from "swiper/element/bundle";
-register();
-
-export default {
-  setup() {
-    return {};
-  },
-};
-</script>
-
 <style scoped>
 .swiper-bg {
   background-color: #26a69a;
