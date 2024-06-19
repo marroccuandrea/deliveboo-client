@@ -1,48 +1,60 @@
 <script>
 import { register } from "swiper/element/bundle";
-import { store} from "../../data/store";
+import { store } from "../../data/store";
 import Loader from "../partials/Loader.vue";
 import axios from 'axios';
-import { types } from "sass";
 register();
-
 
 export default {
   components: {
     Loader,
   },
-props:{
-  type:{
-    name: String,
+  props: {
+    type: {
+      name: String,
+    }
+  },
+  data() {
+    return {
+      store,
+      types: [],
+      loading: true,
+    }
+  },
+  methods: {
+    getApi() {
+      this.loading = true;
+      axios.get(this.store.typeUrl, {
+        params: store.queryParams
+      })
+      .then(result => {
+        this.store.types = result.data.types;
+        console.log(this.store.types);
+        this.loading = false;
+      })
+      .catch(error => {
+        this.loading = false;
+        console.log(error);
+      })
+    },
+    updateFilter(event) {
+      const selectedType = event.target.value;
+      const index = this.store.filterTypes.indexOf(selectedType);
+      if (event.target.checked && index === -1) {
+        // If the checkbox is checked and the type is not in the array, add it
+        this.store.filterTypes.push(selectedType);
+      } else if (!event.target.checked && index !== -1) {
+        // If the checkbox is unchecked and the type is in the array, remove it
+        this.store.filterTypes.splice(index, 1);
+      }
+      this.$emit('update-filter', this.store.filterTypes);
+      console.log(this.store.filterTypes);
+    },
+  },
+  mounted() {
+    this.getApi();
   }
-},
-data() {
-  return {
-    store,
-    types: [],
-    loading:true,
-  }
-},
-methods:{
-  getApi(){
-    this.loading=true;
-    axios.get(this.store.typeUrl,{
-    params:store.queryParams
-  })
-  .then(result=>{
-    this.store.types=result.data.types;
-    console.log(this.store.types);
-    this.loading=false;
-  })
-  .catch(error=>{
-    this.loading =false;
-    console.log(error);
-  })
 }
-},
-mounted(){
-  this.getApi();
-}}
 </script>
 
 <template>
@@ -57,7 +69,15 @@ mounted(){
         :space-between="10"
         class="swiper-desktop">
         <swiper-slide v-for="item in store.types" :key="`t-${item.id}`">
-          <label><input class="hidden" type="checkbox"/>{{ item.name }}</label>
+          <label>
+            <input 
+              class="hidden" 
+              type="checkbox" 
+              :value="item.name" 
+              @change="updateFilter" 
+            />
+            {{ item.name }}
+          </label>
         </swiper-slide>
       </swiper-container>
     </div>
@@ -71,14 +91,22 @@ mounted(){
         :space-between="10"
         class="swiper-tablet"
       >
-      <swiper-slide v-for="item in store.types" :key="`t-${item.id}`">
-        <label><input type="checkbox"/>{{ item.name }}</label>
+        <swiper-slide v-for="item in store.types" :key="`t-${item.id}`">
+          <label>
+            <input 
+              type="checkbox" 
+              :value="item.name" 
+              @change="updateFilter" 
+            />
+            {{ item.name }}
+          </label>
         </swiper-slide>
       </swiper-container>
     </div>
   </div>
   <Loader v-else />
 </template>
+
 <style scoped>
 .desk-img{
   margin-bottom: -170px;

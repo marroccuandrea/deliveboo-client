@@ -72,7 +72,7 @@ mounted(){
   border: none;
   flex-shrink: 0;
   img {
-    width: 80%;
+    width: 90%;
   }
   .card-title {
     color: white;
