@@ -49,18 +49,42 @@
 
 <script>
 import { register } from "swiper/element/bundle";
+import { store } from "../../data/store";
+import axios from "axios";
 register();
 
 export default {
-  setup() {
-    return {};
+  props: {
+    type: {
+      type: Object,
+    },
+  },
+  data() {
+    return {
+      store,
+    };
+  },
+  methods: {
+    getApi() {
+      axios
+        .get(this.store.apiTypes)
+        .then((result) => {
+          this.type = result.data.type;
+          console.log(this.store.typesArray);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+  mounted() {
+    this.getApi();
   },
 };
 </script>
 
 <style scoped>
-
-.swiper-bg{
+.swiper-bg {
   background-color: #26a69a;
   height: 1000px;
   display: flex;
@@ -69,7 +93,7 @@ export default {
   padding: 10% 10%;
   border-radius: 50px;
 }
-.swiper-bg-2{
+.swiper-bg-2 {
   background-color: #26a69a;
   height: 500px;
   display: flex;
@@ -90,7 +114,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f9a825; 
+    background-color: #f9a825;
     color: white;
     font-size: 20px;
     border-radius: 20px;
@@ -114,7 +138,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f9a825; 
+    background-color: #f9a825;
     color: white;
     font-size: 20px;
     border-radius: 20px;
@@ -136,5 +160,4 @@ export default {
     display: none;
   }
 }
-
 </style>
