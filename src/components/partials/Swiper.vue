@@ -14,20 +14,23 @@ export default {
 
 
 <template>
- <swiper-container
- :loop="true"
- :autoplay="{delay:0, disableOnInteraction: false}"
- :speed="2000"
- direction="horizontal"
- slides-per-view="1"
- space-between="0">
-   <swiper-slide><img src="../../../public/Messicano.png" alt=""></swiper-slide>
-   <swiper-slide><img src="../../../public/Sushi.png" alt=""></swiper-slide>
-   <swiper-slide><img src="../../../public/Rider.png" alt=""></swiper-slide>
-   <swiper-slide><img src="../../../public/Pizza.png" alt=""></swiper-slide>
-   <swiper-slide><img src="../../../public/Messicano.png" alt=""></swiper-slide>
-   <swiper-slide><img src="../../../public/Sushi.png" alt=""></swiper-slide>
-</swiper-container>
+  <div class="container-fluid">
+
+    <swiper-container
+    :loop="true"
+    :autoplay="{delay:0, disableOnInteraction: false}"
+    :speed="2000"
+    direction="horizontal"
+    slides-per-view="1"
+    space-between="0">
+      <swiper-slide><img src="../../../public/Messicano.png" alt=""></swiper-slide>
+      <swiper-slide><img src="../../../public/Sushi.png" alt=""></swiper-slide>
+      <swiper-slide><img src="../../../public/Rider.png" alt=""></swiper-slide>
+      <swiper-slide><img src="../../../public/Pizza.png" alt=""></swiper-slide>
+      <swiper-slide><img src="../../../public/Messicano.png" alt=""></swiper-slide>
+      <swiper-slide><img src="../../../public/Sushi.png" alt=""></swiper-slide>
+   </swiper-container>
+  </div>
 </template>
 
 <style lang="scss" scoped>

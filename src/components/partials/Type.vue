@@ -28,7 +28,7 @@
         :loop="true"
         :speed="2000"
         direction="horizontal"
-        :slides-per-view="3"
+        :slides-per-view="2"
         :space-between="10"
         class="swiper-tablet"
       >
@@ -73,7 +73,7 @@ export default {
 
 .swiper-bg-2 {
   background-color: #26a69a;
-  height: 500px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,17 +87,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.swiper-tablet {
-  height: auto;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-swiper-slide {
+  swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,12 +96,35 @@ swiper-slide {
   font-size: 20px;
   border-radius: 20px;
   padding: 10% !important;
-}
-
-swiper-slide a {
+  a {
   color: white;
   text-decoration: none;
   font-size: 40px;
+}
+}
+}
+
+.swiper-tablet {
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9a825; 
+  color: white;
+  font-size: 20px;
+  border-radius: 20px;
+  padding: 10% !important;
+  a {
+  color: white;
+  text-decoration: none;
+  font-size: 30px;
+}
+}
 }
 
 @media (min-width: 769px) {
