@@ -22,6 +22,7 @@ export default {
     :space-between="0">
       <swiper-slide><img src="../../../public/swiper-test.png"></swiper-slide>
       <swiper-slide><img src="../../../public/swiper-test.png"></swiper-slide>      
+      <swiper-slide><img src="../../../public/swiper-test.png"></swiper-slide>      
    </swiper-container>
   </div>
 </template>
@@ -36,13 +37,17 @@ export default {
   margin-top: 50px;
   margin-bottom: 50px;
 }
-.swiper-slide {
+swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 24px;
   color: #fff;
   background-color: #000;
+  img{
+    width: 100%;
+    height: 100%;
+  }
 }
 .container-fluid{
   padding: 0!important;
