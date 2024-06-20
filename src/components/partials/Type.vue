@@ -68,7 +68,9 @@ export default {
 
 <template>
   <div v-if="!loading">
-    <img src="../../../public/Swipe.png" alt="" class="desk-img">
+    <div>
+      <img src="../../../public/Swipe.png" alt="" class="desk-img">
+    </div>
     <div class="swiper-bg desktop">
       <swiper-container
         :loop="true"
@@ -90,7 +92,9 @@ export default {
         </swiper-slide>
       </swiper-container>
     </div>
-    <img src="../../../public/Swipe.png" alt="" class="tab-img">
+    <div>
+      <img src="../../../public/Swipe.png" alt="" class="tab-img"> 
+    </div>
     <div class="swiper-bg-2 tablet">
       <swiper-container
         :loop="true"
@@ -205,6 +209,12 @@ export default {
   }
   .tab-img{
     display: none;
+  }
+}
+
+@media (width:768px){
+  .tab-img{
+    
   }
 }
 

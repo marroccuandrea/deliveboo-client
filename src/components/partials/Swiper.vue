@@ -5,9 +5,7 @@ import { register } from 'swiper/element/bundle';
 register();
 export default {
   setup () {
-    
-
-    return {}
+     return {}
   }
 }
 </script>
@@ -19,16 +17,13 @@ export default {
     <swiper-container
     :loop="true"
     :autoplay="{delay:0, disableOnInteraction: false}"
-    :speed="2000"
+    :speed="5000"
     direction="horizontal"
     slides-per-view="1"
     space-between="0">
-      <swiper-slide><img src="../../../public/Messicano.png" alt=""></swiper-slide>
-      <swiper-slide><img src="../../../public/Sushi.png" alt=""></swiper-slide>
-      <swiper-slide><img src="../../../public/Rider.png" alt=""></swiper-slide>
-      <swiper-slide><img src="../../../public/Pizza.png" alt=""></swiper-slide>
-      <swiper-slide><img src="../../../public/Messicano.png" alt=""></swiper-slide>
-      <swiper-slide><img src="../../../public/Sushi.png" alt=""></swiper-slide>
+      <swiper-slide><img src="../../../public/swiper-test.png" alt=""></swiper-slide>
+      <swiper-slide><img src="../../../public/swiper-test.png" alt=""></swiper-slide>
+      
    </swiper-container>
   </div>
 </template>
