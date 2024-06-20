@@ -138,6 +138,9 @@ export default {
     totalPages() {
       return Math.ceil(this.filteredRestaurants.length / this.itemsPerPage);
     },
+    restaurantTypes() {
+      return (restaurant) => restaurant.types.map((type) => type.name).join(", ");
+    },
   },
   methods: {
     getApi() {
@@ -170,6 +173,7 @@ export default {
 };
 </script>
 
+
 <template>
   <div class="container ristoranti">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
@@ -185,6 +189,7 @@ export default {
           </div>
           <div class="card-body">
             <h5 class="card-title">{{ item.business_name }}</h5>
+            <p class="card-text">{{ restaurantTypes(item) }}</p>
           </div>
         </div>
       </div>
@@ -207,6 +212,7 @@ export default {
     </div>
   </div>
 </template>
+
 
 <style lang="scss" scoped>
 .ristoranti {
@@ -264,6 +270,11 @@ export default {
         border-radius: 15px;
         border: none;
       }
+    }
+    .card-text {
+      color: white;
+      font-size: large;
+      margin-top: 10px;
     }
   }
 
@@ -333,3 +344,4 @@ export default {
   }
 }
 </style>
+
