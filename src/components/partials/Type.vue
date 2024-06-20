@@ -103,6 +103,7 @@ export default {
         <swiper-slide v-for="item in store.types" :key="`t-${item.id}`" :class="{ 'red-bg': isSelected(item.name) }">
           <label>
             <input 
+              class="hidden"
               type="checkbox" 
               :value="item.name" 
               @change="updateFilter" 

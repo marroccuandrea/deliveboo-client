@@ -15,9 +15,7 @@ export default {
     <div class="container-fluid header-nav">
       <Header />
     </div>
-    <div class="container">
       <router-view></router-view>
-    </div>
     <div class="container">
       <Footer />
     </div>
