@@ -12,7 +12,8 @@ export default {
 
 
 <template>
-  <div class="container-fluid swiper-box bg-white">
+  <div class="swiper-bg d-flex">
+    <div class="container-fluid swiper-box bg-white">
     <swiper-container
     :loop="true"
     :autoplay="{delay:0, disableOnInteraction: false}"
@@ -25,6 +26,8 @@ export default {
       <swiper-slide><img src="../../../public/swiper-test.png"></swiper-slide>      
    </swiper-container>
   </div>
+  </div>
+  
 </template>
 
 <style lang="scss" scoped>
@@ -34,8 +37,6 @@ export default {
 }
 .swiper-box{
   background-color: #f9fafa;
-  margin-top: 50px;
-  margin-bottom: 50px;
 }
 swiper-slide {
   display: flex;
@@ -54,5 +55,11 @@ swiper-slide {
   padding-left: 0!important;
   padding-right: 0!important;
 }
-
+.swiper-bg{
+  background-color: #f6b802;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
 </style>
