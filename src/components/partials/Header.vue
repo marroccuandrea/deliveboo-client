@@ -1,7 +1,10 @@
 <script>
+import { store } from "../../data/store";
 export default {
-  setup() {
-    return {};
+  data() {
+    return {
+      store,
+    };
   },
 };
 </script>
@@ -10,17 +13,38 @@ export default {
   <header>
     <div class="d-flex w-100 justify-content-between">
       <div class="sx d-flex align-items-center">
-        <ul>
-          <li>
+        <ul class="link">
+          <li class="list">
             <router-link :to="{ name: 'home' }">Home</router-link>
           </li>
-          <li>
-            <a href="#">Accedi</a>
+          <!-- <li>
+            <a :href="store.login">Accedi</a>
           </li>
+          <li>
+            <a :href="store.register">Registrati</a>
+          </li> -->
         </ul>
       </div>
       <div class="dx d-flex align-items-center me-3">
-        <form class="d-flex" role="search">
+        <div class="dropdown">
+          <a
+            class="btn btn-secondary dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Sei un ristoratore?
+          </a>
+
+          <ul class="dropdown-menu" style="">
+            <li><a class="dropdown-item" :href="store.login">Accedi</a></li>
+            <li>
+              <a class="dropdown-item" :href="store.register">Registrati</a>
+            </li>
+          </ul>
+        </div>
+        <!-- <form class="d-flex" role="search">
           <button class="btn btn-warning" type="submit">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
@@ -30,9 +54,9 @@ export default {
             placeholder="Cerca"
             aria-label="Search"
           />
-        </form>
-        <ul>
-          <li>
+        </form> -->
+        <ul class="link">
+          <li class="list">
             <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
           </li>
         </ul>
@@ -55,10 +79,10 @@ header {
     border-radius: 0 5px 5px 0;
   }
 
-  ul {
+  .link {
     margin-bottom: 0;
     display: flex;
-    li {
+    .list {
       padding: 0 15px;
       font-size: 1.7rem;
       list-style: none;
@@ -73,6 +97,12 @@ header {
         }
       }
     }
+  }
+  .dropdown-toggle {
+    border-radius: 5px;
+    font-size: 1.2rem;
+    background-color: #f6b802;
+    border: none;
   }
 }
 </style>
