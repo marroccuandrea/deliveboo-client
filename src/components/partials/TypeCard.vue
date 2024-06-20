@@ -28,12 +28,19 @@ export default {
 .type-wrapper {
   height: 500px;
   margin-bottom: 50px;
+  width: 50%;
 }
 
 @media (min-width: 769px) {
   .main-wrapper {
     display: flex;
     justify-content: center;
+
+  }
+}
+@media (max-width: 768px) {
+  .type-wrapper {
+    width: 100%;
   }
 }
 </style>
