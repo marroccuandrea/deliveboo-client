@@ -3,7 +3,7 @@ export default {};
 </script>
 
 <template>
-  <div class="container-fluid my-5">
+  <div class="container-fluid footer-container sticky-bottom">
     <footer class="text-center text-lg-start" style="background-color: #26a69a">
       <div class="container d-flex justify-content-center py-5">
         <button
@@ -54,5 +54,10 @@ export default {};
 
 .text-white {
   color: white !important;
+}
+
+.footer-container{
+  padding: 0!important;
+  margin-top: 50px;
 }
 </style>

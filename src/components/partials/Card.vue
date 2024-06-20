@@ -228,6 +228,10 @@ export default {
     border: none;
     width: 100%;
     height: 320px;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    }
     .img-box{
       display: flex;
       justify-content: center;
@@ -245,6 +249,8 @@ export default {
     }
     .card-title {
       color: white;
+      font-size: x-large;
+      font-weight: bold;
     }
     .card-body {
       display: flex;

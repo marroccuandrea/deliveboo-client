@@ -78,7 +78,7 @@ export default {
         direction="vertical"
         :slides-per-view="7"
         :space-between="10"
-        class="swiper-desktop">
+        class="swiper-desktop text-capitalize">
         <swiper-slide v-for="item in store.types" :key="`t-${item.id}`" :class="{ 'red-bg': isSelected(item.name) }">
           <label>
             <input 
