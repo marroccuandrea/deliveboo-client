@@ -1,7 +1,11 @@
 <template>
   <div class="container ristoranti">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-      <div class="col" v-for="item in paginatedRestaurants" :key="`r-${item.id}`">
+      <div
+        class="col"
+        v-for="item in paginatedRestaurants"
+        :key="`r-${item.id}`"
+      >
         <div class="card">
           <div class="img-box">
             <img v-if="item.image" :src="item.image" class="card-img-top" />
@@ -10,17 +14,30 @@
           <div class="card-body">
             <h5 class="card-title">{{ item.business_name }}</h5>
             <div class="badge-container">
-              <span v-for="(badge, index) in restaurantTypes(item)" :key="index" :class="badge.styleClass">{{ badge.name }}</span>
+              <span
+                v-for="(badge, index) in restaurantTypes(item)"
+                :key="index"
+                :class="badge.styleClass"
+                >{{ badge.name }}</span
+              >
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="carousel-controls">
-      <button class="control-btn prev" @click="prevPage" v-show="currentPage > 0">
+      <button
+        class="control-btn prev"
+        @click="prevPage"
+        v-show="currentPage > 0"
+      >
         <
       </button>
-      <button class="control-btn next" @click="nextPage" v-show="currentPage < totalPages - 1">
+      <button
+        class="control-btn next"
+        @click="nextPage"
+        v-show="currentPage < totalPages - 1"
+      >
         >
       </button>
     </div>
@@ -70,7 +87,7 @@ export default {
       return (restaurant) =>
         restaurant.types.map((type) => ({
           name: type.name,
-          styleClass: 'badge' // Puoi personalizzare lo stile del badge qui
+          styleClass: "badge", // Puoi personalizzare lo stile del badge qui
         }));
     },
   },
@@ -164,7 +181,7 @@ export default {
     .badge {
       margin-right: 5px;
       padding: 5px 10px;
-      border-radius: 15px;
+      border-radius: 5px;
       background-color: #2dc4b6;
       color: white;
       font-size: medium;
