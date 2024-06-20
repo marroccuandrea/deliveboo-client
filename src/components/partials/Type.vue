@@ -123,7 +123,8 @@ export default {
 
 <style scoped>
 .desk-img{
-  margin-bottom: -170px;
+  margin-bottom: -30%;
+  width: 90%;
 }
 .swiper-bg {
   background-color: #26a69a;
@@ -133,6 +134,7 @@ export default {
   align-items: center;
   padding: 10% 10%;
   border-radius: 50px;
+  width: 90%;
 }
 
 .swiper-bg-2 {
