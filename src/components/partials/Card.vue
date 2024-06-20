@@ -195,14 +195,14 @@ export default {
         @click="prevPage"
         v-show="currentPage > 0"
       >
-        ‹
+        <
       </button>
       <button
         class="control-btn next"
         @click="nextPage"
         v-show="currentPage < totalPages - 1"
       >
-        ›
+        >
       </button>
     </div>
   </div>
@@ -228,9 +228,20 @@ export default {
     border: none;
     width: 100%;
     height: 320px;
+    .img-box{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 8%;
+      width: 80%;
+      height: 80%;
+      background-color: white;
+      border-radius: 5%;
+      overflow: hidden;
+    }
     img {
       width: 90%;
-      height: 100%;
+      height: 90%;
     }
     .card-title {
       color: white;
@@ -268,10 +279,12 @@ export default {
   }
 
   .prev {
+    position: absolute;
     left: 0;
   }
 
   .next {
+    position: absolute;
     right: 0;
   }
 
