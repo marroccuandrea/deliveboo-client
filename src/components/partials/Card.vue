@@ -70,7 +70,7 @@ export default {
       return (restaurant) =>
         restaurant.types.map((type) => ({
           name: type.name,
-          styleClass: 'badge text-bg-success' // Puoi personalizzare lo stile del badge qui
+          styleClass: 'badge' // Puoi personalizzare lo stile del badge qui
         }));
     },
   },
