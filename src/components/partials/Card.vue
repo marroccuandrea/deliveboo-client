@@ -227,8 +227,13 @@ export default {
     height: 320px;
     cursor: pointer;
     &:hover {
+      transform: scale(1.1);
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     }
+    &:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
     .img-box {
       display: flex;
       justify-content: center;
@@ -281,15 +286,25 @@ export default {
     }
   }
 
-  .prev {
-    position: absolute;
-    left: 0;
+  .prev, .next {
+  position: absolute;
+  &:hover {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
   }
+  &:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+}
 
-  .next {
-    position: absolute;
-    right: 0;
-  }
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
 
   button:disabled {
     background-color: #ccc;
