@@ -68,29 +68,31 @@ export default {
 
 <template>
   <div v-if="!loading">
-    <div>
-      <img src="../../../public/Swipe.png" alt="" class="desk-img">
-    </div>
-    <div class="swiper-bg desktop">
-      <swiper-container
-        :loop="true"
-        :speed="2000"
-        direction="vertical"
-        :slides-per-view="7"
-        :space-between="10"
-        class="swiper-desktop text-capitalize">
-        <swiper-slide v-for="item in store.types" :key="`t-${item.id}`" :class="{ 'red-bg': isSelected(item.name) }">
-          <label>
-            <input 
-              class="hidden" 
-              type="checkbox" 
-              :value="item.name" 
-              @change="updateFilter" 
-            />
-            {{ item.name }}
-          </label>
-        </swiper-slide>
-      </swiper-container>
+    <div class="swiper-section">
+      <div>
+        <img src="../../../public/Swipe.png" alt="" class="desk-img">
+      </div>
+      <div class="swiper-bg desktop">
+        <swiper-container
+          :loop="true"
+          :speed="2000"
+          direction="vertical"
+          :slides-per-view="7"
+          :space-between="10"
+          class="swiper-desktop text-capitalize">
+          <swiper-slide v-for="item in store.types" :key="`t-${item.id}`" :class="{ 'red-bg': isSelected(item.name) }">
+            <label>
+              <input 
+                class="hidden" 
+                type="checkbox" 
+                :value="item.name" 
+                @change="updateFilter" 
+              />
+              {{ item.name }}
+            </label>
+          </swiper-slide>
+        </swiper-container>
+      </div>
     </div>
     <div>
       <img src="../../../public/Swipe.png" alt="" class="tab-img"> 
@@ -122,9 +124,15 @@ export default {
 </template>
 
 <style scoped>
+.swiper-section{
+  position: relative;
+  width: 400px;
+}
 .desk-img{
-  margin-bottom: -30%;
   width: 90%;
+  position: absolute;
+  bottom: 84%;
+  left: 4%;
 }
 .swiper-bg {
   background-color: #26a69a;
@@ -134,7 +142,8 @@ export default {
   align-items: center;
   padding: 10% 10%;
   border-radius: 50px;
-  width: 90%;
+  width: 385px;
+  margin-top: 130px;
 }
 
 .swiper-bg-2 {
@@ -154,6 +163,7 @@ export default {
   justify-content: center;
   align-items: center;
   swiper-slide {
+    width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;

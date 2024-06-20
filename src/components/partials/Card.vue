@@ -213,6 +213,7 @@ export default {
   position: relative;
   height: 1000px;
   margin-top: 15%;
+  width: 875px;
 
   .card {
     margin-bottom: 20px;
