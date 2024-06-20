@@ -139,7 +139,8 @@ export default {
       return Math.ceil(this.filteredRestaurants.length / this.itemsPerPage);
     },
     restaurantTypes() {
-      return (restaurant) => restaurant.types.map((type) => type.name).join(", ");
+      return (restaurant) =>
+        restaurant.types.map((type) => type.name).join(", ");
     },
   },
   methods: {
@@ -173,7 +174,6 @@ export default {
 };
 </script>
 
-
 <template>
   <div class="container ristoranti">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
@@ -189,7 +189,9 @@ export default {
           </div>
           <div class="card-body">
             <h5 class="card-title">{{ item.business_name }}</h5>
-            <p class="card-text">{{ restaurantTypes(item) }}</p>
+            <span class="card-text badge text-bg-success">{{
+              restaurantTypes(item)
+            }}</span>
           </div>
         </div>
       </div>
@@ -212,7 +214,6 @@ export default {
     </div>
   </div>
 </template>
-
 
 <style lang="scss" scoped>
 .ristoranti {
@@ -237,9 +238,9 @@ export default {
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     }
     &:active {
-    transform: translateY(4px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
+      transform: translateY(4px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
     .img-box {
       display: flex;
       justify-content: center;
@@ -297,25 +298,26 @@ export default {
     }
   }
 
-  .prev, .next {
-  position: absolute;
-  &:hover {
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-    transform: scale(1.1);
+  .prev,
+  .next {
+    position: absolute;
+    &:hover {
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+      transform: scale(1.1);
+    }
+    &:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
   }
-  &:active {
-    transform: translateY(4px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  .prev {
+    left: 0;
   }
-}
 
-.prev {
-  left: 0;
-}
-
-.next {
-  right: 0;
-}
+  .next {
+    right: 0;
+  }
 
   button:disabled {
     background-color: #ccc;
@@ -344,4 +346,3 @@ export default {
   }
 }
 </style>
-
