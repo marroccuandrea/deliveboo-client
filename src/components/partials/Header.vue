@@ -60,15 +60,16 @@ header {
     display: flex;
     li {
       padding: 0 15px;
+      font-size: 1.7rem;
       list-style: none;
       a {
         color: white;
         text-decoration: none;
         &:hover {
-          color: orange;
+          color: #f6b802;
         }
         &.active {
-          color: orange;
+          color: #f6b802;
         }
       }
     }

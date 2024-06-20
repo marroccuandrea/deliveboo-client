@@ -15,7 +15,8 @@ export default {
   align-items: center;
   height: 20%;
   img {
-    width: 100%;
+    width: 30%;
+    margin-top: -50px;
   }
 }
 </style>
