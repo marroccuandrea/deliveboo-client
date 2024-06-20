@@ -14,7 +14,7 @@ export default {
 
 
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid swiper-box">
 
     <swiper-container
     :loop="true"
@@ -45,5 +45,11 @@ export default {
   font-size: 24px;
   color: #fff;
   background-color: #000;
+}
+
+.container-fluid{
+  padding: 0!important;
+  padding-left: 0!important;
+  padding-right: 0!important;
 }
 </style>
