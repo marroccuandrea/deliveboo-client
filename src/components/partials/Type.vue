@@ -162,7 +162,14 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  swiper-slide {
+  swiper-slide {    
+    z-index: 99;
+    &:hover {
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+      transform: scale(1.01);
+      z-index: 99;
+    }
     width: 300px;
     display: flex;
     justify-content: center;
@@ -204,6 +211,10 @@ export default {
       text-decoration: none;
       font-size: 40px;
       cursor: pointer;
+      &:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
       .hidden {
         display: none;
       }
