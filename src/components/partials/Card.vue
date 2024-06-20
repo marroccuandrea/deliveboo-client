@@ -170,14 +170,14 @@ export default {
 };
 </script>
 
-
-
-
-
 <template>
   <div class="container ristoranti">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-      <div class="col" v-for="item in paginatedRestaurants" :key="`r-${item.id}`">
+      <div
+        class="col"
+        v-for="item in paginatedRestaurants"
+        :key="`r-${item.id}`"
+      >
         <div class="card">
           <div class="img-box">
             <img v-if="item.image" :src="item.image" class="card-img-top" />
@@ -208,10 +208,6 @@ export default {
   </div>
 </template>
 
-
-
-
-
 <style lang="scss" scoped>
 .ristoranti {
   position: relative;
@@ -232,7 +228,7 @@ export default {
     &:hover {
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     }
-    .img-box{
+    .img-box {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -301,20 +297,23 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .ristoranti .card {
-    width: 220px;
-    height: 300px;
+  .ristoranti {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    .card {
+      width: 220px;
+      height: 300px;
+    }
   }
 }
 
 @media (max-width: 575px) {
-  .ristoranti .card {
-    height: 90vh;
+  .ristoranti {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    .card {
+      height: 90vh;
+    }
   }
 }
 </style>
-
-
-
-
-
