@@ -12,18 +12,16 @@ export default {
 
 
 <template>
-  <div class="container-fluid swiper-box">
-
+  <div class="container-fluid swiper-box bg-white">
     <swiper-container
     :loop="true"
     :autoplay="{delay:0, disableOnInteraction: false}"
     :speed="5000"
     direction="horizontal"
     slides-per-view="1"
-    space-between="0">
-      <swiper-slide><img src="../../../public/swiper-test.png" alt=""></swiper-slide>
-      <swiper-slide><img src="../../../public/swiper-test.png" alt=""></swiper-slide>
-      
+    :space-between="0">
+      <swiper-slide><img src="../../../public/swiper-test.png"></swiper-slide>
+      <swiper-slide><img src="../../../public/swiper-test.png"></swiper-slide>      
    </swiper-container>
   </div>
 </template>
@@ -33,6 +31,11 @@ export default {
   width: 100%;
   height: 100vh;
 }
+.swiper-box{
+  background-color: #f9fafa;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
 .swiper-slide {
   display: flex;
   justify-content: center;
@@ -41,10 +44,10 @@ export default {
   color: #fff;
   background-color: #000;
 }
-
 .container-fluid{
   padding: 0!important;
   padding-left: 0!important;
   padding-right: 0!important;
 }
+
 </style>

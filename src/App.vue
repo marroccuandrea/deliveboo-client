@@ -15,11 +15,12 @@ export default {
     <div class="container-fluid header-nav">
       <Header />
     </div>
-      <router-view></router-view>
+      <router-view class="mid-section"></router-view>
     <div class="container">
       <Footer />
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>
