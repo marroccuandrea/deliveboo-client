@@ -227,7 +227,7 @@ export default {
     height: 320px;
     cursor: pointer;
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.01);
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     }
     &:active {
