@@ -15,7 +15,9 @@ export default {
 
   data() {
     return {
+      store,
       restaurant: {},
+      cart: [],
     };
   },
   props: {
@@ -33,8 +35,10 @@ export default {
           console.log(error);
         });
     },
-    addToCart(){
-      console.log('ciao');
+    addToCart(dish){
+      // console.log(dish);
+      this.store.cart.push(dish);
+      console.log(this.store.cart);
     }
   },
   mounted() {

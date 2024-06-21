@@ -6,7 +6,7 @@ export default {
 
   methods: {
     addToCart() {
-      this.$emit('callFunction');
+      this.$emit('callFunction', this.dishObject);
     }
   }
 };
