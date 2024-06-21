@@ -49,7 +49,7 @@ export default {
 </script>
 
 <template>
-  <div class="container ristoranti">
+  <div class="container restaurants">
     <div class="row row-cols-3">
       <div class="col" v-for="item in filteredRestaurants" :key="`r-${item.id}`">
         <div class="card">
@@ -65,7 +65,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.ristoranti {
+.restaurants {
   overflow-y: auto;
   overflow-x: hidden;
 }
