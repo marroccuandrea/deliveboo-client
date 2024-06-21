@@ -135,7 +135,7 @@ export default {
 .restaurants {
   position: relative;
   height: 80vh;
-  margin-top: 15%;
+  margin-top: 130px;
   width: 875px;
 
   .card {
@@ -195,6 +195,7 @@ export default {
       background-color: #2dc4b6;
       color: white;
       font-size: medium;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
     .card-text {
       color: white;
@@ -205,7 +206,7 @@ export default {
 
   .carousel-controls {
     position: absolute;
-    top: 36%;
+    top: 307px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -219,6 +220,7 @@ export default {
       cursor: pointer;
       pointer-events: all;
       transition: opacity 0.3s;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
   }
 
@@ -226,17 +228,19 @@ export default {
   .next {
     position: absolute;
     &:hover {
-      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: opacity 0.3s;
       transform: scale(1.1);
     }
     &:active {
       transform: translateY(4px);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: opacity 0.3s;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
   }
 
   .prev {
-    left: 0;
+    left: -21px;
   }
 
   .next {
