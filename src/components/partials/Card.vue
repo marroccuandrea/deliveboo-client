@@ -61,7 +61,7 @@ export default {
       types: [],
       restaurants: [],
       currentPage: 0,
-      itemsPerPage: 9,
+      itemsPerPage: 6,
     };
   },
   computed: {
@@ -125,7 +125,7 @@ export default {
 <style lang="scss" scoped>
 .ristoranti {
   position: relative;
-  height: 1000px;
+  height: 80vh;
   margin-top: 15%;
   width: 875px;
 
@@ -162,6 +162,7 @@ export default {
     img {
       width: 90%;
       height: 90%;
+      object-fit:cover;
     }
     .card-title {
       color: white;

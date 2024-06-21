@@ -136,7 +136,7 @@ export default {
 }
 .swiper-bg {
   background-color: #26a69a;
-  height: 1000px;
+  height: 660px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -157,7 +157,7 @@ export default {
 }
 
 .swiper-desktop {
-  height: 80%;
+  height: 85%;
   width: 400px;
   display: flex;
   justify-content: center;
@@ -182,7 +182,7 @@ export default {
     label {
       color: white;
       text-decoration: none;
-      font-size: 40px;
+      font-size: 20px;
       cursor: pointer;
       .hidden {
         display: none;
