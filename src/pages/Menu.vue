@@ -3,12 +3,14 @@ import { store } from "../data/store";
 import axios from "axios";
 
 import DishCard from "../components/partials/DishCard.vue";
+import Cart from "../components/partials/Cart.vue";
 
 export default {
   name: "Menu",
 
   components: {
     DishCard,
+    Cart,
   },
 
   data() {
@@ -58,7 +60,7 @@ export default {
           :dishObject="dish"
         />
       </div>
-      <div>Carrello</div>
+      <Cart />
     </div>
   </div>
 </template>
