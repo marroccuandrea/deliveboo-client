@@ -11,7 +11,7 @@
           :to="{
             name: 'menu',
             params: { slug: item.slug },
-            state: { restaurantObject: item },
+            // state: { restaurantObject: item },
           }"
         >
           <div class="card">
