@@ -33,6 +33,9 @@ export default {
           console.log(error);
         });
     },
+    addToCart(){
+      console.log('ciao');
+    }
   },
   mounted() {
     this.getApi();
@@ -53,14 +56,16 @@ export default {
     </div>
 
     <div class="d-flex justify-content-between">
-      <div class="row">
-        <DishCard
+      <div class="row flex-column">
+        <DishCard @callFunction="addToCart"
           v-for="dish in restaurant.dishes"
           :key="dish.id"
           :dishObject="dish"
         />
       </div>
-      <Cart />
+      <div>
+        <Cart />
+      </div>
     </div>
   </div>
 </template>
