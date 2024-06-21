@@ -1,5 +1,13 @@
 <script>
-export default {};
+import { store } from "../../data/store";
+export default {
+
+  data() {
+    return {
+      store,
+    };
+  },
+};
 </script>
 
 <template>
@@ -7,17 +15,17 @@ export default {};
                     <div class="cart">
                         <h2 class="text-center fs-2 mb-5 pt-4 text-uppercase">Carrello</h2>
                         <ul>
-                            <li class="d-flex justify-content-between mb-4">
+                            <li v-for="(cartItem, index) in this.store.cart" :key="index" class="d-flex justify-content-between mb-4">
                                 <div class="d-flex flex-column">
-                                    <span>nome</span>
-                                    <span class="price">€ prezzo</span>
+                                    <span>{{ cartItem.name }}</span>
+                                    <span class="price">€ {{ cartItem.price }}</span>
                                 </div>
 
                                 <div class="d-flex align-items-center">
                                    <!--numero, piu e meno-->
                                     <div class="d-flex gap-2 align-items-center" >
                                     <i class="fa-solid fa-minus" @click="updateCartItem(index, false)"></i>
-                                    <span>quantità</span>
+                                    <span>'quantity'</span>
                                     <i class="fa-solid fa-plus" @click="updateCartItem(index, true)"></i>
                                     </div>
 
@@ -33,7 +41,7 @@ export default {};
                         <div class="d-flex justify-content-between align-items-center mx-4">
                             <h2 class="fs-4 ms-2">Totale</h2>
 
-                            <span class="fs-3 me-1">000 €</span>
+                            <span class="fs-3 me-1">'total_price' €</span>
                         </div>
 
                         <div class="d-flex justify-content-center">
