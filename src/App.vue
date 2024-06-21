@@ -17,8 +17,8 @@ export default {
     </div>
     <router-view class="mid-section"></router-view>
 
-    <Footer />
   </div>
+  <Footer />
 </template>
 
 <style lang="scss" scoped></style>

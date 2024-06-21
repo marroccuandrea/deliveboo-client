@@ -196,7 +196,7 @@ export default {
 
   .carousel-controls {
     position: absolute;
-    top: 50%;
+    top: 36%;
     width: 100%;
     display: flex;
     justify-content: space-between;
