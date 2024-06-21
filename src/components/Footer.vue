@@ -54,7 +54,7 @@ export default {};
 </template>
 
 <style lang="scss" scoped>
-@import "../../assets/mdb.min.scss";
+@import "../assets/scss/mdb.min.scss";
 
 .text-white {
   color: white !important;

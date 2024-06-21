@@ -1,6 +1,6 @@
 <script>
-import Header from "./components/partials/Header.vue";
-import Footer from "./components/partials/Footer.vue";
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   components: {
@@ -16,7 +16,6 @@ export default {
       <Header />
     </div>
     <router-view class="mid-section"></router-view>
-
   </div>
   <Footer />
 </template>

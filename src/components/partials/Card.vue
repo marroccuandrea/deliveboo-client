@@ -1,28 +1,37 @@
 <template>
-  <div class="container ristoranti">
+  <div class="container restaurants">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
       <div
         class="col"
         v-for="item in paginatedRestaurants"
         :key="`r-${item.id}`"
       >
-        <div class="card">
-          <div class="img-box">
-            <img v-if="item.image" :src="item.image" class="card-img-top" />
-            <img v-else src="/placeholder.webp" class="card-img-top" />
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">{{ item.business_name }}</h5>
-            <div class="badge-container">
-              <span
-                v-for="(badge, index) in restaurantTypes(item)"
-                :key="index"
-                :class="badge.styleClass"
-                >{{ badge.name }}</span
-              >
+        <router-link
+          class="router-link-card"
+          :to="{
+            name: 'menu',
+            params: { slug: item.slug },
+            state: { restaurantObject: item },
+          }"
+        >
+          <div class="card">
+            <div class="img-box">
+              <img v-if="item.image" :src="item.image" class="card-img-top" />
+              <img v-else src="/placeholder.webp" class="card-img-top" />
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{ item.business_name }}</h5>
+              <div class="badge-container">
+                <span
+                  v-for="(badge, index) in restaurantTypes(item)"
+                  :key="index"
+                  :class="badge.styleClass"
+                  >{{ badge.name }}</span
+                >
+              </div>
             </div>
           </div>
-        </div>
+        </router-link>
       </div>
     </div>
     <div class="carousel-controls">
@@ -31,14 +40,14 @@
         @click="prevPage"
         v-show="currentPage > 0"
       >
-        <
+        <i class="fa-solid fa-chevron-left"></i>
       </button>
       <button
         class="control-btn next"
         @click="nextPage"
         v-show="currentPage < totalPages - 1"
       >
-        >
+        <i class="fa-solid fa-chevron-right"></i>
       </button>
     </div>
   </div>
@@ -123,7 +132,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.ristoranti {
+.restaurants {
   position: relative;
   height: 80vh;
   margin-top: 15%;
@@ -162,7 +171,7 @@ export default {
     img {
       width: 90%;
       height: 90%;
-      object-fit:cover;
+      object-fit: cover;
     }
     .card-title {
       color: white;
@@ -240,7 +249,7 @@ export default {
   }
 
   @media (max-width: 768px) {
-    .ristoranti {
+    .restaurants {
       overflow-y: scroll;
       overflow-x: hidden;
       .card {
@@ -251,7 +260,7 @@ export default {
   }
 
   @media (max-width: 575px) {
-    .ristoranti {
+    .restaurants {
       overflow-y: scroll;
       overflow-x: hidden;
       .card {
