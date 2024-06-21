@@ -12,7 +12,9 @@ export default {
 
 
 <template>
-  <div class="swiper-bg d-flex">
+<div class="swiper-bg-ext">
+
+  <div class="swiper-bg-int d-flex">
     <div class="container-fluid swiper-box bg-white">
     <swiper-container
     :loop="true"
@@ -27,6 +29,7 @@ export default {
    </swiper-container>
   </div>
   </div>
+</div>
   
 </template>
 
@@ -55,10 +58,16 @@ swiper-slide {
   padding-left: 0!important;
   padding-right: 0!important;
 }
-.swiper-bg{
+.swiper-bg-int{
   background-color: #f6b802;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 35px;
+  padding-bottom: 35px;
+}
+
+.swiper-bg-ext{ 
+  background-color: #26a69a;
+  padding-top: 20px;
+  padding-bottom: 20px;
   margin-top: 50px;
   margin-bottom: 50px;
 }
