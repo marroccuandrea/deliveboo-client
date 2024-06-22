@@ -1,14 +1,3 @@
-<script>
-import { store } from "../../data/store";
-export default {
-  data() {
-    return {
-      store,
-    };
-  },
-};
-</script>
-
 <template>
   <div class="col col-4">
     <div class="cart">
@@ -21,17 +10,16 @@ export default {
         >
           <div class="d-flex flex-column">
             <span>{{ cartItem.name }}</span>
-            <span class="price">€ {{ cartItem.price }}</span>
+            <span class="price">€ {{ cartItem.price }} x {{ cartItem.quantity }}</span>
           </div>
 
           <div class="d-flex align-items-center">
-            <!--numero, piu e meno-->
             <div class="d-flex gap-2 align-items-center">
               <i
                 class="fa-solid fa-minus"
                 @click="updateCartItem(index, false)"
               ></i>
-              <span>'quantity'</span>
+              <span>{{ cartItem.quantity }}</span>
               <i
                 class="fa-solid fa-plus"
                 @click="updateCartItem(index, true)"
@@ -50,7 +38,7 @@ export default {
       <div class="d-flex justify-content-between align-items-center mx-4">
         <h2 class="fs-4 ms-2">Totale</h2>
 
-        <span class="fs-3 me-1">'total_price' €</span>
+        <span class="fs-3 me-1">{{ totalCartPrice }} €</span>
       </div>
 
       <div class="d-flex justify-content-center">
@@ -65,6 +53,35 @@ export default {
     </div>
   </div>
 </template>
+
+<script>
+import { store } from "../../data/store";
+
+export default {
+  data() {
+    return {
+      store,
+    };
+  },
+  computed: {
+    totalCartPrice() {
+      return this.store.cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    }
+  },
+  methods: {
+    updateCartItem(index, increment) {
+      if (increment) {
+        this.store.cart[index].quantity++;
+      } else if (this.store.cart[index].quantity > 1) {
+        this.store.cart[index].quantity--;
+      }
+    },
+    removeFromCart(index) {
+      this.store.cart.splice(index, 1);
+    },
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 @import "../../assets/scss/partials/variables";

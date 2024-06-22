@@ -24,23 +24,29 @@ export default {
     slug: String,
   },
   methods: {
-    getApi() {
-      axios
-        .get(store.restaurantBySlug + this.slug)
-        .then((result) => {
-          this.restaurant = result.data.restaurant;
-          console.log(this.restaurant);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    addToCart(dish) {
-      // console.log(dish);
-      this.store.cart.push(dish);
-      console.log(this.store.cart);
-    },
+  getApi() {
+    axios
+      .get(store.restaurantBySlug + this.slug)
+      .then((result) => {
+        this.restaurant = result.data.restaurant;
+        console.log(this.restaurant);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
+  addToCart(dish) {
+    const itemIndex = this.store.cart.findIndex(item => item.id === dish.id);
+    if (itemIndex !== -1) {
+      this.store.cart[itemIndex].quantity++;
+    } else {
+      dish.quantity = 1;
+      this.store.cart.push(dish);
+    }
+    console.log(this.store.cart);
+  },
+},
+
   mounted() {
     this.getApi();
   },
