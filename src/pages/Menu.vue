@@ -35,11 +35,11 @@ export default {
           console.log(error);
         });
     },
-    addToCart(dish){
+    addToCart(dish) {
       // console.log(dish);
       this.store.cart.push(dish);
       console.log(this.store.cart);
-    }
+    },
   },
   mounted() {
     this.getApi();
@@ -59,17 +59,17 @@ export default {
       <p>{{ restaurant.email }}</p>
     </div>
 
-    <div class="d-flex justify-content-between">
-      <div class="row flex-column">
-        <DishCard @callFunction="addToCart"
+    <div class="row justify-content-between">
+      <div class="col col-8">
+        <DishCard
+          @callFunction="addToCart"
           v-for="dish in restaurant.dishes"
           :key="dish.id"
           :dishObject="dish"
+          class="flex-grow-0"
         />
       </div>
-      <div>
-        <Cart />
-      </div>
+      <Cart />
     </div>
   </div>
 </template>

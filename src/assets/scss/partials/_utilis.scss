@@ -1,0 +1,32 @@
+.btn-custom {
+  &-primary {
+    background-color: $color-primary;
+    color: white;
+    width: 40px;
+    height: 40px;
+
+    &:hover {
+      background-color: darken($color-primary, 8%);
+      color: white;
+    }
+
+    &-outline {
+      background-color: white;
+      color: $color-primary;
+
+      &:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background-color: white;
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+.badge-custom {
+  &-secondary {
+    background-color: $color-secondary;
+    color: white;
+    font-size: 1.2rem;
+  }
+}
