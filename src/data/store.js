@@ -1,5 +1,4 @@
-import { types } from "sass";
-import { reactive } from "vue";
+import { reactive, watch } from "vue";
 
 export const store = reactive({
   typeUrl: "http://127.0.0.1:8000/api/types",
@@ -11,5 +10,23 @@ export const store = reactive({
   types: [],
   queryParams: {},
   filterTypes: [],
-  cart: [],
+  cart: JSON.parse(localStorage.getItem('cart')) || [],
+  restaurantId: localStorage.getItem('restaurantId') || null,
 });
+
+// Watch for changes in cart and update localStorage
+watch(
+  () => store.cart,
+  (newCart) => {
+    localStorage.setItem('cart', JSON.stringify(newCart));
+  },
+  { deep: true }
+);
+
+// Watch for changes in restaurantId and update localStorage
+watch(
+  () => store.restaurantId,
+  (newRestaurantId) => {
+    localStorage.setItem('restaurantId', newRestaurantId);
+  }
+);

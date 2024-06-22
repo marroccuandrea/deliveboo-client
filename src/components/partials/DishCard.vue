@@ -31,16 +31,13 @@ export default {
       </div>
       <div class="dish-quantity">
         <button class="btn btn-custom-primary-outline mx-3" @click="addToCart">
-          <i class="fa-solid fa-minus"></i>
-        </button>
-        Quantità
-        <button class="btn btn-custom-primary-outline mx-3" @click="addToCart">
           <i class="fa-solid fa-plus"></i>
         </button>
       </div>
     </div>
   </div>
 </template>
+
 
 <style lang="scss" scoped>
 @import "../../assets/scss/partials/variables";

@@ -36,8 +36,22 @@ export default {
         });
     },
     addToCart(dish) {
-      // console.log(dish);
-      this.store.cart.push(dish);
+      if (this.store.restaurantId && this.store.restaurantId !== this.restaurant.id) {
+        alert('Non puoi aggiungere piatti da un altro ristorante. Svuota il carrello prima di aggiungere piatti da questo ristorante.');
+        return;
+      }
+
+      if (!this.store.restaurantId) {
+        this.store.restaurantId = this.restaurant.id;
+      }
+
+      const itemIndex = this.store.cart.findIndex(item => item.id === dish.id);
+      if (itemIndex !== -1) {
+        this.store.cart[itemIndex].quantity++;
+      } else {
+        dish.quantity = 1;
+        this.store.cart.push(dish);
+      }
       console.log(this.store.cart);
     },
   },
