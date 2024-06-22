@@ -45,9 +45,16 @@
         <button
           type="button"
           class="btn button-cart"
-          @click="goToCheckout(restaurant.id)"
+          @click="goToCheckout"
         >
           Procedi all'ordine
+        </button>
+        <button
+          type="button"
+          class="btn button-cart"
+          @click="clearCart"
+        >
+          Svuota il carrello
         </button>
       </div>
     </div>
@@ -78,6 +85,16 @@ export default {
     },
     removeFromCart(index) {
       this.store.cart.splice(index, 1);
+      if (this.store.cart.length === 0) {
+        this.store.restaurantId = null;
+      }
+    },
+    clearCart() {
+      this.store.cart = [];
+      this.store.restaurantId = null;
+    },
+    goToCheckout() {
+      // Logica per il checkout
     },
   },
 };

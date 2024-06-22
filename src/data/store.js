@@ -11,6 +11,7 @@ export const store = reactive({
   queryParams: {},
   filterTypes: [],
   cart: JSON.parse(localStorage.getItem('cart')) || [],
+  restaurantId: localStorage.getItem('restaurantId') || null,
 });
 
 // Watch for changes in cart and update localStorage
@@ -20,4 +21,12 @@ watch(
     localStorage.setItem('cart', JSON.stringify(newCart));
   },
   { deep: true }
+);
+
+// Watch for changes in restaurantId and update localStorage
+watch(
+  () => store.restaurantId,
+  (newRestaurantId) => {
+    localStorage.setItem('restaurantId', newRestaurantId);
+  }
 );
