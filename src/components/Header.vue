@@ -55,11 +55,11 @@ export default {
             aria-label="Search"
           />
         </form> -->
-        <ul class="link">
+        <!-- <ul class="link">
           <li class="list">
             <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </header>
