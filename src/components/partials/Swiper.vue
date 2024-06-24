@@ -1,33 +1,38 @@
 <script>
 // import function to register Swiper custom elements
-import { register } from 'swiper/element/bundle';
+import { register } from "swiper/element/bundle";
 // register Swiper custom elements
 register();
 export default {
-  setup () {
-     return {}
-  }
-}
+  setup() {
+    return {};
+  },
+};
 </script>
-
 
 <template>
   <div class="swiper-bg d-flex">
     <div class="container-fluid swiper-box bg-white">
-    <swiper-container
-    :loop="true"
-    :autoplay="{delay:0, disableOnInteraction: false}"
-    :speed="5000"
-    direction="horizontal"
-    slides-per-view="1"
-    :space-between="0">
-      <swiper-slide><img src="../../../public/swiper-test.png"></swiper-slide>
-      <swiper-slide><img src="../../../public/swiper-test.png"></swiper-slide>      
-      <swiper-slide><img src="../../../public/swiper-test.png"></swiper-slide>      
-   </swiper-container>
+      <swiper-container
+        :loop="true"
+        :autoplay="{ delay: 0, disableOnInteraction: false }"
+        :speed="5000"
+        direction="horizontal"
+        slides-per-view="1"
+        :space-between="0"
+      >
+        <swiper-slide
+          ><img src="../../../public/swiper-test.png"
+        /></swiper-slide>
+        <swiper-slide
+          ><img src="../../../public/swiper-test.png"
+        /></swiper-slide>
+        <swiper-slide
+          ><img src="../../../public/swiper-test.png"
+        /></swiper-slide>
+      </swiper-container>
+    </div>
   </div>
-  </div>
-  
 </template>
 
 <style lang="scss" scoped>
@@ -35,7 +40,7 @@ export default {
   width: 100%;
   height: 100vh;
 }
-.swiper-box{
+.swiper-box {
   background-color: #f9fafa;
 }
 swiper-slide {
@@ -45,17 +50,17 @@ swiper-slide {
   font-size: 24px;
   color: #fff;
   background-color: #000;
-  img{
+  img {
     width: 100%;
     height: 100%;
   }
 }
-.container-fluid{
-  padding: 0!important;
-  padding-left: 0!important;
-  padding-right: 0!important;
+.container-fluid {
+  padding: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
-.swiper-bg{
+.swiper-bg {
   background-color: #f6b802;
   padding-top: 50px;
   padding-bottom: 50px;

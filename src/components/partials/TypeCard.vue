@@ -26,7 +26,6 @@ export default {
 
 <style lang="scss" scoped>
 .type-wrapper {
-  height: 500px;
   margin-bottom: 50px;
   width: 50%;
 }
@@ -35,7 +34,6 @@ export default {
   .main-wrapper {
     display: flex;
     justify-content: center;
-
   }
 }
 @media (max-width: 768px) {
