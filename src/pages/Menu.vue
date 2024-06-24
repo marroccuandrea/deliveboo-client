@@ -36,8 +36,13 @@ export default {
         });
     },
     addToCart(dish) {
-      if (this.store.restaurantId && this.store.restaurantId !== this.restaurant.id) {
-        alert('Non puoi aggiungere piatti da un altro ristorante. Svuota il carrello prima di aggiungere piatti da questo ristorante.');
+      if (
+        this.store.restaurantId &&
+        this.store.restaurantId !== this.restaurant.id
+      ) {
+        alert(
+          "Non puoi aggiungere piatti da un altro ristorante. Svuota il carrello prima di aggiungere piatti da questo ristorante."
+        );
         return;
       }
 
@@ -45,7 +50,9 @@ export default {
         this.store.restaurantId = this.restaurant.id;
       }
 
-      const itemIndex = this.store.cart.findIndex(item => item.id === dish.id);
+      const itemIndex = this.store.cart.findIndex(
+        (item) => item.id === dish.id
+      );
       if (itemIndex !== -1) {
         this.store.cart[itemIndex].quantity++;
       } else {
@@ -74,7 +81,7 @@ export default {
     </div>
 
     <div class="row justify-content-between">
-      <div class="col col-8">
+      <div class="col col-7">
         <DishCard
           @callFunction="addToCart"
           v-for="dish in restaurant.dishes"

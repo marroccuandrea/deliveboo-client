@@ -66,8 +66,9 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@import "../assets/scss/partials/variables";
 header {
-  background-color: #2dc4b6;
+  background-color: $color-primary;
   height: 80px;
   padding: 0 !important;
   display: flex;
@@ -90,10 +91,10 @@ header {
         color: white;
         text-decoration: none;
         &:hover {
-          color: #f6b802;
+          color: $color-secondary-light;
         }
         &.active {
-          color: #f6b802;
+          color: $color-secondary-light;
         }
       }
     }
@@ -101,7 +102,7 @@ header {
   .dropdown-toggle {
     border-radius: 5px;
     font-size: 1.2rem;
-    background-color: #f6b802;
+    background-color: $color-secondary;
     border: none;
   }
 }
