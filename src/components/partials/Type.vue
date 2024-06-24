@@ -129,10 +129,9 @@ export default {
   width: 400px;
 }
 .desk-img{
-  width: 90%;
+  width: 100%;
   position: absolute;
-  bottom: 84%;
-  left: 4%;
+  bottom: 80%;
 }
 .swiper-bg {
   background-color: #26a69a;
@@ -164,6 +163,7 @@ export default {
   align-items: center;
   swiper-slide {    
     z-index: 99;
+    padding: 0 !important;
     &:hover {
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
       border-radius: 20px;
