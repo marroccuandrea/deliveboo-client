@@ -2,6 +2,7 @@ import { reactive, watch } from "vue";
 
 export const store = reactive({
   typeUrl: "http://127.0.0.1:8000/api/types",
+  requestPaymentUrl: "http://127.0.0.1:8000/api/payment-request",
   restaurantUrl: "http://127.0.0.1:8000/api/restaurants",
   restaurantBySlug: "http://127.0.0.1:8000/api/restaurant-by-slug/",
   login: "http://127.0.0.1:8000/login",
@@ -10,8 +11,8 @@ export const store = reactive({
   types: [],
   queryParams: {},
   filterTypes: [],
-  cart: JSON.parse(localStorage.getItem('cart')) || [],
-  restaurantId: localStorage.getItem('restaurantId') || null,
+  cart: JSON.parse(localStorage.getItem("cart")) || [],
+  restaurantId: localStorage.getItem("restaurantId") || null,
 });
 
 // Watch for changes in cart and update localStorage
@@ -19,11 +20,11 @@ watch(
   () => store.cart,
   (newCart) => {
     if (newCart.length > 0) {
-      localStorage.setItem('cart', JSON.stringify(newCart));
+      localStorage.setItem("cart", JSON.stringify(newCart));
     } else {
-      localStorage.removeItem('cart');
+      localStorage.removeItem("cart");
       store.restaurantId = null;
-      localStorage.removeItem('restaurantId');
+      localStorage.removeItem("restaurantId");
     }
   },
   { deep: true }
