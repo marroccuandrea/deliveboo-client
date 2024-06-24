@@ -9,11 +9,8 @@ export default {
   },
   computed: {
     totalCartPrice() {
-      return this.store.cart.reduce(
-        (acc, item) => acc + item.price * item.quantity,
-        0
-      );
-    },
+      return this.store.cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    }
   },
   methods: {
     updateCartItem(index, increment) {
@@ -21,17 +18,24 @@ export default {
         this.store.cart[index].quantity++;
       } else if (this.store.cart[index].quantity > 1) {
         this.store.cart[index].quantity--;
+      } else {
+        this.store.cart.splice(index, 1);
+        if (this.store.cart.length === 0) {
+          this.clearCart();
+        }
       }
     },
     removeFromCart(index) {
       this.store.cart.splice(index, 1);
       if (this.store.cart.length === 0) {
-        this.store.restaurantId = null;
+        this.clearCart();
       }
     },
     clearCart() {
       this.store.cart = [];
       this.store.restaurantId = null;
+      localStorage.removeItem('cart');
+      localStorage.removeItem('restaurantId');
     },
     goToCheckout() {
       // Logica per il checkout
@@ -39,6 +43,9 @@ export default {
   },
 };
 </script>
+
+
+
 
 <template>
   <div class="col col-4">

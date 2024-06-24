@@ -30,19 +30,22 @@ export default {
         .then((result) => {
           this.restaurant = result.data.restaurant;
           console.log(this.restaurant);
+
+          // Controlla se il ristorante corrente corrisponde a quello salvato in localStorage
+          if (this.store.restaurantId && this.store.restaurantId !== this.restaurant.id) {
+            alert('Non puoi aggiungere piatti da un altro ristorante. Svuota il carrello prima di aggiungere piatti da questo ristorante.');
+          } else if (!this.store.restaurantId && this.store.cart.length > 0) {
+            // Se il carrello non è vuoto ma non c'è restaurantId, imposta l'ID del ristorante corrente
+            this.store.restaurantId = this.restaurant.id;
+          }
         })
         .catch((error) => {
           console.log(error);
         });
     },
     addToCart(dish) {
-      if (
-        this.store.restaurantId &&
-        this.store.restaurantId !== this.restaurant.id
-      ) {
-        alert(
-          "Non puoi aggiungere piatti da un altro ristorante. Svuota il carrello prima di aggiungere piatti da questo ristorante."
-        );
+      if (this.store.restaurantId && this.store.restaurantId !== this.restaurant.id) {
+        alert('Non puoi aggiungere piatti da un altro ristorante. Svuota il carrello prima di aggiungere piatti da questo ristorante.');
         return;
       }
 
@@ -50,9 +53,7 @@ export default {
         this.store.restaurantId = this.restaurant.id;
       }
 
-      const itemIndex = this.store.cart.findIndex(
-        (item) => item.id === dish.id
-      );
+      const itemIndex = this.store.cart.findIndex(item => item.id === dish.id);
       if (itemIndex !== -1) {
         this.store.cart[itemIndex].quantity++;
       } else {
@@ -61,12 +62,21 @@ export default {
       }
       console.log(this.store.cart);
     },
+    clearCart() {
+      this.store.cart = [];
+      this.store.restaurantId = null;
+      localStorage.removeItem('cart');
+      localStorage.removeItem('restaurantId');
+    }
   },
   mounted() {
     this.getApi();
   },
 };
 </script>
+
+
+
 
 <template>
   <div class="img-box">

@@ -18,15 +18,15 @@ export const store = reactive({
 watch(
   () => store.cart,
   (newCart) => {
-    localStorage.setItem('cart', JSON.stringify(newCart));
+    if (newCart.length > 0) {
+      localStorage.setItem('cart', JSON.stringify(newCart));
+    } else {
+      localStorage.removeItem('cart');
+      store.restaurantId = null;
+      localStorage.removeItem('restaurantId');
+    }
   },
   { deep: true }
 );
 
-// Watch for changes in restaurantId and update localStorage
-watch(
-  () => store.restaurantId,
-  (newRestaurantId) => {
-    localStorage.setItem('restaurantId', newRestaurantId);
-  }
-);
+// Watch for changes in restaurantId and
