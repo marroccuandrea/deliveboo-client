@@ -70,7 +70,9 @@ export default {
             <a href="#" @click="toggleCart"
               ><i class="fa-solid fa-cart-shopping"></i
             ></a>
-            <HeaderCart v-show="cartVisible" />
+            <transition name="cart-fade">
+              <HeaderCart v-show="cartVisible" />
+            </transition>
           </li>
         </ul>
       </div>
@@ -110,6 +112,13 @@ header {
         &.active {
           color: $color-secondary-light;
         }
+      }
+      .cart-fade-enter-active,
+      .cart-fade-leave-active {
+        transition: ease-out 0.5s;
+      }
+      .cart-fade-enter, .cart-fade-leave-to /* .cart-fade-leave-active in <2.1.8 */ {
+        opacity: 0;
       }
     }
   }
