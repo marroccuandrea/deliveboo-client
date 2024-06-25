@@ -5,6 +5,7 @@ export default {
   data() {
     return {
       store,
+      orderDate: new Date().toLocaleDateString('it-IT')
     };
   },
   computed: {
@@ -51,6 +52,12 @@ export default {
   <div class="col col-4">
     <div class="cart">
       <h4>Carrello</h4>
+
+      <div>
+        <div class="order-date">
+          <p>Data dell'ordine {{ orderDate }}</p>
+        </div>
+      </div>
 
       <!-- Lista elementi carrello -->
       <ul class="text-start">
