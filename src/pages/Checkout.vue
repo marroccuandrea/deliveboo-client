@@ -20,6 +20,8 @@ export default {
 
       paymentFormEnabled: false,
 
+      total_order: 0,
+
       errors: {
         name: [],
         surname: [],
@@ -46,10 +48,11 @@ export default {
       axios
         .post(this.store.formDataUrl, formData)
         .then((result) => {
-          console.log(result.data.success);
-          console.log(result.data.order_data);
           if (result.data.success) {
             this.paymentFormEnabled = true;
+            console.log(result.data.success);
+            console.log(result.data.order_data);
+            this.total_order = result.data.order_data.total_price;
           }
         })
         .catch((error) => {
@@ -182,6 +185,12 @@ export default {
           <div id="dropin-container" class="form-control"></div>
           <input type="submit" class="btn btn-custom-primary w-auto my-3" />
           <input type="hidden" id="nonce" name="payment_method_nonce" />
+          <input
+            type="hidden"
+            id="total_order"
+            name="total_order"
+            v-model="total_order"
+          />
         </form>
       </div>
       <!-- /Form pagamento -->
