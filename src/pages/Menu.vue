@@ -4,6 +4,7 @@ import axios from "axios";
 
 import DishCard from "../components/partials/DishCard.vue";
 import Cart from "../components/partials/Cart.vue";
+import WarningModal from '../components/partials/WarningModal.vue';
 
 export default {
   name: "Menu",
@@ -11,6 +12,7 @@ export default {
   components: {
     DishCard,
     Cart,
+    WarningModal
   },
 
   data() {
@@ -18,6 +20,11 @@ export default {
       store,
       restaurant: {},
       cart: [],
+
+      showModal: false, // Stato per visualizzazione del modale
+      modalTitle: "", // Titolo del modale
+      modalMessage: "", // Messaggio del modale
+      showClearButton: false, // Stato per visualizzare il bottone per svuotare il carrello
     };
   },
   props: {
@@ -33,7 +40,9 @@ export default {
 
           // Controlla se il ristorante corrente corrisponde a quello salvato in localStorage
           if (this.store.restaurantId && this.store.restaurantId !== this.restaurant.id) {
-            alert('Non puoi aggiungere piatti da un altro ristorante. Svuota il carrello prima di aggiungere piatti da questo ristorante.');
+            this.showModal = true;
+            this.modalMessage = "Non puoi aggiungere piatti da un altro ristorante. Svuota il carrello prima di aggiungere piatti da questo ristorante.";
+            this.showClearButton = true; // Mostra il bottone per svuotare il carrello
           } else if (!this.store.restaurantId && this.store.cart.length > 0) {
             // Se il carrello non è vuoto ma non c'è restaurantId, imposta l'ID del ristorante corrente
             this.store.restaurantId = this.restaurant.id;
@@ -45,7 +54,9 @@ export default {
     },
     addToCart(dish) {
       if (this.store.restaurantId && this.store.restaurantId !== this.restaurant.id) {
-        alert('Non puoi aggiungere piatti da un altro ristorante. Svuota il carrello prima di aggiungere piatti da questo ristorante.');
+        this.showModal = true;
+        this.modalMessage = "Non puoi aggiungere piatti da un altro ristorante. Svuota il carrello prima di aggiungere piatti da questo ristorante.";
+        this.showClearButton = true; // Mostra il bottone per svuotare il carrello
         return;
       }
 
@@ -67,6 +78,11 @@ export default {
       this.store.restaurantId = null;
       localStorage.removeItem('cart');
       localStorage.removeItem('restaurantId');
+      this.closeModal(); // Chiude il modale dopo aver svuotato il carrello
+    },
+    closeModal() {
+      this.showModal = false; // Funzione per chiudere il modale
+      this.showClearButton = false; // Nasconde il bottone per svuotare il carrello
     }
   },
   mounted() {
@@ -89,6 +105,14 @@ export default {
       <p>{{ restaurant.phone_number }}</p>
       <p>{{ restaurant.email }}</p>
     </div>
+
+    <WarningModal 
+      :message="modalMessage"
+      :visible="showModal"
+      :showClearButton="showClearButton"
+      @close="closeModal"
+      @clear-cart="clearCart"
+    />
 
     <div class="row justify-content-between">
       <div class="col col-7">
