@@ -18,6 +18,8 @@ export default {
       address: "",
       note: "",
 
+      paymentFormEnabled: false,
+
       errors: {
         name: [],
         surname: [],
@@ -47,10 +49,8 @@ export default {
           console.log(result.data.success);
           console.log(result.data.order_data);
           if (result.data.success) {
-            this.getClientToken();
+            this.paymentFormEnabled = true;
           }
-          console.log(result.data.success);
-          console.log(result.data.order_data);
         })
         .catch((error) => {
           console.log(error.message);
@@ -93,6 +93,8 @@ export default {
   },
   mounted() {
     this.formData = {};
+    this.paymentFormEnabled = false;
+    this.getClientToken();
   },
 };
 </script>
@@ -171,7 +173,7 @@ export default {
       <!-- /Form dati utente -->
 
       <!-- Form pagamento -->
-      <div v-if="clientToken">
+      <div v-show="paymentFormEnabled">
         <form
           id="payment-form"
           action="http://127.0.0.1:8000/api/payment-request"
