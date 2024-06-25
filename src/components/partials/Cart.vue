@@ -9,8 +9,11 @@ export default {
   },
   computed: {
     totalCartPrice() {
-      return this.store.cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    }
+      return this.store.cart.reduce(
+        (acc, item) => acc + item.price * item.quantity,
+        0
+      );
+    },
   },
   methods: {
     updateCartItem(index, increment) {
@@ -34,18 +37,15 @@ export default {
     clearCart() {
       this.store.cart = [];
       this.store.restaurantId = null;
-      localStorage.removeItem('cart');
-      localStorage.removeItem('restaurantId');
+      localStorage.removeItem("cart");
+      localStorage.removeItem("restaurantId");
     },
     goToCheckout() {
-      // Logica per il checkout
+      // Inserire rotta checkout
     },
   },
 };
 </script>
-
-
-
 
 <template>
   <div class="col col-4">
