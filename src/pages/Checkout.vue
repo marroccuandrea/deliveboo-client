@@ -39,7 +39,7 @@ export default {
         cart: this.store.cart,
       };
 
-      console.log(formData.cart);
+      console.log(formData);
 
       axios
         .post(this.store.formDataUrl, formData)
@@ -162,24 +162,23 @@ export default {
           </div>
 
           <div class="col-12">
-            <button type="submit" class="btn btn-primary">Conferma dati</button>
+            <button type="submit" class="btn btn-custom-primary w-auto">
+              Vai al pagamento
+            </button>
           </div>
         </form>
       </div>
       <!-- /Form dati utente -->
 
       <!-- Form pagamento -->
-      <div>
+      <div v-if="clientToken">
         <form
           id="payment-form"
           action="http://127.0.0.1:8000/api/payment-request"
           method="post"
         >
-          <!-- Putting the empty container you plan to pass to
-      'braintree.dropin.create' inside a form will make layout and flow
-      easier to manage -->
-          <div id="dropin-container"></div>
-          <input type="submit" />
+          <div id="dropin-container" class="form-control"></div>
+          <input type="submit" class="btn btn-custom-primary w-auto my-3" />
           <input type="hidden" id="nonce" name="payment_method_nonce" />
         </form>
       </div>
