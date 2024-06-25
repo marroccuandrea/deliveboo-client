@@ -1,10 +1,20 @@
 <script>
 import { store } from "../data/store";
+import HeaderCart from "./partials/HeaderCart.vue";
 export default {
+  components: {
+    HeaderCart,
+  },
   data() {
     return {
       store,
+      cartVisible: false,
     };
+  },
+  methods: {
+    toggleCart() {
+      this.cartVisible = !this.cartVisible; // Toggle della visibilità del carrello
+    },
   },
 };
 </script>
@@ -55,11 +65,14 @@ export default {
             aria-label="Search"
           />
         </form> -->
-        <!-- <ul class="link">
-          <li class="list">
-            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+        <ul class="link">
+          <li class="list position-relative">
+            <a href="#" @click="toggleCart"
+              ><i class="fa-solid fa-cart-shopping"></i
+            ></a>
+            <HeaderCart v-show="cartVisible" />
           </li>
-        </ul> -->
+        </ul>
       </div>
     </div>
   </header>
@@ -87,6 +100,7 @@ header {
       padding: 0 15px;
       font-size: 1.7rem;
       list-style: none;
+      position: relative;
       a {
         color: white;
         text-decoration: none;
@@ -98,6 +112,9 @@ header {
         }
       }
     }
+  }
+  .cart-dropdown {
+    display: block;
   }
   .dropdown-toggle {
     border-radius: 5px;
