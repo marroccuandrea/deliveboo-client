@@ -1,29 +1,52 @@
-# deliveboo-client
+DeliveBoo - Front-end
+===
 
-This template should help get you started developing with Vue 3 in Vite.
+## Introduzione
+DeliveBoo è una web app che permette agli utenti di ordinare cibo a domicilio nella città di ***. Questa sezione si occupa dello sviluppo front-end, fornendo una UI intuitiva e responsiva per gli utenti.
 
-## Recommended IDE Setup
+## Tecnologie Utilizzate
+- HTML5
+- CSS3
+- JavaScript
+- Axios
+- Braintree (per il sistema di pagamento)
+- Bootstrap (per il design responsivo)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Requisiti Funzionali
+- Client-side Validation: Tutti gli input inseriti dall'utente devono essere validati lato client.
+- Sistema di Pagamento: Utilizzo di Braintree per simulare i pagamenti.
+- Responsive Design: Il sito deve essere visibile correttamente da desktop e smartphone.
+- Ricerca senza Refresh: La ricerca dei ristoranti deve avvenire senza il refresh della pagina.
 
-## Customize configuration
+## Componenti Principali
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+  - Navbar: Barra di navigazione principale.
+  - RestaurantList: Lista dei ristoranti basata sulle tipologie selezionate.
+  - RestaurantMenu: Visualizza il menù di un ristorante e permette di aggiungere piatti al carrello.
+  - Cart: Visualizza i piatti aggiunti al carrello e permette di modificare le quantità.
+  - Checkout: Gestisce l'inserimento dei dati per la consegna e il pagamento.
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
+## Struttura del Progetto
+```markdown
+deliveboo-frontend/
+├── public/
+│ ├── index.html
+│ └── ...
+├── src/
+│ ├── components/
+│ │ ├── Navbar.js
+│ │ ├── RestaurantList.js
+│ │ ├── RestaurantMenu.js
+│ │ ├── Cart.js
+│ │ ├── Checkout.js
+│ │ └── ...
+│ ├── pages/
+│ │ ├── HomePage.js
+│ │ ├── RestaurantPage.js
+│ │ ├── Dashboard.js
+│ │ └── ...
+│ ├── App.js
+│ ├── index.js
+│ └── ...
+└── package.json
 ```
