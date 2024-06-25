@@ -92,13 +92,9 @@ export default {
 
       <!-- Pulsanti -->
       <div class="button-container d-flex justify-content-center">
-        <button
-          type="button"
-          class="btn btn-custom-primary"
-          @click="goToCheckout"
+        <router-link :to="{ name: 'checkout' }" class="btn btn-custom-primary"
+          >Procedi al pagamento</router-link
         >
-          Procedi al pagamento
-        </button>
         <button
           type="button"
           class="btn btn-custom-secondary"
