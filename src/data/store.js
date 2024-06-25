@@ -5,6 +5,7 @@ export const store = reactive({
   requestPaymentUrl: "http://127.0.0.1:8000/api/payment-request",
   restaurantUrl: "http://127.0.0.1:8000/api/restaurants",
   restaurantBySlug: "http://127.0.0.1:8000/api/restaurant-by-slug/",
+  formDataUrl: "http://127.0.0.1:8000/api/send-order",
   login: "http://127.0.0.1:8000/login",
   register: "http://127.0.0.1:8000/register",
   restaurants: [],
