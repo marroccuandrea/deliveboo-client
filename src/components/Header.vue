@@ -11,6 +11,11 @@ export default {
       cartVisible: false,
     };
   },
+  computed: {
+    cartItemCount() {
+      return this.store.cart.reduce((acc, item) => acc + item.quantity, 0);
+    },
+  },
   methods: {
     toggleCart() {
       this.cartVisible = !this.cartVisible; // Toggle della visibilità del carrello
@@ -35,7 +40,7 @@ export default {
           </li> -->
         </ul>
       </div>
-      <div class="dx d-flex align-items-center me-3">
+      <div class="dx d-flex align-items-center me-5">
         <div class="dropdown">
           <a
             class="btn btn-secondary dropdown-toggle"
@@ -67,9 +72,12 @@ export default {
         </form> -->
         <ul class="link">
           <li class="list position-relative">
-            <a href="#" @click="toggleCart"
-              ><i class="fa-solid fa-cart-shopping"></i
-            ></a>
+            <a href="#" @click="toggleCart">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span v-if="cartItemCount > 0" class="badge">{{
+                cartItemCount
+              }}</span>
+            </a>
             <transition name="cart-fade">
               <HeaderCart v-show="cartVisible" />
             </transition>
@@ -112,6 +120,16 @@ header {
         &.active {
           color: $color-secondary-light;
         }
+      }
+      .badge {
+        position: absolute;
+        top: -10px;
+        right: -5px;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        padding: 5px 10px;
+        font-size: 1rem;
       }
       .cart-fade-enter-active,
       .cart-fade-leave-active {
