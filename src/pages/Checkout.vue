@@ -27,13 +27,26 @@ export default {
         name: [],
         surname: [],
         email: [],
-        message: [],
+        phone_number:[],
+        address: [],
+        message:[]
       },
     };
   },
 
   methods: {
     sendFormData() {
+
+      this.errors = {
+        name: [],
+        surname: [],
+        email: [],
+        phone_number: [],
+        address: [],
+        message: []
+      };  
+      
+
       const formData = {
         name: this.name,
         surname: this.surname,
@@ -44,7 +57,8 @@ export default {
         cart: this.store.cart,
       };
 
-      console.log(formData);
+
+      // console.log(formData);
 
       axios
         .post(this.store.formDataUrl, formData)
@@ -58,7 +72,8 @@ export default {
           }
         })
         .catch((error) => {
-          console.log(error.message);
+          this.errors = error.response.data.errors;
+          console.log(this.errors);
         });
     },
     getClientToken() {
@@ -210,6 +225,7 @@ export default {
     //   });
     // },
   },
+  
   mounted() {
     this.formData = {};
     this.paymentFormEnabled = false;
@@ -226,7 +242,8 @@ export default {
         <form class="row g-3" @submit.prevent="sendFormData()">
           <div class="col-md-6">
             <label for="name" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="name" v-model="name" />
+            <input type="text" class="form-control" :class="{ 'is-invalid': errors.name && errors.name.length > 0 }" id="name" v-model="name" />
+            <small v-if="errors.name" id="error-name" class="text-danger fw-semibold">{{ errors.name[0] }}</small>
           </div>
 
           <div class="col-md-6">
@@ -234,9 +251,11 @@ export default {
             <input
               type="text"
               class="form-control"
+              :class="{'is-invalid': errors.surname && errors.surname.length > 0}"
               id="surname"
               v-model="surname"
             />
+            <small v-if="errors.surname"  class="text-danger fw-semibold" id="error-surname">{{ errors.surname[0] }}</small>
           </div>
 
           <div class="col-md-6">
@@ -244,9 +263,11 @@ export default {
             <input
               type="email"
               class="form-control"
+              :class="{'is-invalid': errors.email && errors.email.length > 0}"
               id="email"
               v-model="email"
             />
+            <small v-if="errors.email" id="error-email" class="text-danger fw-semibold">{{ errors.email[0] }}</small>
           </div>
 
           <div class="col-md-6">
@@ -256,9 +277,11 @@ export default {
             <input
               type="text"
               class="form-control"
+              :class="{'is-invalid': errors.phone_number && errors.phone_number.length > 0}"
               id="phone_number"
               v-model="phone_number"
             />
+            <small v-if="errors.phone_number" id="error-address" class="text-danger fw-semibold">{{ errors.phone_number[0] }}</small>
           </div>
 
           <div class="col-12">
@@ -266,9 +289,11 @@ export default {
             <input
               type="text"
               class="form-control"
+              :class="{'is-invalid': errors.address && errors.address.length > 0}"
               id="address"
               v-model="address"
             />
+            <small v-if="errors.address" id="error-address" class="text-danger fw-semibold">{{ errors.address[0] }}</small>
           </div>
           <div class="col-12">
             <label for="note" class="form-label"
