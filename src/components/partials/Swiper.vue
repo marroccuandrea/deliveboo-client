@@ -11,26 +11,28 @@ export default {
 </script>
 
 <template>
-  <div class="swiper-bg d-flex">
-    <div class="container-fluid swiper-box bg-white">
-      <swiper-container
-        :loop="true"
-        :autoplay="{ delay: 0, disableOnInteraction: false }"
-        :speed="5000"
-        direction="horizontal"
-        slides-per-view="1"
-        :space-between="0"
-      >
-        <swiper-slide
-          ><img src="../../../public/swiper-test.png"
-        /></swiper-slide>
-        <swiper-slide
-          ><img src="../../../public/swiper-test.png"
-        /></swiper-slide>
-        <swiper-slide
-          ><img src="../../../public/swiper-test.png"
-        /></swiper-slide>
-      </swiper-container>
+  <div class="swiper-bg-ext">
+    <div class="swiper-bg d-flex">
+      <div class="container-fluid swiper-box bg-white">
+        <swiper-container
+          :loop="true"
+          :autoplay="{ delay: 0, disableOnInteraction: false }"
+          :speed="5000"
+          direction="horizontal"
+          slides-per-view="1"
+          :space-between="0"
+        >
+          <swiper-slide
+            ><img src="../../../public/swiper-test.png"
+          /></swiper-slide>
+          <swiper-slide
+            ><img src="../../../public/swiper-test.png"
+          /></swiper-slide>
+          <swiper-slide
+            ><img src="../../../public/swiper-test.png"
+          /></swiper-slide>
+        </swiper-container>
+      </div>
     </div>
   </div>
 </template>
@@ -62,8 +64,11 @@ swiper-slide {
 }
 .swiper-bg {
   background-color: #f6b802;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding: 30px 0;
+}
+.swiper-bg-ext {
+  background-color: #26a69a;
+  padding: 10px 0;
   margin-top: 50px;
   margin-bottom: 50px;
 }
