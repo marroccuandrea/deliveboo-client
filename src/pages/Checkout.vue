@@ -21,6 +21,7 @@ export default {
       paymentFormEnabled: false,
 
       total_order: 0,
+      order_id: 0,
 
       errors: {
         name: [],
@@ -53,6 +54,7 @@ export default {
             console.log(result.data.success);
             console.log(result.data.order_data);
             this.total_order = result.data.order_data.total_price;
+            this.order_id = result.data.order_data.id;
           }
         })
         .catch((error) => {
@@ -191,6 +193,7 @@ export default {
             name="total_order"
             v-model="total_order"
           />
+          <input type="hidden" id="id" name="id" v-model="order_id" />
         </form>
       </div>
       <!-- /Form pagamento -->
