@@ -15,6 +15,9 @@ export default {
         0
       );
     },
+    cartItemCount() {
+      return this.store.cart.reduce((acc, item) => acc + item.quantity, 0);
+    },
   },
   methods: {
     updateCartItem(index, increment) {
