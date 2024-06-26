@@ -1,44 +1,66 @@
 <script>
-export default { 
-}
+import { store } from "../../data/store";
+export default {
+  data() {
+    return {
+      store,
+    };
+  },
+  computed: {
+    cartItemCount() {
+      return this.store.cart.reduce((acc, item) => acc + item.quantity, 0);
+    },
+  },
+};
 </script>
+
 <template>
   <div class="container hero d-flex justify-content-center">
     <div class="logo">
-      <img src="/logo_1_def.png" alt="">
-    </div>
-    <div class="speech-bubbles">
-      <!-- <div class="jiji">Potresti ordinare qualcosa..</div> -->
-      <!-- <div class="gudoghi">Hai prodotti nel carrello!</div> -->
+      <img src="/logo_1.png" alt="">
+      <div
+        v-if="cartItemCount === 0" 
+        class="thought"
+      >Potresti ordinare qualcosa..</div>
+      <div 
+        v-if="cartItemCount > 0"
+        class="speech"
+      >Hai prodotti nel carrello!</div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .hero {
-  height: 20%;
+  margin: 20px auto;
   .logo{
     position: relative;
-    .logo img{
-      position: relative;
-    }
-    .speech-bubbles{
+    .img{
       position: absolute;
-      top: 0;
-      left: 0;
+    }
+    .thought{
+      width: 100%;
+      position: absolute;
+      top: 10%;
+      left: 80%;
+    }
+    .speech{
+      width: 100%;
+      position: absolute;
+      top: 10%;
+      left: 80%;
     }
   }
 }
 
-
 /* PRIMO */
-.jiji {
+.thought {
   color: #fff;
   font-size: 18px;
   max-width: 28ch;
   text-align: center;
 }
-.jiji { 
+.thought { 
   --b: 3em; /* tail dimension */
 
   --p: 16%;  /* main position (0%:left 100%:right) */
@@ -49,7 +71,7 @@ export default {
   background: #ff9f1c; /* the main color */
   position: relative;
 }
-.jiji:before {
+.thought:before {
   content: "";
   position: absolute;
   top: 100%;
@@ -66,13 +88,13 @@ export default {
 /* /PRIMO */
 
 /* SECONDO */
-.gudoghi {
+.speech {
   color: #fff;
   font-size: 18px;
   max-width: 28ch;
   text-align: center;
 }
-.gudoghi {
+.speech {
   /* tail dimension */
   --b: 3em;   /* base */
   --h: 1.8em; /* height */
@@ -86,7 +108,7 @@ export default {
   background: #4ECDC4; /* the main color */
   position: relative;
 }
-.gudoghi:before {
+.speech:before {
   content: "";
   position: absolute;
   top: 100%;
