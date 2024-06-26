@@ -26,6 +26,13 @@ export default {
 
 <template>
   <header>
+    <!-- Text-logo -->
+    <div>
+      <router-link :to="{ name: 'home' }">
+        <img class="logo-text" src="/public/logo_text_def.png" alt="" style="height: 40px; margin-left: 25px;">
+      </router-link>
+    </div>
+    <!-- /Text-logo -->
     <div class="d-flex w-100 justify-content-between">
       <div class="sx d-flex align-items-center">
         <ul class="link">
@@ -102,7 +109,6 @@ header {
   .form-control {
     border-radius: 0 5px 5px 0;
   }
-
   .link {
     margin-bottom: 0;
     display: flex;
