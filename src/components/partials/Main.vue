@@ -19,4 +19,8 @@ export default {
   </main>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+main{
+  height: 100vh -275px;
+}
+</style>
