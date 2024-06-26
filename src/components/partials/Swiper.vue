@@ -51,7 +51,7 @@ export default {
 .logo-text{
   position: absolute;
   bottom: 90%;
-  left: 40%;
+  left: 38.5%;
 }
 
 .swiper-container {
