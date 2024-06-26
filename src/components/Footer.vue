@@ -64,4 +64,8 @@ export default {};
   padding: 0 !important;
   margin-top: 50px;
 }
+
+.footer-container{
+  height: 195px;
+}
 </style>
