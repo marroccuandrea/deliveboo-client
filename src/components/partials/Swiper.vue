@@ -11,33 +11,49 @@ export default {
 </script>
 
 <template>
-  <div class="swiper-bg-ext">
-    <div class="swiper-bg d-flex">
-      <div class="container-fluid swiper-box bg-white">
-        <swiper-container
-          :loop="true"
-          :autoplay="{ delay: 0, disableOnInteraction: false }"
-          :speed="5000"
-          direction="horizontal"
-          slides-per-view="1"
-          :space-between="0"
-        >
-          <swiper-slide
-            ><img src="../../../public/swiper-test.png"
-          /></swiper-slide>
-          <swiper-slide
-            ><img src="../../../public/swiper-test.png"
-          /></swiper-slide>
-          <swiper-slide
-            ><img src="../../../public/swiper-test.png"
-          /></swiper-slide>
-        </swiper-container>
+  <div class="box">
+    <img class="logo-text" src="/public/logo_text_def.png" alt="">
+    
+    <!-- SWIPER -->
+    <div class="swiper-bg-ext">
+      <div class="swiper-bg d-flex">
+        <div class="container-fluid swiper-box bg-white">
+          <swiper-container
+            :loop="true"
+            :autoplay="{ delay: 0, disableOnInteraction: false }"
+            :speed="5000"
+            direction="horizontal"
+            slides-per-view="1"
+            :space-between="0"
+          >
+            <swiper-slide
+              ><img src="../../../public/swiper-test.png"
+            /></swiper-slide>
+            <swiper-slide
+              ><img src="../../../public/swiper-test.png"
+            /></swiper-slide>
+            <swiper-slide
+              ><img src="../../../public/swiper-test.png"
+            /></swiper-slide>
+          </swiper-container>
+        </div>
       </div>
     </div>
+    <!-- SWIPER -->
   </div>
 </template>
 
 <style lang="scss" scoped>
+.box{
+  position: relative;
+}
+
+.logo-text{
+  position: absolute;
+  bottom: 90%;
+  left: 40%;
+}
+
 .swiper-container {
   width: 100%;
   height: 100vh;
