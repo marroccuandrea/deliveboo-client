@@ -21,6 +21,7 @@ export default {
       paymentFormEnabled: false,
 
       total_order: 0,
+      order_id : 0,
       isValid: true,
       errors: {
         name: [],
