@@ -71,7 +71,7 @@ export default {};
 
 @media (max-width: 768px) {
   .footer-container{
-    margin-top: 20%;
+    margin-top: 200px;
   }
 }
 </style>
