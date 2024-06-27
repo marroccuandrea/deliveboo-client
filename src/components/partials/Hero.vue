@@ -20,13 +20,13 @@ export default {
       <img src="/logo_1.png" alt="">
       <div
         v-if="cartItemCount === 0" 
-        class="thought"
+        class="thought floating"
       >
         <p class="line-1 anim-typewriter">Potresti ordinare qualcosa..</p>
       </div>
       <div 
         v-if="cartItemCount > 0"
-        class="speech"
+        class="speech floating"
       >
         <p class="line-1 anim-typewriter">Hai prodotti nel carrello!</p>
       </div>
@@ -171,6 +171,21 @@ export default {
   .hero{
     display: none !important;
 }
+}
+
+.floating { 
+	animation-name: floating;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	margin-left: 30px;
+	margin-top: 5px;
+}
+
+@keyframes floating {
+	0% { transform: translate(0, 0px); }
+	50% { transform: translate(0, 15px); }
+	100% { transform: translate(0, -0px); } 
 }
 
 </style>
