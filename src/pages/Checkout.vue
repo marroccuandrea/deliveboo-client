@@ -206,8 +206,8 @@ export default {
             errorPhoneNumber.innerHTML = 'Il campo Telefono può contenere solo numeri';
             phoneNumber.classList.add('is-invalid');
             this.isValid = false;
-        } else if(phoneNumber.value.trim().length < 11 || phoneNumber.value.trim().length > 11){
-          errorPhoneNumber.innerHTML = 'Il campo Telefono deve avere 11 numeri';
+        } else if(phoneNumber.value.trim().length < 10 || phoneNumber.value.trim().length > 10){
+          errorPhoneNumber.innerHTML = 'Il campo Telefono deve avere 10 numeri';
           phoneNumber.classList.add('is-invalid');
             this.isValid = false;
         }
@@ -347,4 +347,12 @@ export default {
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+.checkout-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+  
+</style>
