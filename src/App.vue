@@ -29,12 +29,6 @@ export default {
   min-height:calc(100vh - 195px);
 }
 
-.footer{
-  padding: 0!important;
-  padding-left: 0!important;
-  padding-right: 0!important;
-}
-
 .mid-section{
   flex: 0;
 }
