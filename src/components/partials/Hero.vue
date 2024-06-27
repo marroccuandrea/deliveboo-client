@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-  <div class="container hero d-flex justify-content-center">
+  <div class="container hero d-flex justify-content-center d-block">
     <div class="logo d-flex justify-content-center">
       <img src="/logo_1.png" alt="">
       <div
@@ -177,6 +177,12 @@ export default {
     .speech{
       display: none;
     }
+}
+}
+
+@media (max-width: 576px) {
+  .hero{
+    display: none !important;
 }
 }
 

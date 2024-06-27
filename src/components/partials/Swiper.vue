@@ -11,7 +11,7 @@ export default {
 </script>
 
 <template>
-  <div class="box">    
+  <div class="box d-block">    
     <!-- SWIPER -->
      <div>
 
@@ -106,6 +106,11 @@ swiper-slide {
         }
       }
     }
+  }
+}
+@media (max-width: 576px) {
+  .box{
+    display: none !important;
   }
 }
 </style>
