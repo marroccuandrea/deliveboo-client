@@ -8,6 +8,10 @@ export default {
     addToCart() {
       this.$emit("callFunction", this.dishObject);
     },
+    formatPrice(price) {
+      // Sostituisce il punto con una virgola
+      return price.toString().replace('.', ',');
+    }
   },
 };
 </script>
@@ -26,7 +30,7 @@ export default {
       </p>
       <div>
         <span class="badge badge-custom-secondary">
-          &euro; {{ dishObject.price }}
+          &euro; {{ formatPrice(dishObject.price) }}
         </span>
       </div>
       <div class="dish-quantity">

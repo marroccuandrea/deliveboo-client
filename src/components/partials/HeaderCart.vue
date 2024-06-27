@@ -20,6 +20,10 @@ export default {
     },
   },
   methods: {
+    formatPrice(price) {
+      // Sostituisce il punto con una virgola
+      return price.toString().replace('.', ',');
+    },
     updateCartItem(index, increment) {
       if (increment) {
         this.store.cart[index].quantity++;
@@ -65,7 +69,7 @@ export default {
           <div class="d-flex flex-column">
             <span class="fw-semibold fs-5">{{ cartItem.name }}</span>
             <span class="fs-5"
-              >€ {{ cartItem.price }} x {{ cartItem.quantity }}</span
+              >€ {{ formatPrice(cartItem.price) }} x {{ cartItem.quantity }}</span
             >
           </div>
 
@@ -93,7 +97,7 @@ export default {
         class="total-cart mt-2 d-flex justify-content-between align-items-center"
       >
         <h4>Totale</h4>
-        <span>{{ totalCartPrice.toFixed(2) }} €</span>
+        <span>{{ formatPrice(totalCartPrice.toFixed(2)) }} €</span>
       </div>
 
       <div class="button-container d-flex justify-content-center">
