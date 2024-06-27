@@ -17,6 +17,7 @@ export default {
       phone_number: "",
       address: "",
       note: "",
+      isValid: true,
 
       paymentFormEnabled: false,
 
@@ -36,6 +37,10 @@ export default {
 
   methods: {
     sendFormData() {
+
+      if(!this.validateForm()){
+        return;
+      }
 
       this.errors = {
         name: [],
@@ -58,7 +63,7 @@ export default {
       };
 
 
-      // console.log(formData);
+      console.log(formData);
 
       axios
         .post(this.store.formDataUrl, formData)
@@ -111,119 +116,121 @@ export default {
       );
     },
 
-    // validateForm(){
-    //   const btnPay = document.getElementById('btn-pay');
-    //   // nome
-    //   const name = document.getElementById('name');
-    //   const errorName = document.getElementById('error-name');
-    //   // cognome
-    //   const surname = document.getElementById('surname');
-    //   const errorSurname = document.getElementById('error-surname');
-    //   // email
-    //   const email = document.getElementById('email');
-    //   const errorEmail = document.getElementById('error-email');
-    //   // telefono
-    //   const phoneNumber = document.getElementById('phone_number');
-    //   const errorPhoneNumber = document.getElementById('error-phone_number');
-    //   // indirizzo
-    //   const address = document.getElementById('address');
-    //   const errorAddress = document.getElementById('error-address');
+    validateForm(){
 
-    //   btnPay.addEventListener('click', function(event){
-    //     event.preventDefault();
-    //     console.log('prova');
-    //     errorName.innerHTML = ''; 
-    //     name.classList.remove('is-invalid');
-    //     errorSurname.innerHTML = ''; 
-    //     surname.classList.remove('is-invalid');
-    //     errorEmail.innerHTML = ''; 
-    //     email.classList.remove('is-invalid');
-    //     errorPhoneNumber.innerHTML = ''; 
-    //     phoneNumber.classList.remove('is-invalid');
-    //     errorAddress.innerHTML = ''; 
-    //     address.classList.remove('is-invalid');
+      this.isValid = true;
 
-    //     // controlli nome
-    //     if (name.value.trim().length === 0) {
-    //         errorName.innerHTML = 'Il campo Nome è obbligatorio';
-    //         name.classList.add('is-invalid');
-    //         this.isValid = false;
-    //     } else if (name.value.trim().length < 4) {
-    //         errorName.innerHTML = 'Il campo Nome Utente deve avere almeno 4 caratteri';
-    //         name.classList.add('is-invalid');
-    //         this.isValid = false;
-    //     } else if (name.value.trim().length > 50) {
-    //         errorName.innerHTML = 'Il campo Nome Utente non deve avere più di 50 caratteri';
-    //         name.classList.add('is-invalid');
-    //         this.isValid = false;
-    //     }
+      // bottone
+      const btnPay = document.getElementById('btn-pay');
+      // nome
+      const name = document.getElementById('name');
+      const errorName = document.getElementById('error-name');
+      // cognome
+      const surname = document.getElementById('surname');
+      const errorSurname = document.getElementById('error-surname');
+      // email
+      const email = document.getElementById('email');
+      const errorEmail = document.getElementById('error-email');
+      // telefono
+      const phoneNumber = document.getElementById('phone_number');
+      const errorPhoneNumber = document.getElementById('error-phone_number');
+      // indirizzo
+      const address = document.getElementById('address');
+      const errorAddress = document.getElementById('error-address');
 
-    //     // controlli cognome
-    //     if (surname.value.trim().length === 0) {
-    //         errorSurname.innerHTML = 'Il campo Cognome è obbligatorio';
-    //         surname.classList.add('is-invalid');
-    //         this.isValid = false;
-    //     } else if (surname.value.trim().length < 4) {
-    //         errorSurname.innerHTML = 'Il campo Cognome deve avere almeno 4 caratteri';
-    //         surname.classList.add('is-invalid');
-    //         this.isValid = false;
-    //     } else if (surname.value.trim().length > 50) {
-    //         errorSurname.innerHTML = 'Il campo Cognome non deve avere più di 50 caratteri';
-    //         surname.classList.add('is-invalid');
-    //         this.isValid = false;
-    //     }
+        event.preventDefault();
+        errorName.innerHTML = ''; 
+        name.classList.remove('is-invalid');
+        errorSurname.innerHTML = ''; 
+        surname.classList.remove('is-invalid');
+        errorEmail.innerHTML = ''; 
+        email.classList.remove('is-invalid');
+        errorPhoneNumber.innerHTML = ''; 
+        phoneNumber.classList.remove('is-invalid');
+        errorAddress.innerHTML = ''; 
+        address.classList.remove('is-invalid');
 
-    //     // controlli email
-    //     let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        // controlli nome
+        if (name.value.trim().length === 0) {
+            errorName.innerHTML = 'Il campo Nome è obbligatorio';
+            name.classList.add('is-invalid');
+            this.isValid = false;
+        } else if (name.value.trim().length < 4) {
+            errorName.innerHTML = 'Il campo Nome Utente deve avere almeno 4 caratteri';
+            name.classList.add('is-invalid');
+            this.isValid = false;
+        } else if (name.value.trim().length > 50) {
+            errorName.innerHTML = 'Il campo Nome Utente non deve avere più di 50 caratteri';
+            name.classList.add('is-invalid');
+            this.isValid = false;
+        }
 
-    //     if (email.value.trim().length === 0) {
-    //         errorEmail.innerHTML = 'Il campo Email è obbligatorio';
-    //         email.classList.add('is-invalid');
-    //         this.isValid = false;
-    //     } else if (!emailPattern.test(email.value)) {
-    //         errorEmail.innerHTML = 'Inserisci un indirizzo email valido';
-    //         email.classList.add('is-invalid');
-    //         this.isValid = false;
-    //     } else if (email.value.trim().length > 50) {
-    //         errorEmail.innerHTML = 'Il campo Email non deve essere più lungo di 50 caratteri';
-    //         email.classList.add('is-invalid');
-    //         this.isValid = false;
-    //     }
+        // controlli cognome
+        if (surname.value.trim().length === 0) {
+            errorSurname.innerHTML = 'Il campo Cognome è obbligatorio';
+            surname.classList.add('is-invalid');
+            this.isValid = false;
+        } else if (surname.value.trim().length < 4) {
+            errorSurname.innerHTML = 'Il campo Cognome deve avere almeno 4 caratteri';
+            surname.classList.add('is-invalid');
+            this.isValid = false;
+        } else if (surname.value.trim().length > 50) {
+            errorSurname.innerHTML = 'Il campo Cognome non deve avere più di 50 caratteri';
+            surname.classList.add('is-invalid');
+            this.isValid = false;
+        }
 
-    //     // controlli telefono
-    //     if (phoneNumber.value.trim().length === 0) {
-    //         errorPhoneNumber.innerHTML = 'Il campo Telefono è obbligatorio';
-    //         phoneNumber.classList.add('is-invalid');
-    //         this.isValid = false;
-    //     } else if (!/^\d+$/.test(phoneNumber.value)) {
-    //         errorPhoneNumber.innerHTML = 'Il campo Telefono può contenere solo numeri';
-    //         phoneNumber.classList.add('is-invalid');
-    //         this.isValid = false;
-    //     } else if(phoneNumber.value.trim().length < 11 || phoneNumber.value.trim().length > 11){
-    //       errorPhoneNumber.innerHTML = 'Il campo Telefono deve avere 11 numeri';
-    //       phoneNumber.classList.add('is-invalid');
-    //         this.isValid = false;
-    //     }
+        // controlli email
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (email.value.trim().length === 0) {
+            errorEmail.innerHTML = 'Il campo Email è obbligatorio';
+            email.classList.add('is-invalid');
+            this.isValid = false;
+        } else if (!emailPattern.test(email.value)) {
+            errorEmail.innerHTML = 'Inserisci un indirizzo email valido';
+            email.classList.add('is-invalid');
+            this.isValid = false;
+        } else if (email.value.trim().length > 50) {
+            errorEmail.innerHTML = 'Il campo Email non deve essere più lungo di 50 caratteri';
+            email.classList.add('is-invalid');
+            this.isValid = false;
+        }
+
+        // controlli telefono
+        if (phoneNumber.value.trim().length === 0) {
+            errorPhoneNumber.innerHTML = 'Il campo Telefono è obbligatorio';
+            phoneNumber.classList.add('is-invalid');
+            this.isValid = false;
+        } else if (!/^\d+$/.test(phoneNumber.value)) {
+            errorPhoneNumber.innerHTML = 'Il campo Telefono può contenere solo numeri';
+            phoneNumber.classList.add('is-invalid');
+            this.isValid = false;
+        } else if(phoneNumber.value.trim().length < 11 || phoneNumber.value.trim().length > 11){
+          errorPhoneNumber.innerHTML = 'Il campo Telefono deve avere 11 numeri';
+          phoneNumber.classList.add('is-invalid');
+            this.isValid = false;
+        }
         
         
             
-    //     // controlli indirizzo
-    //     if (address.value.trim().length === 0) {
-    //         errorAddress.innerHTML = 'Il campo Indirizzo è obbligatorio';
-    //         address.classList.add('is-invalid');
-    //         this.isValid = false;
-    //     } else if (address.value.trim().length < 8) {
-    //         errorAddress.innerHTML = 'Il campo Indirizzo deve avere almeno 8 caratteri';
-    //         address.classList.add('is-invalid');
-    //         this.isValid = false;
-    //     } else if (address.value.trim().length > 100) {
-    //         errorAddress.innerHTML = 'Il campo Indirizzo non deve avere più di 100 caratteri';
-    //         address.classList.add('is-invalid');
-    //         this.isValid = false;
-    //     }
-            
-    //   });
-    // },
+        // controlli indirizzo
+        if (address.value.trim().length === 0) {
+            errorAddress.innerHTML = 'Il campo Indirizzo è obbligatorio';
+            address.classList.add('is-invalid');
+            this.isValid = false;
+        } else if (address.value.trim().length < 8) {
+            errorAddress.innerHTML = 'Il campo Indirizzo deve avere almeno 8 caratteri';
+            address.classList.add('is-invalid');
+            this.isValid = false;
+        } else if (address.value.trim().length > 100) {
+            errorAddress.innerHTML = 'Il campo Indirizzo non deve avere più di 100 caratteri';
+            address.classList.add('is-invalid');
+            this.isValid = false;
+        }
+
+        return this.isValid;
+    },
   },
   
   mounted() {
@@ -281,7 +288,7 @@ export default {
               id="phone_number"
               v-model="phone_number"
             />
-            <small v-if="errors.phone_number" id="error-address" class="text-danger fw-semibold">{{ errors.phone_number[0] }}</small>
+            <small v-if="errors.phone_number" id="error-phone_number" class="text-danger fw-semibold">{{ errors.phone_number[0] }}</small>
           </div>
 
           <div class="col-12">
@@ -308,7 +315,7 @@ export default {
           </div>
 
           <div class="col-12">
-            <button type="submit" class="btn btn-custom-primary w-auto">
+            <button type="submit" id="btn-pay" class="btn btn-custom-primary w-auto">
               Vai al pagamento
             </button>
           </div>
