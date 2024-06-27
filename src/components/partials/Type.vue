@@ -272,4 +272,23 @@ export default {
     margin-bottom: -10%;
   }
 }
+
+@media (max-width: 576px){ 
+  .tablet{
+    display: none;
+  }
+  .swiper-section{
+    width: 100%;
+    .desktop{
+      display: block;
+      width: 100% !important;
+      .swiper-desktop{
+        width: 100% !important;}
+      swiper-slide{
+        width: 100% !important;
+      }
+  }
+
+  }
+}
 </style>
