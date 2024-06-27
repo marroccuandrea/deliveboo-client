@@ -70,7 +70,10 @@ export default {
   <div v-if="!loading">
     <div class="swiper-section">
       <div>
-        <img src="../../../public/Swipe.png" alt="" class="desk-img">
+
+        <div class="scorri-text">
+          <img src="../../../public/Swipe.png" alt="" class="desk-img">
+        </div>
       </div>
       <div class="swiper-bg desktop">
         <swiper-container
@@ -94,15 +97,15 @@ export default {
         </swiper-container>
       </div>
     </div>
-    <div>
-      <img src="../../../public/Swipe.png" alt="" class="tab-img"> 
+    <div class="tab-img">
+      <img src="../../../public/Swipe.png" alt=""> 
     </div>
     <div class="swiper-bg-2 tablet">
       <swiper-container
         :loop="true"
         :speed="2000"
         direction="horizontal"
-        :slides-per-view="2"
+        :slides-per-view="3"
         :space-between="10"
         class="swiper-tablet"
       >
@@ -235,11 +238,7 @@ export default {
   }
 }
 
-@media (width:768px){
-  .tab-img{
-    
-  }
-}
+
 
 @media (max-width: 768px) {
   .desktop {
@@ -247,6 +246,30 @@ export default {
   }
   .desk-img{
     display: none;
+  }
+  .scorri-text{
+    display: flex;
+    justify-content: center;
+  }
+  .tab-img{
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    img{
+      width: 60%;
+      margin-bottom: -60px;
+    }
+
+  }
+  .tablet{
+    height: 135px !important;
+    swiper-slide{
+      padding: 30px !important;
+      label{
+        font-size: 20px;
+      }
+    }
+    margin-bottom: -10%;
   }
 }
 </style>

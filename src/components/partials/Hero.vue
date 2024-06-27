@@ -16,7 +16,7 @@ export default {
 
 <template>
   <div class="container hero d-flex justify-content-center">
-    <div class="logo">
+    <div class="logo d-flex justify-content-center">
       <img src="/logo_1.png" alt="">
       <div
         v-if="cartItemCount === 0" 
@@ -119,6 +119,19 @@ export default {
   border-bottom-right-radius: 100%;
   -webkit-mask: radial-gradient(calc(var(--t)*100%) 105% at 0 0,#0000 99%,#000 101%);
 }
-/* /SECONDO */
+
+@media (max-width: 768px) {
+  .logo{
+    img{
+      width: 65%;
+    }
+    .thought{
+      display: none;
+    }
+    .speech{
+      display: none;
+    }
+}
+}
 
 </style>
