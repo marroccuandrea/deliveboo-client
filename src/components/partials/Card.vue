@@ -1,6 +1,6 @@
 <template>
   <div class="container restaurants">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 carte">
       <div
         class="col"
         v-for="item in paginatedRestaurants"
@@ -136,7 +136,7 @@ export default {
   position: relative;
   height: 80vh;
   margin-top: 130px;
-  width: 875px;
+  width: 100%;
 
   .card {
     margin-bottom: 20px;
@@ -252,10 +252,14 @@ export default {
     cursor: not-allowed;
   }
 
+  @media (min-width: 769px) {
+    .restaurants {
+      width: 875px;
+    }
+  }
   @media (max-width: 768px) {
     .restaurants {
       overflow-y: scroll;
-      overflow-x: hidden;
       .card {
         width: 220px;
         height: 300px;
@@ -263,13 +267,10 @@ export default {
     }
   }
 
-  @media (max-width: 575px) {
+  @media (max-width: 576px) {
     .restaurants {
       overflow-y: scroll;
-      overflow-x: hidden;
-      .card {
-        height: 90vh;
-      }
+      width: 400px !important;
     }
   }
 }
