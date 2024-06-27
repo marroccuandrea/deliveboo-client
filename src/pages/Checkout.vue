@@ -347,4 +347,12 @@ export default {
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+.checkout-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+  
+</style>
