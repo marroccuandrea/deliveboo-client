@@ -22,14 +22,6 @@ export default {
 
 <style lang="scss" scoped>
 
-.main-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh - 195px);
-}
 
-.mid-section {
-  flex: 0;
-}
 
 </style>
