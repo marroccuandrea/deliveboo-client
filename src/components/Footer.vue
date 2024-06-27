@@ -68,4 +68,10 @@ export default {};
 .footer-container{
   height: 195px;
 }
+
+@media (max-width: 768px) {
+  .footer-container{
+    margin-top: 20%;
+  }
+}
 </style>
