@@ -94,7 +94,7 @@ export default {
       <!-- Totale carrello -->
       <div class="total-cart d-flex justify-content-between align-items-center">
         <h4>Totale</h4>
-        <span>{{ totalCartPrice }} €</span>
+        <span>{{ totalCartPrice.toFixed(2) }} €</span>
       </div>
 
       <!-- Pulsanti -->

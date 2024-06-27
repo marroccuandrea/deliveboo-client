@@ -95,6 +95,9 @@ export default {
             </label>
           </swiper-slide>
         </swiper-container>
+        <div class="selezione-bottone text-center d-none my-5 bg-dark">
+          <span><a href="#">Esplora le tue scelte</a></span>
+        </div>
       </div>
     </div>
     <div class="tab-img">
@@ -274,6 +277,9 @@ export default {
 }
 
 @media (max-width: 576px){ 
+  .selezione-bottone{
+    display: block !important;
+  }
   .tablet{
     display: none;
   }

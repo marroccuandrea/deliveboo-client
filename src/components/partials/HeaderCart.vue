@@ -93,17 +93,15 @@ export default {
         class="total-cart mt-2 d-flex justify-content-between align-items-center"
       >
         <h4>Totale</h4>
-        <span>{{ totalCartPrice }} €</span>
+        <span>{{ totalCartPrice.toFixed(2) }} €</span>
       </div>
 
       <div class="button-container d-flex justify-content-center">
-        <button
-          type="button"
-          class="btn btn-custom-primary"
-          @click="goToCheckout"
+        
+          <router-link :to="{ name: 'checkout' }" class="btn btn-custom-primary"
+          >Procedi al pagamento</router-link
         >
-          Procedi al pagamento
-        </button>
+        
         <button
           type="button"
           class="btn btn-custom-secondary"

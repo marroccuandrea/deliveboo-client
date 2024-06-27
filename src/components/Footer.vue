@@ -54,14 +54,14 @@ export default {};
 </template>
 
 <style lang="scss" scoped>
-@import "../assets/scss/mdb.min.scss";
+// @import "../assets/scss/mdb.min.scss";
 
 .text-white {
   color: white !important;
 }
 
 .footer-container {
-  margin-top: 50px;
+  margin-top: 20%;
 }
 
 .footer-container{

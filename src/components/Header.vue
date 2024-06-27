@@ -36,9 +36,6 @@ export default {
     <div class="d-flex w-100 justify-content-between">
       <div class="sx d-flex align-items-center">
         <ul class="link">
-          <li class="list">
-            <router-link :to="{ name: 'home' }">Home</router-link>
-          </li>
           <!-- <li>
             <a :href="store.login">Accedi</a>
           </li>
