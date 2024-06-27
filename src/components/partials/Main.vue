@@ -20,7 +20,9 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-main{
-  height: 100vh -275px;
+@media (max-width: 576px) {
+  main{
+    
+  }
 }
 </style>

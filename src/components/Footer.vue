@@ -3,7 +3,7 @@ export default {};
 </script>
 
 <template>
-  <div class="container-fluid footer-container">
+  <div class="footer-container">
     <footer class="text-center text-lg-start" style="background-color: #26a69a">
       <div class="container d-flex justify-content-center py-5">
         <a
@@ -61,7 +61,6 @@ export default {};
 }
 
 .footer-container {
-  padding: 0 !important;
   margin-top: 50px;
 }
 
@@ -69,9 +68,4 @@ export default {};
   height: 195px;
 }
 
-@media (max-width: 768px) {
-  .footer-container{
-    margin-top: 200px;
-  }
-}
 </style>

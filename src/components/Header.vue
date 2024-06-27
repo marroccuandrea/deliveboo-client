@@ -156,4 +156,9 @@ header {
     border: none;
   }
 }
+@media(max-width: 576px) {
+  header {
+    margin-bottom: 50px;
+  }
+}
 </style>

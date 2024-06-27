@@ -166,7 +166,6 @@ export default {
       height: 80%;
       background-color: white;
       border-radius: 5%;
-      overflow: hidden;
     }
     img {
       width: 90%;
@@ -257,21 +256,20 @@ export default {
       width: 875px;
     }
   }
-  @media (max-width: 768px) {
-    .restaurants {
-      overflow-y: scroll;
-      .card {
-        width: 220px;
-        height: 300px;
-      }
-    }
+  @media (min-width: 577px) and (max-width: 768px) {
+  .restaurants .card {
+    width: 220px;
+    height: 300px;
   }
+}
 
-  @media (max-width: 576px) {
-    .restaurants {
-      overflow-y: scroll;
-      width: 400px !important;
-    }
+@media (max-width: 576px) {
+  .restaurants {
+    width: 400px !important;
   }
+  .restaurants .card {
+    display: none !important;
+  }
+}
 }
 </style>
