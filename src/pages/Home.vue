@@ -10,7 +10,6 @@ export default {
 <template>
   <div class="container-fluid">
     <Main/>
-
   </div>
 </template>
 

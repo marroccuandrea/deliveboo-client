@@ -36,14 +36,21 @@ export default {
     justify-content: center;
   }
 }
+
 @media (max-width: 768px) {
   .type-wrapper {
     width: 100%;
   }
 }
+
 @media (max-width: 576px) {
-  .card-wrapper{
-    width: 100%
+  .main-wrapper {
+    
+  }
+  
+  .main-wrapper .card-wrapper {
+    width: 100%;
+    display: none;
   }
 }
 </style>

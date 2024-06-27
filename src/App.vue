@@ -16,12 +16,11 @@ export default {
       <Header />
     </div>
     <router-view class="mid-section"></router-view>
+    <div class="container-fluid footer">
+      <Footer />
+    </div>
   </div>
-  <Footer />
 </template>
 
 <style lang="scss" scoped>
-
-
-
 </style>

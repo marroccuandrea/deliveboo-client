@@ -277,15 +277,24 @@ export default {
   .tablet{
     display: none;
   }
+  .tab-img{
+    display: none;
+  }
+  .desk-img{
+    display: block;
+    margin-bottom: -80px;
+  }
   .swiper-section{
     width: 100%;
     .desktop{
       display: block;
       width: 100% !important;
       .swiper-desktop{
-        width: 100% !important;}
-      swiper-slide{
         width: 100% !important;
+        height: 90%;
+        swiper-slide{
+          width: 100% !important;
+        }
       }
   }
 
