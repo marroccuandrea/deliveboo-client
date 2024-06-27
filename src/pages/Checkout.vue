@@ -139,7 +139,6 @@ export default {
       const errorAddress = document.getElementById('error-address');
 
         event.preventDefault();
-        // console.log('click');
         errorName.innerHTML = ''; 
         name.classList.remove('is-invalid');
         errorSurname.innerHTML = ''; 
