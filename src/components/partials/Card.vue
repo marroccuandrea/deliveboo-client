@@ -134,7 +134,6 @@ export default {
 <style lang="scss" scoped>
 .restaurants {
   position: relative;
-  height: 80vh;
   margin-top: 130px;
   width: 100%;
 

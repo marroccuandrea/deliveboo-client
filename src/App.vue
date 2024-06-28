@@ -11,14 +11,16 @@ export default {
 </script>
 
 <template>
-  <div class="container-fluid header-nav">
-    <Header />
-  </div>
-  <div class="main-wrapper">
-    <router-view class="mid-section"></router-view>
-  </div>
-  <div class="container-fluid footer">
-    <Footer />
+  <div class="contenitore-globale">
+    <div class="container-fluid header-nav">
+      <Header />
+    </div>
+    <div class="main-wrapper">
+      <router-view class="mid-section"></router-view>
+    </div>
+    <div class="container-fluid footer">
+      <Footer />
+    </div>
   </div>
 </template>
 
@@ -37,5 +39,19 @@ export default {
 
 .mid-section{
   flex: 0;
+}
+
+.contenitore-globale{
+  height: 100vh;
+}
+
+@media (max-width: 576px) {
+  .contenitore-globale{
+    position: relative;
+    .footer{
+      position: absolute;
+      bottom: 0;
+    }
+  }
 }
 </style>
