@@ -11,14 +11,14 @@ export default {
 </script>
 
 <template>
+  <div class="container-fluid header-nav">
+    <Header />
+  </div>
   <div class="main-wrapper">
-    <div class="container-fluid header-nav">
-      <Header />
-    </div>
     <router-view class="mid-section"></router-view>
-    <div class="container-fluid footer">
-      <Footer />
-    </div>
+  </div>
+  <div class="container-fluid footer">
+    <Footer />
   </div>
 </template>
 
@@ -26,7 +26,7 @@ export default {
 .main-wrapper {
   display: flex;
   flex-direction: column;
-  min-height:calc(100vh - 195px);
+  min-height:calc(100vh - 275px);
 }
 
 .footer{

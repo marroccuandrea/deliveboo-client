@@ -60,12 +60,18 @@ export default {};
   color: white !important;
 }
 
-.footer-container {
-  margin-top: 20%;
-}
+// .footer-container {
+//   margin-top: 20%;
+// }
 
 .footer-container{
   height: 195px;
+}
+
+@media (max-width: 768px) and (min-width: 577px) {
+  .footer-container{
+    margin-top: 25%;
+  }
 }
 
 </style>
