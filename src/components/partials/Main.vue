@@ -18,19 +18,27 @@ export default {
     // Controlla se nella URL è presente il parametro payment=success
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('payment') === 'success') {
-      this.paymentSuccessFunction();
+      this.paymentSuccess();
     }
   },
   methods: {
-    paymentSuccessFunction() {
+    paymentSuccess() {
       this.store.cart = [];
       this.store.restaurantId = null;
       localStorage.removeItem("cart");
       localStorage.removeItem("restaurantId");
+      this.updateURL();
+    },
+    updateURL() {
+      // Sostituisci la parte della query string per rimuovere il parametro payment
+      const url = new URL(window.location);
+      url.searchParams.delete('payment');
+      history.replaceState(null, '', url.toString());
     }
   }
 };
 </script>
+
 
 <template>
   <main>
