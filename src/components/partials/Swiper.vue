@@ -53,7 +53,6 @@ export default {
 }
 .swiper-container {
   width: 100%;
-  height: 100vh;
 }
 .swiper-box {
   background-color: #f9fafa;
