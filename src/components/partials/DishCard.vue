@@ -18,7 +18,7 @@ export default {
 
 <template>
   <div class="dish-card mb-3">
-    <div class="img-box">
+    <div class="img-box d-flex justify-content-center align-items-center">
       <img :src="dishObject.image" :alt="dishObject.name" />
     </div>
 
@@ -47,23 +47,22 @@ export default {
 @import "../../assets/scss/partials/variables";
 
 .dish-card {
-  height: 250px;
   border-radius: 20px;
   background-color: $color-primary;
   color: white;
   padding: 25px;
   display: flex;
-
+  
   .img-box {
-    width: 200px;
+    max-width: 200px;
     flex-shrink: 0;
     background-color: white;
-    overflow: hidden;
     border-radius: 20px;
+    aspect-ratio: 1/1;
 
     img {
-      height: 100%;
-      width: 100%;
+      height: 85%;
+      width: 85%;
       object-fit: cover;
       border-radius: 20px;
     }
@@ -78,6 +77,23 @@ export default {
 
     .dish-quantity {
       align-self: flex-end;
+    }
+  }
+
+  @media (max-width: 768px) and (min-width: 577px) {
+    flex-direction: column;
+    height: auto;
+
+    .img-box {
+      margin-bottom: 20px;
+      img{
+        height: 90%;
+        width: 90%;
+      }
+    }
+
+    .dish-info {
+      margin-left: 0;
     }
   }
 }

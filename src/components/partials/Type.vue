@@ -72,7 +72,7 @@ export default {
       <div>
 
         <div class="scorri-text">
-          <img src="../../../public/Swipe.png" alt="" class="desk-img">
+          <img src="../../../public/Swipe-test.png" alt="" class="desk-img">
         </div>
       </div>
       <div class="swiper-bg desktop">
@@ -101,7 +101,7 @@ export default {
       </div>
     </div>
     <div class="tab-img">
-      <img src="../../../public/Swipe.png" alt=""> 
+      <img src="../../../public/Swipe-test.png" alt=""> 
     </div>
     <div class="swiper-bg-2 tablet">
       <swiper-container
@@ -137,7 +137,7 @@ export default {
 .desk-img{
   width: 100%;
   position: absolute;
-  bottom: 80%;
+  bottom: 89%;
 }
 .swiper-bg {
   background-color: #26a69a;
@@ -260,7 +260,7 @@ export default {
     max-width: 100%;
     img{
       width: 60%;
-      margin-bottom: -60px;
+      margin-bottom: -28px;
     }
 
   }

@@ -122,7 +122,7 @@ export default {
     />
 
     <div class="row justify-content-between">
-      <div class="col col-7">
+      <div class="col col-6 piatti">
         <DishCard
           @callFunction="addToCart"
           v-for="dish in restaurant.dishes"
@@ -138,6 +138,10 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/scss/partials/variables";
+
+.piatti{
+  overflow-y: auto;
+}
 
 .img-box {
   height: 500px;

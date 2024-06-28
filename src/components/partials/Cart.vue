@@ -53,7 +53,7 @@ export default {
 </script>
 
 <template>
-  <div class="col col-4">
+  <div class="col col-5">
     <div class="cart">
       <h4>Carrello</h4>
 
@@ -160,8 +160,34 @@ export default {
       .btn-custom-primary,
       .btn-custom-secondary {
         margin: 10px;
-        width: auto;
+        width: 50%;
         height: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .col {
+    .cart {
+      padding: 10px;
+
+      .total-cart {
+        padding: 0 20px;
+        font-size: 1.2rem;
+      }
+
+      .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        .btn-custom-primary{
+          width: 95%;
+        }
+        .btn-custom-secondary{
+          width: 95%;
+        }
       }
     }
   }
