@@ -46,7 +46,7 @@ export default {
 @media (max-width: 576px) {
   .main-wrapper .card-wrapper {
     width: 100%;
-    display: none;
+    // display: none;
   }
 }
 </style>

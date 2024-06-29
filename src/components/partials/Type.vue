@@ -129,7 +129,7 @@ export default {
   <Loader v-else />
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .swiper-section{
   position: relative;
   width: 400px;
@@ -291,7 +291,7 @@ export default {
     margin-bottom: -80px;
   }
   .swiper-section{
-    width: 100%;
+    display: none;
     .desktop{
       display: block;
       width: 100% !important;

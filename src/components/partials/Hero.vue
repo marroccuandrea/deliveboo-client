@@ -1,23 +1,105 @@
 <script>
 import { store } from "../../data/store";
+import axios from 'axios';
 export default {
+  props: {
+    type: {
+      name: String,
+    }
+  },
   data() {
     return {
       store,
+      types: [],
+      selectedTypes: [],
     };
+  },
+  methods: {
+    getApi() {
+      this.loading = true;
+      axios.get(this.store.typeUrl, {
+        params: store.queryParams
+      })
+      .then(result => {
+        this.store.types = result.data.types;
+        console.log(this.store.types);
+        this.loading = false;
+      })
+      .catch(error => {
+        this.loading = false;
+        console.log(error);
+      })
+    },
+    updateFilter(event) {
+      const selectedType = event.target.value;
+      const index = this.store.filterTypes.indexOf(selectedType);
+      if (event.target.checked && index === -1) {
+        // If the checkbox is checked and the type is not in the array, add it
+        this.store.filterTypes.push(selectedType);
+        this.selectedTypes.push(selectedType);
+      } else if (!event.target.checked && index !== -1) {
+        // If the checkbox is unchecked and the type is in the array, remove it
+        this.store.filterTypes.splice(index, 1);
+        const selectedIndex = this.selectedTypes.indexOf(selectedType);
+        if (selectedIndex !== -1) {
+          this.selectedTypes.splice(selectedIndex, 1);
+        }
+      }
+      this.$emit('update-filter', this.store.filterTypes);
+      console.log(this.store.filterTypes);
+    },
+    isSelected(type) {
+      return this.selectedTypes.includes(type);
+    }
   },
   computed: {
     cartItemCount() {
       return this.store.cart.reduce((acc, item) => acc + item.quantity, 0);
     },
   },
+  mounted() {
+    this.getApi();
+  }
 };
 </script>
 
 <template>
   <div class="container hero d-flex justify-content-center d-block">
-    <div class="logo d-flex justify-content-center">
-      <img src="/logo_1.png" alt="">
+    <div class="logo d-flex justify-content-center position-relative">
+      
+      <div class="popup  position-absolute position-fixed z-3 rounded-5">
+
+        <button class="btn btn-primary rounded-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class="fa-solid fa-utensils"></i></button>
+
+        
+      </div>
+        <div class="offcanvas offcanvas-start w-75 overflow-hidden overflow-y-auto" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Types</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class=" list-unstyled">
+            <li v-for="item in store.types" :key="`t-${item.id}`">
+              <label :class="{ 'red-bg': isSelected(item.name) }">
+                <input 
+                class="hidden"
+                type="checkbox" 
+                :value="item.name" 
+                @change="updateFilter" 
+                />
+                {{ item.name }}
+              </label>
+            </li>
+          </ul>
+        </div>
+</div>
+      
+      <img src="/logo_1.png" alt="logo">
+      <img src="/logo_1_def.png" alt="logo" class="d-none logo-mobile">
+
+      
+      
       <div
         v-if="cartItemCount === 0" 
         class="thought floating"
@@ -60,6 +142,9 @@ export default {
 /* Google Fonts */
 @import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
 
+.red-bg {
+  background-color: rgb(219, 110, 9) !important;
+}
 
 .line-1{
     position: relative;
@@ -169,23 +254,61 @@ export default {
 
 @media (max-width: 576px) {
   .hero{
-    display: none !important;
+    img{
+      display: none !important;
+    }
+    .logo-mobile{
+      display: block !important;
+    }
+    .logo{
+      .popup{
+        left: -14px;
+        padding: 4px;
+        background-color: #2ec4b6;
+        button{
+          background: #ff9f1c !important;
+          border: none;
+          &:active{
+            transition: scale .2s;
+            scale: .9;
+          }
+        }
+        &:hover{
+          transition: left .3s;
+          left: 4px;
+        }
+        &:not(:hover){
+          transition: left .3s;
+        }
+      }
+      .offcanvas{
+        border-radius: 0 50% 50% 0;
+        background-color: #2ec4b6;
+        .offcanvas-title{
+
+        }
+        .offcanvas-body{
+          label {
+            background-color: #ff9f1c;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 10px 20px;
+            width: 160px;
+            margin-bottom: 10px;
+            text-align: center;
+            border-radius: 20px;
+            cursor: pointer;
+            .hidden {
+              display: none;
+            }
+          }
+        }
+      }
+    }
 }
 }
 
-.floating { 
-	animation-name: floating;
-	animation-duration: 3s;
-	animation-iteration-count: infinite;
-	animation-timing-function: ease-in-out;
-	margin-left: 30px;
-	margin-top: 5px;
-}
-
-@keyframes floating {
-	0% { transform: translate(0, 0px); }
-	50% { transform: translate(0, 15px); }
-	100% { transform: translate(0, -0px); } 
-}
 
 </style>
+
