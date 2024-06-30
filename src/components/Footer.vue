@@ -4,47 +4,40 @@ export default {};
 
 <template>
   <div class="footer-container">
-    <footer class="text-center text-lg-start" style="background-color: #26a69a">
+    <footer class="text-center">
       <div class="container d-flex justify-content-center py-5">
         <a
           href="https://www.facebook.com/"
           type="button"
-          class="btn btn-primary btn-lg btn-floating mx-2"
-          style="background-color: #f9a825"
+          class="btn btn-custom-secondary social-icon mx-2"
         >
           <i class="fab fa-facebook-f"></i>
         </a>
         <a
           href="https://www.youtube.com/"
           type="button"
-          class="btn btn-primary btn-lg btn-floating mx-2"
-          style="background-color: #f9a825"
+          class="btn btn-custom-secondary social-icon mx-2"
         >
           <i class="fab fa-youtube"></i>
         </a>
         <a
           href="https://www.instagram.com/"
           type="button"
-          class="btn btn-primary btn-lg btn-floating mx-2"
-          style="background-color: #f9a825"
+          class="btn btn-custom-secondary social-icon mx-2"
         >
           <i class="fab fa-instagram"></i>
         </a>
         <a
           href="https://x.com/?lang=it"
           type="button"
-          class="btn btn-primary btn-lg btn-floating mx-2"
-          style="background-color: #f9a825"
+          class="btn btn-custom-secondary social-icon mx-2"
         >
           <i class="fab fa-twitter"></i>
         </a>
       </div>
 
       <!-- Copyright -->
-      <div
-        class="text-center text-white p-3"
-        style="background-color: rgba(0, 0, 0, 0.2)"
-      >
+      <div class="text-center text-white p-3 copy-box">
         © 2024 Copyright:
         <a class="text-white" href="#">DeliveBoo</a>
       </div>
@@ -54,20 +47,35 @@ export default {};
 </template>
 
 <style lang="scss" scoped>
-
+@import "../assets/scss/partials/variables";
 .text-white {
   color: white !important;
 }
 
-.footer-container{
+.footer-container {
   height: 195px;
-}
+  background-color: $color-primary;
 
-@media (max-width: 576px) {
-  .footer-container{
-    display: none;
+  .social-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+
+    i {
+      font-size: 1.2rem;
+    }
+  }
+
+  .copy-box {
+    background-color: #26a69a;
   }
 }
 
-
+@media (max-width: 576px) {
+  .footer-container {
+    display: none;
+  }
+}
 </style>
