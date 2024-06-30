@@ -259,6 +259,7 @@ export default {
     }
     .logo-mobile{
       display: block !important;
+      margin-bottom: -100px;
     }
     .logo{
       .popup{
