@@ -73,9 +73,9 @@ export default {
 
         
       </div>
-        <div class="offcanvas offcanvas-start w-75 overflow-hidden overflow-y-auto" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+        <div class="offcanvas offcanvas-start w-50 overflow-hidden overflow-y-auto" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Types</h5>
+          <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
@@ -189,6 +189,8 @@ export default {
   background: #ff9f1c; /* the main color */
   position: relative;
 }
+
+
 .thought:before {
   content: "";
   position: absolute;
@@ -267,6 +269,7 @@ export default {
         padding: 4px;
         background-color: #2ec4b6;
         display: block !important;
+        position: fixed;
         button{
           background: #ff9f1c !important;
           border: none;
@@ -286,9 +289,6 @@ export default {
       .offcanvas{
         border-radius: 0 50% 50% 0;
         background-color: #2ec4b6;
-        .offcanvas-title{
-
-        }
         .offcanvas-body{
           label {
             background-color: #ff9f1c;

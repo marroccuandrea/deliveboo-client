@@ -29,7 +29,7 @@ export default {
     <!-- Text-logo -->
     <div>
       <router-link :to="{ name: 'home' }">
-        <img class="logo-text" src="/public/logo_text_def.png" alt="" style="height: 40px; margin-left: 25px;">
+        <img class="logo-text" src="/public/home.png" alt="" style="height: 200px; margin-left: 25px;">
       </router-link>
     </div>
     <!-- /Text-logo -->

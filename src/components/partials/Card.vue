@@ -160,9 +160,9 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 8%;
-      width: 80%;
-      height: 80%;
+      margin: 20px;
+      width: 90%;
+      height: 200px;
       background-color: white;
       border-radius: 5%;
     }
@@ -269,7 +269,11 @@ export default {
   justify-content: center !important;
   .card{
     height: 300px;
-    width: 300px;
+    max-width: 400px;
+    .img-box{
+      width: 200px;
+      height: 200px;
+    }
 }
 }
 }
