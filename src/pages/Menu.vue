@@ -121,8 +121,8 @@ export default {
       @clear-cart="clearCart"
     />
 
-    <div class="row justify-content-between">
-      <div class="col col-6 piatti">
+    <div class="row row-cols-1 row-cols-sm-2">
+      <div class="col piatti">
         <DishCard
           @callFunction="addToCart"
           v-for="dish in restaurant.dishes"
@@ -130,16 +130,20 @@ export default {
           :dishObject="dish"
           class="flex-grow-0"
         />
+        <div class="spacer d-none">
+          <img src="/public/logo_1_def.png" alt="">
+        </div>
       </div>
-      <Cart />
+      <Cart class="cart-fixed"/>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 @import "../assets/scss/partials/variables";
+@import "../assets/scss/partials/variables";
 
-.piatti{
+.piatti {
   overflow-y: auto;
 }
 
@@ -162,4 +166,42 @@ export default {
   position: relative;
   top: -150px;
 }
+
+@media (max-width: 576px) {
+  .cart-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: white; // o qualsiasi altro colore di sfondo tu voglia
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+
+    .piatti .dish-card {
+    width: 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    .dish-card{
+      z-index: 99 !important;
+    }
+    }
+
+  }
+  .spacer {
+    display: block !important;
+    height: 600px; 
+    display: flex !important;
+    justify-content: center !important;
+    width: 100%;
+    align-items: center !important;
+    img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+      z-index: 0 !important;
+      margin-top: -300px;
+    }
+  }
+}
+
 </style>

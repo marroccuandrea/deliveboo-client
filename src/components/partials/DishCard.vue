@@ -34,7 +34,7 @@ export default {
         </span>
       </div>
       <div class="dish-quantity">
-        <button class="btn btn-custom-primary-outline mx-3" @click="addToCart">
+        <button class="btn btn-custom-primary-outline mx-3 z-3" @click="addToCart">
           <i class="fa-solid fa-plus"></i>
         </button>
       </div>
