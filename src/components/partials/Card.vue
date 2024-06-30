@@ -2,7 +2,7 @@
   <div class="container restaurants">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 carte">
       <div
-        class="col"
+        class="col card-restaurants"
         v-for="item in paginatedRestaurants"
         :key="`r-${item.id}`"
       >
@@ -263,12 +263,15 @@ export default {
 }
 
 @media (max-width: 576px) {
-  .restaurants {
-    width: 400px !important;
-  }
-  .restaurants .card {
-    display: none !important;
-  }
+.card-restaurants{
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  .card{
+    height: 300px;
+    width: 300px;
+}
+}
 }
 }
 </style>

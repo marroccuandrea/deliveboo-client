@@ -44,9 +44,9 @@ export default {
 }
 
 @media (max-width: 576px) {
-  .main-wrapper .card-wrapper {
-    width: 100%;
-    // display: none;
+  .card-wrapper {
+    display: flex !important;
+    justify-content: center !important;
   }
 }
 </style>
