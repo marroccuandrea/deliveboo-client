@@ -67,7 +67,7 @@ export default {
   <div class="container hero d-flex justify-content-center d-block">
     <div class="logo d-flex justify-content-center position-relative">
       
-      <div class="popup  position-absolute position-fixed z-3 rounded-5">
+      <div class="popup position-absolute position-fixed z-3 rounded-5 d-none">
 
         <button class="btn btn-primary rounded-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class="fa-solid fa-utensils"></i></button>
 
@@ -265,6 +265,7 @@ export default {
         left: -14px;
         padding: 4px;
         background-color: #2ec4b6;
+        display: block !important;
         button{
           background: #ff9f1c !important;
           border: none;
