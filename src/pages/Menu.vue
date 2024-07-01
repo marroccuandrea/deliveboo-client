@@ -112,8 +112,7 @@ export default {
     </div>
     <div class="container">
       <div class="restaurant-info text-center">
-        <h1 class="titolo">{{ restaurant.business_name }}</h1>
-        <div class="border mt-3"></div>
+        <h1>{{ restaurant.business_name }}</h1>
         <div class="sub-info">
           <div class="info">
             <i class="fa-solid fa-location-dot icon"></i>
@@ -137,7 +136,7 @@ export default {
       />
 
       <div class="row row-cols-1 row-cols-sm-2">
-        <div class="col piatti">
+        <div class="col dishes">
           <DishCard
             @callFunction="addToCart"
             v-for="dish in restaurant.dishes"
@@ -164,7 +163,7 @@ export default {
   margin-top: 200px;
 }
 
-.piatti {
+.dishes {
   overflow-y: auto;
 }
 
@@ -186,11 +185,12 @@ export default {
   padding: 40px;
   position: relative;
   top: -150px;
-  .border {
-    border-bottom: 1px solid white;
-  }
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.2);
+
   .sub-info {
-    margin-top: 5rem;
+    margin-top: 20px;
+    padding-top: 50px;
+    border-top: 2px solid white;
     display: flex;
     justify-content: space-evenly;
     font-size: 1.2rem;
@@ -222,7 +222,7 @@ export default {
     background-color: white; // o qualsiasi altro colore di sfondo tu voglia
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 
-    .piatti .dish-card {
+    .dishes .dish-card {
       width: 100%;
       flex: 0 0 100%;
       max-width: 100%;
@@ -249,8 +249,8 @@ export default {
   .sub-info {
     display: flex;
     flex-direction: column;
-    margin-top: 1rem !important;
     font-size: 1.1rem;
+    padding-top: 10px !important;
     .icon {
       padding-bottom: 5px;
       padding-top: 8px;
