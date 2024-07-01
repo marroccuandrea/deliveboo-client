@@ -75,7 +75,7 @@ export default {};
 
 @media (max-width: 576px) {
   .footer-container {
-    display: none;
+    margin-top: 60px;
   }
 }
 </style>

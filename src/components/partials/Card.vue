@@ -1,58 +1,3 @@
-<template>
-  <div class="container restaurants">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 carte">
-      <div
-        class="col card-restaurants"
-        v-for="item in paginatedRestaurants"
-        :key="`r-${item.id}`"
-      >
-        <router-link
-          class="router-link-card"
-          :to="{
-            name: 'menu',
-            params: { slug: item.slug },
-            // state: { restaurantObject: item },
-          }"
-        >
-          <div class="card">
-            <div class="img-box">
-              <img v-if="item.image" :src="item.image" class="card-img-top" />
-              <img v-else src="/placeholder.webp" class="card-img-top" />
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">{{ item.business_name }}</h5>
-              <div class="badge-container">
-                <span
-                  v-for="(badge, index) in restaurantTypes(item)"
-                  :key="index"
-                  :class="badge.styleClass"
-                  >{{ badge.name }}</span
-                >
-              </div>
-            </div>
-          </div>
-        </router-link>
-      </div>
-    </div>
-    <div class="carousel-controls">
-      <button
-        class="control-btn prev"
-        @click="prevPage"
-        v-show="currentPage > 0"
-      >
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-      <button
-        class="control-btn next"
-        @click="nextPage"
-        v-show="currentPage < totalPages - 1"
-      >
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
-    </div>
-  </div>
-</template>
-
 <script>
 import { store } from "../../data/store";
 import axios from "axios";
@@ -131,6 +76,80 @@ export default {
 };
 </script>
 
+<template>
+  <div class="container restaurants d-flex justify-content-center">
+    <div
+      class="row row-cols-1 row-cols-sm-2 row-cols-md-3 justify-content-center"
+    >
+      <div
+        class="col card-restaurants"
+        v-for="item in paginatedRestaurants"
+        :key="`r-${item.id}`"
+      >
+        <router-link
+          class="router-link-card"
+          :to="{
+            name: 'menu',
+            params: { slug: item.slug },
+            // state: { restaurantObject: item },
+          }"
+        >
+          <div class="card">
+            <div class="img-box">
+              <img v-if="item.image" :src="item.image" class="card-img-top" />
+              <img v-else src="/placeholder.webp" class="card-img-top" />
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{ item.business_name }}</h5>
+              <div class="badge-container">
+                <span
+                  v-for="(badge, index) in restaurantTypes(item)"
+                  :key="index"
+                  :class="badge.styleClass"
+                  >{{ badge.name }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </router-link>
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button
+        class="control-btn prev"
+        @click="prevPage"
+        v-show="currentPage > 0"
+      >
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button
+        class="control-btn next"
+        @click="nextPage"
+        v-show="currentPage < totalPages - 1"
+      >
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <div class="carousel-controls controls-bottom d-md-none">
+      <button
+        class="control-btn prev"
+        @click="prevPage"
+        v-show="currentPage > 0"
+      >
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button
+        class="control-btn next"
+        @click="nextPage"
+        v-show="currentPage < totalPages - 1"
+      >
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</template>
+
 <style lang="scss" scoped>
 .restaurants {
   position: relative;
@@ -149,12 +168,12 @@ export default {
     height: 320px;
     cursor: pointer;
     &:hover {
-      transition: transform .3s;
+      transition: transform 0.3s;
       transform: scale(1.01);
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     }
-    &:not(:hover){
-      transition: transform .3s;
+    &:not(:hover) {
+      transition: transform 0.3s;
     }
     &:active {
       transform: translateY(4px);
@@ -192,6 +211,7 @@ export default {
     }
     .badge {
       margin-right: 5px;
+      margin-bottom: 5px;
       padding: 5px 10px;
       border-radius: 5px;
       background-color: #2dc4b6;
@@ -208,11 +228,11 @@ export default {
 
   .carousel-controls {
     position: absolute;
-    top: 307px;
+    height: 44px;
+    top: calc(50% - 20px - 15px);
     width: 100%;
     display: flex;
     justify-content: space-between;
-    transform: translateY(-50%);
     .control-btn {
       background-color: #2dc4b6;
       color: white;
@@ -233,10 +253,10 @@ export default {
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       transition: opacity 0.3s;
       transform: scale(1.1);
-      transition: transform .2s;
+      transition: transform 0.2s;
     }
-    &:not(:hover){
-      transition: transform .2s;
+    &:not(:hover) {
+      transition: transform 0.2s;
     }
     &:active {
       transform: translateY(4px);
@@ -246,11 +266,11 @@ export default {
   }
 
   .prev {
-    left: -21px;
+    left: -20px;
   }
 
   .next {
-    right: 0;
+    right: -20px;
   }
 
   button:disabled {
@@ -264,26 +284,70 @@ export default {
     }
   }
   @media (min-width: 577px) and (max-width: 768px) {
-  .restaurants .card {
-    width: 220px;
-    height: 300px;
-  }
-}
+    // .restaurants .card {
+    //   width: 220px;
+    //   height: 300px;
+    // }
 
-@media (max-width: 576px) {
-.card-restaurants{
-  width: 100% !important;
-  display: flex !important;
-  justify-content: center !important;
-  .card{
-    height: 300px;
-    max-width: 400px;
-    .img-box{
-      width: 200px;
-      height: 200px;
+    .carousel-controls {
+      .prev {
+        left: -30px;
+      }
+
+      .next {
+        right: -30px;
+      }
     }
-}
-}
-}
+  }
+
+  @media (max-width: 576px) {
+    .restaurants {
+      display: flex;
+      justify-content: center;
+    }
+
+    .card-restaurants {
+      .card {
+        height: 250px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        .img-box {
+          width: 200px;
+          height: 200px;
+          flex-shrink: 0;
+        }
+
+        .card-body {
+          padding-left: 0;
+          h5 {
+            width: 100%;
+          }
+
+          .badge-container {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .carousel-controls {
+      width: 30%;
+      top: -60px;
+
+      .prev {
+        left: 0;
+      }
+
+      .next {
+        right: 0;
+      }
+
+      &.controls-bottom {
+        width: 30%;
+        top: 1620px;
+      }
+    }
+  }
 }
 </style>

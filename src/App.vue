@@ -28,30 +28,30 @@ export default {
 .main-wrapper {
   display: flex;
   flex-direction: column;
-  min-height:calc(100vh - 275px);
+  min-height: calc(100vh - 275px);
 }
 
-.footer{
-  padding: 0!important;
-  padding-left: 0!important;
-  padding-right: 0!important;
+.footer {
+  padding: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
-.mid-section{
+.mid-section {
   flex: 0;
 }
 
-.contenitore-globale{
+.contenitore-globale {
   height: 100vh;
 }
 
 @media (max-width: 576px) {
-  .contenitore-globale{
-    position: relative;
-    .footer{
-      position: absolute;
-      bottom: 0;
-    }
-  }
+  // .contenitore-globale {
+  //   position: relative;
+  //   .footer {
+  //     // position: absolute;
+  //     // bottom: 0;
+  //   }
+  // }
 }
 </style>
