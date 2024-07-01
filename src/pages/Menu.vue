@@ -213,6 +213,37 @@ export default {
   }
 }
 @media (max-width: 576px) {
+  .img-box {
+    height: 200px;
+    margin-top: -50px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .restaurant-info {
+    height: 250px;
+    top: -80px;
+    padding: 10px;
+
+    h1 {
+      font-size: 1.3rem;
+    }
+    .sub-info {
+      display: flex;
+      flex-direction: column;
+      font-size: 1rem;
+      padding-top: 10px !important;
+      .icon {
+        padding-bottom: 5px;
+        padding-top: 8px;
+      }
+    }
+  }
+
   .cart-fixed {
     position: fixed;
     bottom: 0;
@@ -233,27 +264,18 @@ export default {
   }
   .spacer {
     display: block !important;
-    height: 600px;
+    height: 250px;
     display: flex !important;
     justify-content: center !important;
     width: 100%;
     align-items: center !important;
+
     img {
       width: 70%;
       height: 70%;
       object-fit: contain;
       z-index: 0 !important;
-      margin-top: -300px;
-    }
-  }
-  .sub-info {
-    display: flex;
-    flex-direction: column;
-    font-size: 1.1rem;
-    padding-top: 10px !important;
-    .icon {
-      padding-bottom: 5px;
-      padding-top: 8px;
+      margin-top: -20px;
     }
   }
 }
