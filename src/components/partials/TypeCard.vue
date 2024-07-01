@@ -30,6 +30,10 @@ export default {
   width: 50%;
 }
 
+.card-wrapper {
+  width: 100%;
+}
+
 @media (min-width: 769px) {
   .main-wrapper {
     display: flex;
