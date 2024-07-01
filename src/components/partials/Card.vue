@@ -151,6 +151,8 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@import "../../assets/scss/partials/variables";
+
 .restaurants {
   position: relative;
   margin-top: 130px;
@@ -162,7 +164,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 15px;
+    border-radius: 20px;
     border: none;
     width: 100%;
     height: 320px;
@@ -187,11 +189,12 @@ export default {
       width: 90%;
       height: 200px;
       background-color: white;
-      border-radius: 5%;
+      border-radius: 20px;
     }
     img {
-      width: 90%;
+      width: 92%;
       height: 90%;
+      border-radius: 20px;
       object-fit: cover;
     }
     .card-title {
@@ -214,7 +217,7 @@ export default {
       margin-bottom: 5px;
       padding: 5px 10px;
       border-radius: 5px;
-      background-color: #2dc4b6;
+      background-color: $color-primary;
       color: white;
       font-size: medium;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);

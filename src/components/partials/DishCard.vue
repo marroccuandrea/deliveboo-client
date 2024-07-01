@@ -10,8 +10,8 @@ export default {
     },
     formatPrice(price) {
       // Sostituisce il punto con una virgola
-      return price.toString().replace('.', ',');
-    }
+      return price.toString().replace(".", ",");
+    },
   },
 };
 </script>
@@ -34,14 +34,16 @@ export default {
         </span>
       </div>
       <div class="dish-quantity">
-        <button class="btn btn-custom-primary-outline mx-3 z-3" @click="addToCart">
+        <button
+          class="btn btn-custom-primary-outline mx-3 z-3"
+          @click="addToCart"
+        >
           <i class="fa-solid fa-plus"></i>
         </button>
       </div>
     </div>
   </div>
 </template>
-
 
 <style lang="scss" scoped>
 @import "../../assets/scss/partials/variables";
@@ -52,7 +54,7 @@ export default {
   color: white;
   padding: 25px;
   display: flex;
-  
+
   .img-box {
     max-width: 200px;
     flex-shrink: 0;
@@ -61,8 +63,8 @@ export default {
     aspect-ratio: 1/1;
 
     img {
-      height: 85%;
-      width: 85%;
+      height: 90%;
+      width: 90%;
       object-fit: cover;
       border-radius: 20px;
     }
@@ -86,7 +88,7 @@ export default {
 
     .img-box {
       margin-bottom: 20px;
-      img{
+      img {
         height: 90%;
         width: 90%;
       }
