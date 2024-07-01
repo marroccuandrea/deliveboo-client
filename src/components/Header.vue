@@ -26,25 +26,18 @@ export default {
 
 <template>
   <header>
-    <!-- Text-logo -->
-    <div>
+    <div class="container d-flex justify-content-between align-items-center">
+      <!-- Home logo -->
       <router-link :to="{ name: 'home' }">
-        <img class="logo-text" src="/public/home.png" alt="" style="height: 200px; margin-left: 25px;">
+        <div class="img-box">
+          <img class="logo-text" src="/public/home.png" alt="" />
+        </div>
       </router-link>
-    </div>
-    <!-- /Text-logo -->
-    <div class="d-flex w-100 justify-content-between">
-      <div class="sx d-flex align-items-center">
-        <ul class="link">
-          <!-- <li>
-            <a :href="store.login">Accedi</a>
-          </li>
-          <li>
-            <a :href="store.register">Registrati</a>
-          </li> -->
-        </ul>
-      </div>
-      <div class="dx d-flex align-items-center me-5">
+      <!-- /Home logo -->
+
+      <!-- Navbar -->
+      <nav class="d-none d-sm-flex justify-content-between align-items-center">
+        <!-- Restaurant dropdown -->
         <div class="dropdown">
           <a
             class="btn btn-secondary dropdown-toggle"
@@ -56,24 +49,15 @@ export default {
             Sei un ristoratore?
           </a>
 
-          <ul class="dropdown-menu" style="">
+          <ul class="dropdown-menu">
             <li><a class="dropdown-item" :href="store.login">Accedi</a></li>
             <li>
               <a class="dropdown-item" :href="store.register">Registrati</a>
             </li>
           </ul>
         </div>
-        <!-- <form class="d-flex" role="search">
-          <button class="btn btn-warning" type="submit">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-          <input
-            class="form-control"
-            type="search"
-            placeholder="Cerca"
-            aria-label="Search"
-          />
-        </form> -->
+        <!-- /Restaurant dropdown -->
+        <!-- Cart -->
         <ul class="link">
           <li class="list position-relative">
             <a href="#" @click="toggleCart">
@@ -87,7 +71,52 @@ export default {
             </transition>
           </li>
         </ul>
-      </div>
+        <!-- /Cart -->
+      </nav>
+      <!-- Navbar -->
+
+      <!-- Hamburger menu -->
+      <nav class="navbar d-sm-none">
+        <button
+          class="navbar-toggler navbar-toggler-custom"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="offcanvas offcanvas-top"
+          tabindex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+        >
+          <div class="offcanvas-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <h4>Sei un ristoratore?</h4>
+            <ul class="navbar-nav justify-content-end flex-grow-1 px-3">
+              <li class="nav-item d-flex align-items-center">
+                <i class="fa-solid fa-user-shield"></i>
+                <a class="nav-link" :href="store.login">Accedi</a>
+              </li>
+              <li class="nav-item d-flex align-items-center">
+                <i class="fa-solid fa-user-pen"></i>
+                <a class="nav-link" :href="store.register">Registrati</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- /Hamburger menu -->
     </div>
   </header>
 </template>
@@ -100,6 +129,35 @@ header {
   padding: 0 !important;
   display: flex;
   align-items: center;
+
+  .img-box {
+    width: 200px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      left: -28px;
+    }
+  }
+
+  .navbar-toggler-custom {
+    color: white;
+    border-color: white;
+
+    .navbar-toggler-icon {
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  .nav-item {
+    i {
+      color: $color-primary;
+      padding-right: 10px;
+    }
+  }
+
   .btn {
     border-radius: 5px 0 0 5px;
   }
@@ -153,7 +211,7 @@ header {
     border: none;
   }
 }
-@media(max-width: 576px) {
+@media (max-width: 576px) {
   header {
     margin-bottom: 50px;
   }
