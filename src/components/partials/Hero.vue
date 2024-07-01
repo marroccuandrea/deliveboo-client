@@ -307,6 +307,9 @@ export default {
           }
         }
       }
+      .offcanvas-backdrop{
+          background-color: transparent !important;
+        }
     }
 }
 }
