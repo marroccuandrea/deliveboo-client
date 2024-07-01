@@ -106,11 +106,20 @@ export default {
     <img :src="restaurant.image" :alt="restaurant.business_name" />
   </div>
   <div class="container">
-    <div class="restaurant-info">
-      <h3>{{ restaurant.business_name }}</h3>
-      <p>{{ restaurant.address }}</p>
-      <p>{{ restaurant.phone_number }}</p>
-      <p>{{ restaurant.email }}</p>
+    <div class="restaurant-info text-center">
+      <h1 class="titolo">{{ restaurant.business_name }}</h1>
+      <div class="border mt-3"></div>
+      <div class="sub-info">
+        <div class="info">
+          <i class="fa-solid fa-location-dot icon"></i> {{ restaurant.address }}
+        </div>
+        <div class="info">
+          <i class="fa-solid fa-envelope icon"></i> {{ restaurant.email }}
+        </div>
+        <div class="info">
+          <i class="fa-solid fa-phone icon"></i> {{ restaurant.phone_number }}
+        </div>
+      </div>
     </div>
 
     <WarningModal
@@ -131,10 +140,10 @@ export default {
           class="flex-grow-0"
         />
         <div class="spacer d-none">
-          <img src="/public/logo_1_def.png" alt="">
+          <img src="/public/logo_1_def.png" alt="" />
         </div>
       </div>
-      <Cart class="cart-fixed"/>
+      <Cart class="cart-fixed" />
     </div>
   </div>
 </template>
@@ -165,8 +174,32 @@ export default {
   padding: 40px;
   position: relative;
   top: -150px;
+  .border {
+    border-bottom: 1px solid white;
+  }
+  .sub-info {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.2rem;
+    .info {
+      width: 100%;
+    }
+  }
 }
-
+@media (max-width: 768px) {
+  .sub-info {
+    display: flex;
+    // flex-direction: column;
+    .info {
+      display: flex;
+      flex-direction: column;
+      .icon {
+        padding-bottom: 5px;
+      }
+    }
+  }
+}
 @media (max-width: 576px) {
   .cart-fixed {
     position: fixed;
@@ -178,18 +211,17 @@ export default {
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 
     .piatti .dish-card {
-    width: 100%;
-    flex: 0 0 100%;
-    max-width: 100%;
-    .dish-card{
-      z-index: 99 !important;
+      width: 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+      .dish-card {
+        z-index: 99 !important;
+      }
     }
-    }
-
   }
   .spacer {
     display: block !important;
-    height: 600px; 
+    height: 600px;
     display: flex !important;
     justify-content: center !important;
     width: 100%;
@@ -202,6 +234,15 @@ export default {
       margin-top: -300px;
     }
   }
+  .sub-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem !important;
+    font-size: 1.1rem;
+    .icon {
+      padding-bottom: 5px;
+      padding-top: 8px;
+    }
+  }
 }
-
 </style>
