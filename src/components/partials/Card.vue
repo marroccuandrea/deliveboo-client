@@ -69,6 +69,12 @@ export default {
         this.currentPage -= 1;
       }
     },
+    formatImageUrl(imageUrl) {
+    if (imageUrl && imageUrl.includes('upload')) {
+      return `http://127.0.0.1:8000/storage/${imageUrl}`;
+    }
+    return imageUrl;
+  },
   },
   mounted() {
     this.getApi();
@@ -96,7 +102,7 @@ export default {
         >
           <div class="card">
             <div class="img-box">
-              <img v-if="item.image" :src="item.image" class="card-img-top" />
+              <img v-if="item.image" :src="formatImageUrl(item.image)" class="card-img-top" />
               <img v-else src="/placeholder.webp" class="card-img-top" />
             </div>
             <div class="card-body">
