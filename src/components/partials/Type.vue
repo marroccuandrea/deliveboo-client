@@ -2,7 +2,7 @@
 import { register } from "swiper/element/bundle";
 import { store } from "../../data/store";
 import Loader from "../partials/Loader.vue";
-import axios from 'axios';
+import axios from "axios";
 register();
 
 export default {
@@ -12,7 +12,7 @@ export default {
   props: {
     type: {
       name: String,
-    }
+    },
   },
   data() {
     return {
@@ -20,23 +20,24 @@ export default {
       types: [],
       loading: true,
       selectedTypes: [], // Aggiunta di una proprietà per tracciare gli elementi selezionati
-    }
+    };
   },
   methods: {
     getApi() {
       this.loading = true;
-      axios.get(this.store.typeUrl, {
-        params: store.queryParams
-      })
-      .then(result => {
-        this.store.types = result.data.types;
-        console.log(this.store.types);
-        this.loading = false;
-      })
-      .catch(error => {
-        this.loading = false;
-        console.log(error);
-      })
+      axios
+        .get(this.store.typeUrl, {
+          params: store.queryParams,
+        })
+        .then((result) => {
+          this.store.types = result.data.types;
+          console.log(this.store.types);
+          this.loading = false;
+        })
+        .catch((error) => {
+          this.loading = false;
+          console.log(error);
+        });
     },
     updateFilter(event) {
       const selectedType = event.target.value;
@@ -53,26 +54,25 @@ export default {
           this.selectedTypes.splice(selectedIndex, 1);
         }
       }
-      this.$emit('update-filter', this.store.filterTypes);
+      this.$emit("update-filter", this.store.filterTypes);
       console.log(this.store.filterTypes);
     },
     isSelected(type) {
       return this.selectedTypes.includes(type);
-    }
+    },
   },
   mounted() {
     this.getApi();
-  }
-}
+  },
+};
 </script>
 
 <template>
   <div v-if="!loading">
     <div class="swiper-section">
       <div>
-
         <div class="scorri-text">
-          <img src="../../../public/Swipe-test.png" alt="" class="desk-img">
+          <img src="../../../public/Swipe-test.png" alt="" class="desk-img" />
         </div>
       </div>
       <div class="swiper-bg desktop">
@@ -82,14 +82,19 @@ export default {
           direction="vertical"
           :slides-per-view="7"
           :space-between="10"
-          class="swiper-desktop text-capitalize">
-          <swiper-slide v-for="item in store.types" :key="`t-${item.id}`" :class="{ 'red-bg': isSelected(item.name) }">
+          class="swiper-desktop text-capitalize"
+        >
+          <swiper-slide
+            v-for="item in store.types"
+            :key="`t-${item.id}`"
+            :class="{ 'red-bg': isSelected(item.name) }"
+          >
             <label>
-              <input 
-                class="hidden" 
-                type="checkbox" 
-                :value="item.name" 
-                @change="updateFilter" 
+              <input
+                class="hidden"
+                type="checkbox"
+                :value="item.name"
+                @change="updateFilter"
               />
               {{ item.name }}
             </label>
@@ -101,7 +106,7 @@ export default {
       </div>
     </div>
     <div class="tab-img">
-      <img src="../../../public/Swipe-test.png" alt=""> 
+      <img src="../../../public/Swipe-test.png" alt="" />
     </div>
     <div class="swiper-bg-2 tablet">
       <swiper-container
@@ -112,13 +117,17 @@ export default {
         :space-between="10"
         class="swiper-tablet"
       >
-        <swiper-slide v-for="item in store.types" :key="`t-${item.id}`" :class="{ 'red-bg': isSelected(item.name) }">
+        <swiper-slide
+          v-for="item in store.types"
+          :key="`t-${item.id}`"
+          :class="{ 'red-bg': isSelected(item.name) }"
+        >
           <label>
-            <input 
+            <input
               class="hidden"
-              type="checkbox" 
-              :value="item.name" 
-              @change="updateFilter" 
+              type="checkbox"
+              :value="item.name"
+              @change="updateFilter"
             />
             {{ item.name }}
           </label>
@@ -130,11 +139,11 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.swiper-section{
+.swiper-section {
   position: relative;
   width: 400px;
 }
-.desk-img{
+.desk-img {
   width: 100%;
   position: absolute;
   bottom: 89%;
@@ -167,7 +176,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  swiper-slide {    
+  swiper-slide {
     z-index: 99;
     padding: 0 !important;
     &:hover {
@@ -175,16 +184,16 @@ export default {
       border-radius: 20px;
       transform: scale(1.01);
       z-index: 99;
-      transition: transform .2s;
+      transition: transform 0.2s;
     }
-    &:not(:hover){
-      transition: transform .2s;
+    &:not(:hover) {
+      transition: transform 0.2s;
     }
     width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f9a825; 
+    background-color: #f9a825;
     color: white;
     font-size: 20px;
     border-radius: 20px;
@@ -211,7 +220,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f9a825; 
+    background-color: #f9a825;
     color: white;
     font-size: 20px;
     border-radius: 20px;
@@ -222,9 +231,9 @@ export default {
       font-size: 40px;
       cursor: pointer;
       &:active {
-    transform: translateY(4px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
+        transform: translateY(4px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
       .hidden {
         display: none;
       }
@@ -240,39 +249,36 @@ export default {
   .tablet {
     display: none;
   }
-  .tab-img{
+  .tab-img {
     display: none;
   }
 }
-
-
 
 @media (max-width: 768px) {
   .desktop {
     display: none;
   }
-  .desk-img{
+  .desk-img {
     display: none;
   }
-  .scorri-text{
+  .scorri-text {
     display: flex;
     justify-content: center;
   }
-  .tab-img{
+  .tab-img {
     display: flex;
     justify-content: center;
     max-width: 100%;
-    img{
+    img {
       width: 60%;
       margin-bottom: -28px;
     }
-
   }
-  .tablet{
+  .tablet {
     height: 135px !important;
-    swiper-slide{
+    swiper-slide {
       padding: 30px !important;
-      label{
+      label {
         font-size: 20px;
       }
     }
@@ -280,34 +286,33 @@ export default {
   }
 }
 
-@media (max-width: 576px){ 
-  .selezione-bottone{
+@media (max-width: 576px) {
+  .selezione-bottone {
     display: block !important;
   }
-  .tablet{
+  .tablet {
     display: none;
   }
-  .tab-img{
+  .tab-img {
     display: none;
   }
-  .desk-img{
+  .desk-img {
     display: block;
     margin-bottom: -80px;
   }
-  .swiper-section{
+  .swiper-section {
     display: none;
-    .desktop{
+    .desktop {
       display: block;
       width: 100% !important;
-      .swiper-desktop{
+      .swiper-desktop {
         width: 100% !important;
         height: 90%;
-        swiper-slide{
+        swiper-slide {
           width: 100% !important;
         }
       }
-  }
-
+    }
   }
 }
 </style>

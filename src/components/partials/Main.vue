@@ -1,5 +1,5 @@
 <script>
-import {store } from '../../data/store';
+import { store } from "../../data/store";
 import Hero from "./Hero.vue";
 import Swiper from "./Swiper.vue";
 import TypeCard from "./TypeCard.vue";
@@ -17,7 +17,7 @@ export default {
   mounted() {
     // Controlla se nella URL è presente il parametro payment=success
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('payment') === 'success') {
+    if (urlParams.get("payment") === "success") {
       this.paymentSuccess();
     }
   },
@@ -32,13 +32,12 @@ export default {
     updateURL() {
       // Sostituisci la parte della query string per rimuovere il parametro payment
       const url = new URL(window.location);
-      url.searchParams.delete('payment');
-      history.replaceState(null, '', url.toString());
-    }
-  }
+      url.searchParams.delete("payment");
+      history.replaceState(null, "", url.toString());
+    },
+  },
 };
 </script>
-
 
 <template>
   <main>

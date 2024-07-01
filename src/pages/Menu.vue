@@ -5,6 +5,7 @@ import axios from "axios";
 import DishCard from "../components/partials/DishCard.vue";
 import Cart from "../components/partials/Cart.vue";
 import WarningModal from "../components/partials/WarningModal.vue";
+import Loader from "@/components/partials/Loader.vue";
 
 export default {
   name: "Menu",
@@ -13,6 +14,7 @@ export default {
     DishCard,
     Cart,
     WarningModal,
+    Loader,
   },
 
   data() {
@@ -20,6 +22,7 @@ export default {
       store,
       restaurant: {},
       cart: [],
+      isLoaded: false,
 
       showModal: false, // Stato per visualizzazione del modale
       modalTitle: "", // Titolo del modale
@@ -37,6 +40,7 @@ export default {
         .then((result) => {
           this.restaurant = result.data.restaurant;
           console.log(this.restaurant);
+          this.isLoaded = true;
 
           // Controlla se il ristorante corrente corrisponde a quello salvato in localStorage
           if (
@@ -102,55 +106,63 @@ export default {
 </script>
 
 <template>
-  <div class="img-box">
-    <img :src="restaurant.image" :alt="restaurant.business_name" />
-  </div>
-  <div class="container">
-    <div class="restaurant-info text-center">
-      <h1 class="titolo">{{ restaurant.business_name }}</h1>
-      <div class="border mt-3"></div>
-      <div class="sub-info">
-        <div class="info">
-          <i class="fa-solid fa-location-dot icon"></i> {{ restaurant.address }}
-        </div>
-        <div class="info">
-          <i class="fa-solid fa-envelope icon"></i> {{ restaurant.email }}
-        </div>
-        <div class="info">
-          <i class="fa-solid fa-phone icon"></i> {{ restaurant.phone_number }}
+  <div v-if="isLoaded">
+    <div class="img-box">
+      <img :src="restaurant.image" :alt="restaurant.business_name" />
+    </div>
+    <div class="container">
+      <div class="restaurant-info text-center">
+        <h1 class="titolo">{{ restaurant.business_name }}</h1>
+        <div class="border mt-3"></div>
+        <div class="sub-info">
+          <div class="info">
+            <i class="fa-solid fa-location-dot icon"></i>
+            {{ restaurant.address }}
+          </div>
+          <div class="info">
+            <i class="fa-solid fa-envelope icon"></i> {{ restaurant.email }}
+          </div>
+          <div class="info">
+            <i class="fa-solid fa-phone icon"></i> {{ restaurant.phone_number }}
+          </div>
         </div>
       </div>
-    </div>
 
-    <WarningModal
-      :message="modalMessage"
-      :visible="showModal"
-      :showClearButton="showClearButton"
-      @close="closeModal"
-      @clear-cart="clearCart"
-    />
+      <WarningModal
+        :message="modalMessage"
+        :visible="showModal"
+        :showClearButton="showClearButton"
+        @close="closeModal"
+        @clear-cart="clearCart"
+      />
 
-    <div class="row row-cols-1 row-cols-sm-2">
-      <div class="col piatti">
-        <DishCard
-          @callFunction="addToCart"
-          v-for="dish in restaurant.dishes"
-          :key="dish.id"
-          :dishObject="dish"
-          class="flex-grow-0"
-        />
-        <div class="spacer d-none">
-          <img src="/public/logo_1_def.png" alt="" />
+      <div class="row row-cols-1 row-cols-sm-2">
+        <div class="col piatti">
+          <DishCard
+            @callFunction="addToCart"
+            v-for="dish in restaurant.dishes"
+            :key="dish.id"
+            :dishObject="dish"
+            class="flex-grow-0"
+          />
+          <div class="spacer d-none">
+            <img src="/public/logo_1_def.png" alt="" />
+          </div>
         </div>
+        <Cart class="cart-fixed" />
       </div>
-      <Cart class="cart-fixed" />
     </div>
   </div>
+  <Loader class="loader-menu" v-else />
 </template>
 
 <style lang="scss" scoped>
 @import "../assets/scss/partials/variables";
 @import "../assets/scss/partials/variables";
+
+.loader-menu {
+  margin-top: 200px;
+}
 
 .piatti {
   overflow-y: auto;

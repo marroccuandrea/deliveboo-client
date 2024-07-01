@@ -5,92 +5,39 @@ export default {
 </script>
 
 <template>
-  <div>
-    <span class="loader"></span>
+  <div class="loader-container">
+    <div class="loader"></div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-div {
-  min-height: 100px;
+@import "../../assets/scss/partials/variables";
+
+.loader-container {
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .loader {
-  width: 16px;
-  height: 16px;
+  --d: 50px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background-color: #fff;
-  box-shadow: 32px 0 #fff, -32px 0 #fff;
-  position: relative;
-  animation: flash 0.3s ease-in infinite alternate;
+  color: $color-primary;
+  box-shadow: calc(1 * var(--d)) calc(0 * var(--d)) 0 0,
+    calc(0.707 * var(--d)) calc(0.707 * var(--d)) 0 1px,
+    calc(0 * var(--d)) calc(1 * var(--d)) 0 2px,
+    calc(-0.707 * var(--d)) calc(0.707 * var(--d)) 0 3px,
+    calc(-1 * var(--d)) calc(0 * var(--d)) 0 4px,
+    calc(-0.707 * var(--d)) calc(-0.707 * var(--d)) 0 5px,
+    calc(0 * var(--d)) calc(-1 * var(--d)) 0 6px;
+  animation: l27 1s infinite steps(8);
 }
-.loader::before,
-.loader::after {
-  content: "";
-  position: absolute;
-  left: -64px;
-  top: 0;
-  background: #fff;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  transform-origin: 35px -35px;
-  transform: rotate(45deg);
-  animation: hitL 0.3s ease-in infinite alternate;
-}
-
-.loader::after {
-  left: 64px;
-  transform: rotate(-45deg);
-  transform-origin: -35px -35px;
-  animation: hitR 0.3s ease-out infinite alternate;
-}
-
-@keyframes flash {
-  0%,
+@keyframes l27 {
   100% {
-    background-color: rgba(255, 255, 255, 0.25);
-    box-shadow: 32px 0 rgba(255, 255, 255, 0.25),
-      -32px 0 rgba(255, 255, 255, 0.25);
-  }
-  25% {
-    background-color: rgba(255, 255, 255, 0.25);
-    box-shadow: 32px 0 rgba(255, 255, 255, 0.25), -32px 0 rgba(255, 255, 255, 1);
-  }
-  50% {
-    background-color: rgba(255, 255, 255, 1);
-    box-shadow: 32px 0 rgba(255, 255, 255, 0.25),
-      -32px 0 rgba(255, 255, 255, 0.25);
-  }
-  75% {
-    background-color: rgba(255, 255, 255, 0.25);
-    box-shadow: 32px 0 rgba(255, 255, 255, 1), -32px 0 rgba(255, 255, 255, 0.25);
-  }
-}
-
-@keyframes hitL {
-  0% {
-    transform: rotate(45deg);
-    background-color: rgba(255, 255, 255, 1);
-  }
-  25%,
-  100% {
-    transform: rotate(0deg);
-    background-color: rgba(255, 255, 255, 0.25);
-  }
-}
-
-@keyframes hitR {
-  0%,
-  75% {
-    transform: rotate(0deg);
-    background-color: rgba(255, 255, 255, 0.25);
-  }
-  100% {
-    transform: rotate(-45deg);
-    background-color: rgba(255, 255, 255, 1);
+    transform: rotate(1turn);
   }
 }
 </style>
