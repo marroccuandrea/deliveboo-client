@@ -70,11 +70,11 @@ export default {
       }
     },
     formatImageUrl(imageUrl) {
-    if (imageUrl && imageUrl.includes('upload')) {
-      return `http://127.0.0.1:8000/storage/${imageUrl}`;
-    }
-    return imageUrl;
-  },
+      if (imageUrl && imageUrl.includes("upload")) {
+        return `http://127.0.0.1:8000/storage/${imageUrl}`;
+      }
+      return imageUrl;
+    },
   },
   mounted() {
     this.getApi();
@@ -84,9 +84,7 @@ export default {
 
 <template>
   <div class="container restaurants d-flex justify-content-center">
-    <div
-      class="row row-cols-1 row-cols-sm-2 row-cols-md-3 justify-content-center"
-    >
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
       <div
         class="col card-restaurants"
         v-for="item in paginatedRestaurants"
@@ -102,7 +100,11 @@ export default {
         >
           <div class="card">
             <div class="img-box">
-              <img v-if="item.image" :src="formatImageUrl(item.image)" class="card-img-top" />
+              <img
+                v-if="item.image"
+                :src="formatImageUrl(item.image)"
+                class="card-img-top"
+              />
               <img v-else src="/placeholder.webp" class="card-img-top" />
             </div>
             <div class="card-body">
