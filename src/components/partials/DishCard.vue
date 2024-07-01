@@ -17,7 +17,7 @@ export default {
 </script>
 
 <template>
-  <div class="dish-card mb-3">
+  <div v-if="dishObject.available" class="dish-card mb-3">
     <div class="img-box d-flex justify-content-center align-items-center">
       <img :src="dishObject.image" :alt="dishObject.name" />
     </div>
@@ -72,6 +72,7 @@ export default {
 
   .dish-info {
     margin-left: 20px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
