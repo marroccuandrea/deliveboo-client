@@ -119,18 +119,18 @@ export default {
 <style lang="scss" scoped>
 .hero {
   margin: 20px auto;
-  .logo{
+  .logo {
     position: relative;
-    .img{
+    .img {
       position: absolute;
     }
-    .thought{
+    .thought {
       width: 100%;
       position: absolute;
       top: 10%;
       left: 80%;
     }
-    .speech{
+    .speech {
       width: 100%;
       position: absolute;
       top: 10%;
@@ -146,29 +146,39 @@ export default {
   background-color: rgb(219, 110, 9) !important;
 }
 
-.line-1{
-    position: relative;
-    top: 50%;  
-    width: 24em;
-    margin: 0 auto;
-    border-right: 2px solid rgba(255,255,255,.75);
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden; 
+.line-1 {
+  position: relative;
+  top: 50%;
+  width: 24em;
+  margin: 0 auto;
+  border-right: 2px solid rgba(255, 255, 255, .75);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 /* Animation */
-.anim-typewriter{
+.anim-typewriter {
   animation: typewriter 1s steps(44) 1s 1 normal both,
-             blinkTextCursor 500ms steps(44) infinite normal;
+    blinkTextCursor 500ms steps(44) infinite normal;
 }
-@keyframes typewriter{
-  from{width: 0;}
-  to{width: 91%;}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 91%;
+  }
 }
-@keyframes blinkTextCursor{
-  from{border-right-color: rgba(255,255,255,.75);}
-  to{border-right-color: transparent;}
+
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: rgba(255, 255, 255, .75);
+  }
+  to {
+    border-right-color: transparent;
+  }
 }
 
 /* PRIMO */
@@ -178,33 +188,33 @@ export default {
   max-width: 28ch;
   text-align: center;
 }
-.thought { 
-  --b: 3em; /* tail dimension */
 
-  --p: 16%;  /* main position (0%:left 100%:right) */
-  --r: 1.2em; /* the radius */
-
+.thought {
+  --b: 3em;
+  /* dimensione della coda */
+  --p: 16%;
+  /* posizione principale (0%:sinistra 100%:destra) */
+  --r: 1.2em;
+  /* raggio del bordo */
   padding: 1em;
-  border-radius: var(--r) var(--r) min(var(--r),100% - var(--p) - var(--b)/4) min(var(--r),var(--p) - var(--b)/4)/var(--r);
-  background: #ff9f1c; /* the main color */
+  border-radius: var(--r) var(--r) min(var(--r), 100% - var(--p) - var(--b)/4) min(var(--r), var(--p) - var(--b)/4)/var(--r);
+  background: #ff9f1c;
+  /* colore principale */
   position: relative;
 }
-
 
 .thought:before {
   content: "";
   position: absolute;
   top: 100%;
-  left: clamp(var(--b)/-2,var(--p) - 3*var(--b)/4,100% - var(--b));
+  left: clamp(var(--b)/-2, var(--p) - 3*var(--b)/4, 100% - var(--b));
   width: var(--b);
   aspect-ratio: 1;
   background: inherit;
-  --g:#000 calc(100% - 1px),#0000;
-  -webkit-mask: 
-    radial-gradient(circle closest-side at 12% 88%,var(--g)),
-    radial-gradient(20% 20% at 52% 55%,var(--g)),
-    radial-gradient(25% 25% at 75% 0,var(--g));
+  --g: #000 calc(100% - 1px), #0000;
+  -webkit-mask: radial-gradient(circle closest-side at 12% 88%, var(--g)), radial-gradient(20% 20% at 52% 55%, var(--g)), radial-gradient(25% 25% at 75% 0, var(--g));
 }
+
 /* /PRIMO */
 
 /* SECONDO */
@@ -214,82 +224,92 @@ export default {
   max-width: 28ch;
   text-align: center;
 }
+
 .speech {
-  /* tail dimension */
-  --b: 3em;   /* base */
-  --h: 1.8em; /* height */
-  --t: .6;    /* thickness (from 0 to 1) */
-
-  --p: 20%;  /* main position (0%:left 100%:right) */
-  --r: 1.2em; /* the radius */
-
+  /* dimensione della coda */
+  --b: 3em;
+  /* base */
+  --h: 1.8em;
+  /* altezza */
+  --t: .6;
+  /* spessore (da 0 a 1) */
+  --p: 20%;
+  /* posizione principale (0%:sinistra 100%:destra) */
+  --r: 1.2em;
+  /* raggio del bordo */
   padding: 1em;
-  border-radius: var(--r) var(--r) min(var(--r),100% - var(--p) - (1 - var(--t))*var(--b)/2) min(var(--r),var(--p) - (1 - var(--t))*var(--b)/2)/var(--r);
-  background: #4ECDC4; /* the main color */
+  border-radius: var(--r) var(--r) min(var(--r), 100% - var(--p) - (1 - var(--t))*var(--b)/2) min(var(--r), var(--p) - (1 - var(--t))*var(--b)/2)/var(--r);
+  background: #4ECDC4;
+  /* colore principale */
   position: relative;
 }
+
 .speech:before {
   content: "";
   position: absolute;
   top: 100%;
-  left: clamp(-1*var(--t)*var(--b),var(--p) - (var(--t) + 1)*var(--b)/2,100% - var(--b));
+  left: clamp(-1*var(--t)*var(--b), var(--p) - (var(--t) + 1)*var(--b)/2, 100% - var(--b));
   width: var(--b);
   height: var(--h);
   background: inherit;
   border-bottom-right-radius: 100%;
-  -webkit-mask: radial-gradient(calc(var(--t)*100%) 105% at 0 0,#0000 99%,#000 101%);
+  -webkit-mask: radial-gradient(calc(var(--t)*100%) 105% at 0 0, #0000 99%, #000 101%);
 }
 
 @media (max-width: 768px) {
-  .logo{
-    img{
+  .logo {
+    img {
       width: 65%;
     }
-    .thought{
+    .thought {
       display: none;
     }
-    .speech{
+    .speech {
       display: none;
     }
-}
+  }
 }
 
 @media (max-width: 576px) {
-  .hero{
-    img{
+  .hero {
+    img {
       display: none !important;
     }
-    .logo-mobile{
+    .logo-mobile {
       display: block !important;
       margin-bottom: -100px;
     }
-    .logo{
-      .popup{
+    .logo {
+      .popup {
         left: -14px;
         padding: 4px;
         background-color: #2ec4b6;
         display: block !important;
         position: fixed;
-        button{
+        animation: pulsate 1.5s infinite;
+        /* Applica l'animazione pulsate alla .popup */
+        button {
           background: #ff9f1c !important;
           border: none;
-          &:active{
+          animation: pulsate 1.5s infinite;
+          /* Applica l'animazione pulsate al pulsante */
+          &:active {
             transition: scale .2s;
             scale: .9;
           }
         }
-        &:hover{
+        &:hover {
           transition: left .3s;
           left: 4px;
         }
-        &:not(:hover){
+        &:not(:hover) {
           transition: left .3s;
         }
       }
-      .offcanvas{
+      .offcanvas {
         border-radius: 0 50% 50% 0;
         background-color: #2ec4b6;
-        .offcanvas-body{
+        .offcanvas-body {
           label {
             background-color: #ff9f1c;
             color: white;
@@ -307,13 +327,35 @@ export default {
           }
         }
       }
-      .offcanvas-backdrop{
-          background-color: transparent !important;
-        }
+      .offcanvas-backdrop {
+        background-color: transparent !important;
+      }
     }
-}
+  }
 }
 
-
+/* Definisci l'animazione pulsate */
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+    border-width: 2px;
+    /* larghezza del bordo iniziale */
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    /* ingrandimento del pulsante e della .popup */
+    border-width: 4px;
+    /* larghezza del bordo aumentata */
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    border-width: 2px;
+    /* ritorno alla larghezza del bordo iniziale */
+    opacity: 1;
+  }
+}
 </style>
+
 
