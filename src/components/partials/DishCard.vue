@@ -35,7 +35,7 @@ export default {
       </div>
       <div class="dish-quantity">
         <button
-          class="btn btn-custom-primary-outline mx-3 z-3"
+          class="btn btn-custom-primary-outline mx-3 mt-3 z-3"
           @click="addToCart"
         >
           <i class="fa-solid fa-plus"></i>
@@ -71,8 +71,7 @@ export default {
   }
 
   .dish-info {
-    margin-left: 40px;
-    width: 100%;
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -83,19 +82,14 @@ export default {
   }
 
   @media (max-width: 768px) and (min-width: 577px) {
-    flex-direction: column;
-    height: auto;
-
-    .img-box {
-      margin-bottom: 20px;
-      img {
-        height: 90%;
-        width: 90%;
+    .dish-card {
+      .img-box {
+        margin-bottom: 20px;
+        img {
+          height: 90%;
+          width: 90%;
+        }
       }
-    }
-
-    .dish-info {
-      margin-left: 0;
     }
   }
 }
