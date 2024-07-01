@@ -149,8 +149,12 @@ export default {
     height: 320px;
     cursor: pointer;
     &:hover {
+      transition: transform .3s;
       transform: scale(1.01);
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    }
+    &:not(:hover){
+      transition: transform .3s;
     }
     &:active {
       transform: translateY(4px);
@@ -229,6 +233,10 @@ export default {
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       transition: opacity 0.3s;
       transform: scale(1.1);
+      transition: transform .2s;
+    }
+    &:not(:hover){
+      transition: transform .2s;
     }
     &:active {
       transform: translateY(4px);

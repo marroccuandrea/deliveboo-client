@@ -175,6 +175,10 @@ export default {
       border-radius: 20px;
       transform: scale(1.01);
       z-index: 99;
+      transition: transform .2s;
+    }
+    &:not(:hover){
+      transition: transform .2s;
     }
     width: 300px;
     display: flex;
