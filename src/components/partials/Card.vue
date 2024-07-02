@@ -227,7 +227,7 @@ export default {
       border-radius: 5px;
       background-color: $color-primary;
       color: white;
-      font-size: medium;
+      font-size: .9rem;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
     .card-text {
