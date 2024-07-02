@@ -12,6 +12,7 @@ export const store = reactive({
   types: [],
   queryParams: {},
   filterTypes: [],
+  selectedTypes: [],
   cart: JSON.parse(localStorage.getItem("cart")) || [],
   restaurantId: localStorage.getItem("restaurantId") || null,
 });

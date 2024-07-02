@@ -45,20 +45,20 @@ export default {
       if (event.target.checked && index === -1) {
         // If the checkbox is checked and the type is not in the array, add it
         this.store.filterTypes.push(selectedType);
-        this.selectedTypes.push(selectedType);
+        this.store.selectedTypes.push(selectedType);
       } else if (!event.target.checked && index !== -1) {
         // If the checkbox is unchecked and the type is in the array, remove it
         this.store.filterTypes.splice(index, 1);
-        const selectedIndex = this.selectedTypes.indexOf(selectedType);
+        const selectedIndex = this.store.selectedTypes.indexOf(selectedType);
         if (selectedIndex !== -1) {
-          this.selectedTypes.splice(selectedIndex, 1);
+          this.store.selectedTypes.splice(selectedIndex, 1);
         }
       }
       this.$emit("update-filter", this.store.filterTypes);
       console.log(this.store.filterTypes);
     },
     isSelected(type) {
-      return this.selectedTypes.includes(type);
+      return this.store.selectedTypes.includes(type);
     },
   },
   mounted() {
