@@ -121,7 +121,13 @@ export default {
 
     <!-- TOGGLE CARRELLO  -->
 
-    <button @click="toggleCart" class="btn btn-toggle-cart">Carrello</button>
+    <button @click="toggleCart" class="btn btn-toggle-cart">
+      <i
+        :class="
+          isCartVisible ? 'fa-solid fa-chevron-down' : 'fa-solid fa-chevron-up'
+        "
+      ></i>
+    </button>
     <div id="mobile-cart" v-if="isCartVisible" class="cart">
       <!-- Lista elementi carrello -->
       <ul class="text-start">
