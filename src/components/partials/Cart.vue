@@ -1,7 +1,10 @@
 <script>
 import { store } from "../../data/store";
-
+import HeaderCart from "./HeaderCart.vue";
 export default {
+  components: {
+    HeaderCart,
+  },
   data() {
     return {
       store,
@@ -10,6 +13,9 @@ export default {
     };
   },
   computed: {
+    cartItemCount() {
+      return this.store.cart.reduce((acc, item) => acc + item.quantity, 0);
+    },
     totalCartPrice() {
       return this.store.cart.reduce(
         (acc, item) => acc + item.price * item.quantity,
@@ -120,15 +126,20 @@ export default {
     </div>
 
     <!-- TOGGLE CARRELLO  -->
+    <div class="d-flex justify-content-between align-items-center">
+      <button @click="toggleCart" class="btn btn-toggle-cart">
+        <i
+          :class="
+            isCartVisible
+              ? 'fa-solid fa-chevron-down'
+              : 'fa-solid fa-chevron-up'
+          "
+        ></i>
+        Carrello
+      </button>
+      <span v-if="cartItemCount > 0" class="badge">{{ cartItemCount }}</span>
+    </div>
 
-    <button @click="toggleCart" class="btn btn-toggle-cart">
-      <i
-        :class="
-          isCartVisible ? 'fa-solid fa-chevron-down' : 'fa-solid fa-chevron-up'
-        "
-      ></i>
-      Carrello
-    </button>
     <div id="mobile-cart" v-if="isCartVisible" class="cart">
       <!-- Lista elementi carrello -->
       <ul class="text-start">
@@ -272,6 +283,13 @@ export default {
 }
 @media (max-width: 576px) {
   .col {
+    .badge {
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      padding: 5px 8px;
+      font-size: 1rem;
+    }
     .btn-toggle-cart {
       display: block;
       background-color: $color-primary;
