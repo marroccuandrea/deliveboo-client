@@ -82,14 +82,15 @@ export default {
     }
   }
 
-  @media (max-width: 768px) and (min-width: 577px) {
-    .dish-card {
-      .img-box {
-        margin-bottom: 20px;
-        img {
-          height: 90%;
-          width: 90%;
-        }
+}
+@media (max-width: 768px) and (min-width: 577px) {
+  .dish-card {
+    flex-direction: column;
+    .img-box {
+      margin-bottom: 20px;
+      img {
+        height: 90%;
+        width: 90%;
       }
     }
   }
