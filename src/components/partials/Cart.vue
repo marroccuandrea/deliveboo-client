@@ -127,6 +127,7 @@ export default {
           isCartVisible ? 'fa-solid fa-chevron-down' : 'fa-solid fa-chevron-up'
         "
       ></i>
+      Carrello
     </button>
     <div id="mobile-cart" v-if="isCartVisible" class="cart">
       <!-- Lista elementi carrello -->
@@ -273,6 +274,10 @@ export default {
   .col {
     .btn-toggle-cart {
       display: block;
+      background-color: $color-primary;
+      padding: 3px 8px;
+      margin-top: 7px;
+      color: white;
     }
     #mobile-cart {
       display: block;
