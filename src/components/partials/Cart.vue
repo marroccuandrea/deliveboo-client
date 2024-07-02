@@ -1,14 +1,21 @@
 <script>
 import { store } from "../../data/store";
-
+import HeaderCart from "./HeaderCart.vue";
 export default {
+  components: {
+    HeaderCart,
+  },
   data() {
     return {
       store,
-      orderDate: new Date().toLocaleDateString('it-IT')
+      orderDate: new Date().toLocaleDateString("it-IT"),
+      isCartVisible: true,
     };
   },
   computed: {
+    cartItemCount() {
+      return this.store.cart.reduce((acc, item) => acc + item.quantity, 0);
+    },
     totalCartPrice() {
       return this.store.cart.reduce(
         (acc, item) => acc + item.price * item.quantity,
@@ -19,7 +26,7 @@ export default {
   methods: {
     formatPrice(price) {
       // Sostituisce il punto con una virgola
-      return price.toString().replace('.', ',');
+      return price.toString().replace(".", ",");
     },
     updateCartItem(index, increment) {
       if (increment) {
@@ -48,19 +55,18 @@ export default {
     goToCheckout() {
       // Inserire rotta checkout
     },
+    toggleCart() {
+      this.isCartVisible = !this.isCartVisible; // Metodo per togglare la visibilità del carrello
+    },
   },
 };
 </script>
 
 <template>
   <div class="col col-5">
-    <div class="cart">
-      <h4>Carrello</h4>
-
+    <div id="desk-cart" class="cart">
       <div>
-        <div class="order-date">
-          <p>Data dell'ordine {{ orderDate }}</p>
-        </div>
+        <h4>Carrello</h4>
       </div>
 
       <!-- Lista elementi carrello -->
@@ -72,7 +78,10 @@ export default {
         >
           <div class="d-flex flex-column">
             <span class="fw-semibold">{{ cartItem.name }}</span>
-            <span>€ {{ formatPrice(cartItem.price) }} x {{ cartItem.quantity }}</span>
+            <span
+              >€ {{ formatPrice(cartItem.price) }} x
+              {{ cartItem.quantity }}</span
+            >
           </div>
 
           <div class="d-flex align-items-center">
@@ -115,6 +124,80 @@ export default {
         </button>
       </div>
     </div>
+
+    <!-- TOGGLE CARRELLO  -->
+    <div class="d-flex justify-content-between align-items-center">
+      <button @click="toggleCart" class="btn btn-toggle-cart">
+        <i
+          :class="
+            isCartVisible
+              ? 'fa-solid fa-chevron-down'
+              : 'fa-solid fa-chevron-up'
+          "
+        ></i>
+        Carrello
+      </button>
+      <span v-if="cartItemCount > 0" class="badge">{{ cartItemCount }}</span>
+    </div>
+
+    <div id="mobile-cart" v-if="isCartVisible" class="cart">
+      <!-- Lista elementi carrello -->
+      <ul class="text-start">
+        <li
+          v-for="(cartItem, index) in this.store.cart"
+          :key="index"
+          class="d-flex justify-content-between mb-4"
+        >
+          <div class="d-flex flex-column">
+            <span class="fw-semibold">{{ cartItem.name }}</span>
+            <span
+              >€ {{ formatPrice(cartItem.price) }} x
+              {{ cartItem.quantity }}</span
+            >
+          </div>
+
+          <div class="d-flex align-items-center">
+            <div class="d-flex gap-2 align-items-center">
+              <i
+                class="fa-solid fa-minus"
+                @click="updateCartItem(index, false)"
+              ></i>
+              <span>{{ cartItem.quantity }}</span>
+              <i
+                class="fa-solid fa-plus"
+                @click="updateCartItem(index, true)"
+              ></i>
+            </div>
+
+            <span @click="removeFromCart(index)" class="delete-box">
+              <i class="fa-solid fa-trash fs-5 mx-3"></i>
+            </span>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Totale carrello -->
+      <div class="total-cart d-flex justify-content-between align-items-center">
+        <h4>Totale</h4>
+        <span>{{ formatPrice(totalCartPrice.toFixed(2)) }} €</span>
+      </div>
+
+      <!-- Pulsanti -->
+      <div class="button-container d-flex justify-content-center">
+        <router-link :to="{ name: 'checkout' }" class="btn btn-custom-primary"
+          >Procedi al pagamento</router-link
+        >
+        <button
+          type="button"
+          class="btn btn-custom-secondary"
+          @click="clearCart"
+        >
+          Svuota il carrello
+        </button>
+      </div>
+    </div>
+
+    <!-- TOGGLE CARRELLO  -->
   </div>
 </template>
 
@@ -122,7 +205,13 @@ export default {
 @import "../../assets/scss/partials/variables";
 
 .col {
+  #mobile-cart {
+    display: none;
+  }
   flex-shrink: 0;
+  .btn-toggle-cart {
+    display: none;
+  }
 
   .cart {
     padding: 20px;
@@ -182,13 +271,37 @@ export default {
         flex-direction: column;
         align-items: center;
         width: 100%;
-        .btn-custom-primary{
+        .btn-custom-primary {
           width: 95%;
         }
-        .btn-custom-secondary{
+        .btn-custom-secondary {
           width: 95%;
         }
       }
+    }
+  }
+}
+@media (max-width: 576px) {
+  .col {
+    .badge {
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      padding: 5px 8px;
+      font-size: 1rem;
+    }
+    .btn-toggle-cart {
+      display: block;
+      background-color: $color-primary;
+      padding: 3px 8px;
+      margin-top: 7px;
+      color: white;
+    }
+    #mobile-cart {
+      display: block;
+    }
+    #desk-cart {
+      display: none;
     }
   }
 }
